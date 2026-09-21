@@ -98,19 +98,17 @@ console.log("[apply-migrations] ✓ All migrations applied.");
 // When Railway restarts the service mid-review (deploy, sleep, crash), the
 // runAgent Node task is killed and its catch handler never runs — the row
 // stays in "processing" forever and the loading page spins indefinitely.
-// This one-shot at startup marks any such row as failed so users see a
-// clear error state instead of infinite loading.
+//
+// This is a boot-time cleanup: any row still in "processing" when a fresh
+// container boots is definitionally orphaned, because the process that was
+// running it is dead. So mark ALL of them failed — no age threshold.
 try {
-  const staleThresholdIso = new Date(Date.now() - 5 * 60 * 1000).toISOString();
   const result = await client.execute({
-    sql:
-      "UPDATE Review SET status = ?, failureReason = ? " +
-      "WHERE status = ? AND createdAt < ?",
+    sql: "UPDATE Review SET status = ?, failureReason = ? WHERE status = ?",
     args: [
       "failed",
       "Interrupted by a server restart. Please try again.",
       "processing",
-      staleThresholdIso,
     ],
   });
   const count = result?.rowsAffected ?? 0;
