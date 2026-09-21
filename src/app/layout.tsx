@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   Bricolage_Grotesque,
   IBM_Plex_Sans,
@@ -104,6 +105,15 @@ export default function RootLayout({
         <TooltipProvider delay={200}>
           {children}
         </TooltipProvider>
+        {/* Cloudflare Web Analytics — only load in production so local dev
+            traffic isn't counted. */}
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            strategy="afterInteractive"
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "126130a377a648b0bf00438477b20524"}'
+          />
+        )}
       </body>
     </html>
   );
