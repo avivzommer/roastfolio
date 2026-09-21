@@ -1,19 +1,32 @@
-// One-time script to apply Prisma migration SQL files to Turso.
-// Asks for DATABASE_URL interactively if it's not already in .env.local.
+// Applies every Prisma migration SQL file in prisma/migrations/ to the
+// Turso (libSQL) database referenced by DATABASE_URL.
 //
-// Usage:
-//   npx tsx scripts/apply-migrations.mjs
+// Runs at container startup on Railway (via railway.json → startCommand)
+// so new migrations land automatically before `next start`.
+//
+// Also usable locally:
+//   node scripts/apply-migrations.mjs
+// With DATABASE_URL already exported, or (dev-only) with dotenv loading
+// .env.local — the dotenv import is optional so prod doesn't need it.
 
-import dotenv from "dotenv";
 import { createClient } from "@libsql/client";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import { createInterface } from "node:readline/promises";
 import { stdin, stdout } from "node:process";
 
-dotenv.config({ path: ".env.local" });
+// Soft-load dotenv when it's installed (dev). In prod, Railway injects env.
+try {
+  const dotenv = await import("dotenv");
+  dotenv.config({ path: ".env.local" });
+} catch {
+  // No dotenv installed — expected in prod.
+}
 
 let url = process.env.DATABASE_URL;
-if (!url) {
+
+// Interactive fallback (local only, when TTY is attached).
+if (!url && stdin.isTTY) {
   const rl = createInterface({ input: stdin, output: stdout });
   console.log(
     "\nPaste your Turso DATABASE_URL (the long libsql://... line from Railway Variables), then press Enter:",
@@ -23,19 +36,35 @@ if (!url) {
 }
 
 if (!url) {
-  console.error("No URL provided. Exiting.");
-  process.exit(1);
+  console.error(
+    "[apply-migrations] DATABASE_URL is not set. Skipping migration step.",
+  );
+  process.exit(0);
+}
+
+// libSQL URLs starting with file: mean a local dev DB — Prisma handles those
+// itself (via `prisma migrate dev`), so no need to run this script.
+if (url.startsWith("file:")) {
+  console.log("[apply-migrations] DATABASE_URL is a local file — skipping.");
+  process.exit(0);
+}
+
+const migrationsDir = "prisma/migrations";
+const migrationDirs = readdirSync(migrationsDir, { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => d.name)
+  .sort(); // Timestamped names sort chronologically.
+
+if (migrationDirs.length === 0) {
+  console.log("[apply-migrations] No migrations found.");
+  process.exit(0);
 }
 
 const client = createClient({ url });
 
-const files = [
-  "prisma/migrations/20260606105424_init/migration.sql",
-  "prisma/migrations/20260609063251_add_review_ip_address/migration.sql",
-];
-
-for (const file of files) {
-  console.log(`Applying ${file}…`);
+for (const dir of migrationDirs) {
+  const file = join(migrationsDir, dir, "migration.sql");
+  console.log(`[apply-migrations] Applying ${dir}…`);
   const sql = readFileSync(file, "utf8");
   const statements = sql
     .split(";")
@@ -47,7 +76,13 @@ for (const file of files) {
       await client.execute(stmt);
     } catch (err) {
       const msg = err?.message ?? String(err);
-      if (msg.includes("already exists") || msg.includes("duplicate column")) {
+      // Idempotent skips — running against a DB where the migration already
+      // applied should be a no-op, not an error.
+      if (
+        msg.includes("already exists") ||
+        msg.includes("duplicate column") ||
+        msg.includes("no such table") // guard for pre-init DROP TABLE lines
+      ) {
         console.log(`  · skip (already applied): ${stmt.slice(0, 70)}…`);
       } else {
         console.error(`  ✗ failed: ${stmt.slice(0, 70)}…`);
@@ -57,5 +92,4 @@ for (const file of files) {
   }
 }
 
-console.log("\n✓ All migrations applied successfully.");
-process.exit(0);
+console.log("[apply-migrations] ✓ All migrations applied.");
