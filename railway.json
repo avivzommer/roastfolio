@@ -5,7 +5,7 @@
     "dockerfilePath": "Dockerfile"
   },
   "deploy": {
-    "startCommand": "node scripts/apply-migrations.mjs && npx next start -H 0.0.0.0 -p 8080",
+    "startCommand": "echo '[boot] step 1: env' && printenv | grep -E '^(PORT|NODE_ENV|DATABASE_URL)' | sed 's/=.*/=<set>/' && echo '[boot] step 2: run migrations' && node scripts/apply-migrations.mjs && echo '[boot] step 3: migrations done' && ls node_modules/.bin/next && echo '[boot] step 4: starting next' && exec ./node_modules/.bin/next start -H 0.0.0.0 -p 8080",
     "healthcheckPath": "/",
     "healthcheckTimeout": 60,
     "restartPolicyType": "ON_FAILURE",
