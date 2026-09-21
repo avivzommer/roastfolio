@@ -91,7 +91,18 @@ export async function crawlPortfolio(
       console.log(`[crawl] case-study ${i + 1}/${Math.min(caseStudyUrls.length, MAX_CASE_STUDIES)}: ${csUrl}`);
       try {
         const label = `cs-${i + 1}`;
-        const cs = await capturePage(page, csUrl, label, options);
+        // Hard outer timeout — if Chromium wedges silently and Playwright's
+        // own timeouts don't fire, we still bail out and move on.
+        const PER_URL_WALLCLOCK_MS = 120_000;
+        const cs = await Promise.race([
+          capturePage(page, csUrl, label, options),
+          new Promise<never>((_, reject) =>
+            setTimeout(
+              () => reject(new Error(`wallclock timeout after ${PER_URL_WALLCLOCK_MS}ms`)),
+              PER_URL_WALLCLOCK_MS,
+            ),
+          ),
+        ]);
         caseStudies.push(cs);
       } catch (err) {
         errors.push(
@@ -156,14 +167,17 @@ async function capturePage(
   flags: { skipNavigate?: boolean } = {},
 ): Promise<CrawledPage> {
   if (!flags.skipNavigate) {
+    console.log(`[crawl:${label}] goto ${url}`);
     await page.goto(url, {
       waitUntil: "domcontentloaded",
       timeout: GOTO_TIMEOUT_MS,
     });
+    console.log(`[crawl:${label}] goto done`);
   }
 
   // Give SPA frameworks a moment to hydrate.
   await page.waitForTimeout(1_200);
+  console.log(`[crawl:${label}] scrolling`);
 
   // Try to trigger any lazy-loaded content by scrolling to the bottom.
   await page
@@ -179,6 +193,7 @@ async function capturePage(
     .catch(() => {});
   await page.waitForTimeout(200);
 
+  console.log(`[crawl:${label}] extracting title + text`);
   const title = await page.title();
 
   const text = await page.evaluate((maxChars) => {
@@ -190,6 +205,7 @@ async function capturePage(
     return raw.replace(/\s+/g, " ").trim().slice(0, maxChars);
   }, MAX_TEXT_CHARS);
 
+  console.log(`[crawl:${label}] taking screenshot`);
   // Cap height for very long pages — both for Anthropic image limits and UI.
   const fullHeight = await page
     .evaluate(() => document.documentElement.scrollHeight)
@@ -206,6 +222,7 @@ async function capturePage(
     // shared CPU can exceed that; bump to 90s.
     timeout: 90_000,
   });
+  console.log(`[crawl:${label}] screenshot ok (${cappedHeight}px)`);
 
   let screenshotPath: string | undefined;
   if (options.screenshotDir) {
