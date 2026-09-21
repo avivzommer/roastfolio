@@ -78,13 +78,17 @@ export async function crawlPortfolio(
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0 Safari/537.36 PortfolioReviewBot/1.0",
     });
     const page = await context.newPage();
+    console.log(`[crawl] browser ready; homepage=${url}`);
 
     const homepage = await capturePage(page, url, "homepage", options);
+    console.log(`[crawl] homepage captured; textLen=${homepage.text.length}`);
     const caseStudyUrls = await findCaseStudyUrls(page, url, homepage.url);
+    console.log(`[crawl] found ${caseStudyUrls.length} case-study url(s)`);
 
     const caseStudies: CrawledPage[] = [];
     for (let i = 0; i < Math.min(caseStudyUrls.length, MAX_CASE_STUDIES); i++) {
       const csUrl = caseStudyUrls[i];
+      console.log(`[crawl] case-study ${i + 1}/${Math.min(caseStudyUrls.length, MAX_CASE_STUDIES)}: ${csUrl}`);
       try {
         const label = `cs-${i + 1}`;
         const cs = await capturePage(page, csUrl, label, options);

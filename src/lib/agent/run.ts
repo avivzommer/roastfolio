@@ -38,15 +38,22 @@ export async function runAgent(reviewId: string): Promise<void> {
   const start = Date.now();
   let phase = "load";
 
+  console.log(`[agent] ${reviewId} starting`);
+
   try {
     const row = await prisma.review.findUnique({ where: { id: reviewId } });
     if (!row) {
       console.warn(`[agent] no review row ${reviewId}; aborting`);
       return;
     }
+    console.log(`[agent] ${reviewId} loaded row url=${row.portfolioUrl}`);
 
     phase = "crawl";
+    console.log(`[agent] ${reviewId} phase=crawl starting`);
     const crawl = await crawlPortfolio(row.portfolioUrl, screenshotPaths(reviewId));
+    console.log(
+      `[agent] ${reviewId} phase=crawl done; caseStudies=${crawl.caseStudies.length}; errors=${crawl.errors.length}`,
+    );
 
     const nothingExtracted =
       crawl.homepage.text.length < 40 && crawl.caseStudies.length === 0;
@@ -66,6 +73,7 @@ export async function runAgent(reviewId: string): Promise<void> {
     }
 
     phase = "llm";
+    console.log(`[agent] ${reviewId} phase=llm starting`);
     // Older rows may not have heatLevel — fall back to "honest".
     const heatLevel: HeatLevel =
       (row.heatLevel as HeatLevel | undefined) ?? "honest";
