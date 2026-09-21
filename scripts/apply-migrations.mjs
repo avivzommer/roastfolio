@@ -94,6 +94,38 @@ for (const dir of migrationDirs) {
 
 console.log("[apply-migrations] ✓ All migrations applied.");
 
+// Clean up stale "processing" reviews from a previous run of the container.
+// When Railway restarts the service mid-review (deploy, sleep, crash), the
+// runAgent Node task is killed and its catch handler never runs — the row
+// stays in "processing" forever and the loading page spins indefinitely.
+// This one-shot at startup marks any such row as failed so users see a
+// clear error state instead of infinite loading.
+try {
+  const staleThresholdIso = new Date(Date.now() - 5 * 60 * 1000).toISOString();
+  const result = await client.execute({
+    sql:
+      "UPDATE Review SET status = ?, failureReason = ? " +
+      "WHERE status = ? AND createdAt < ?",
+    args: [
+      "failed",
+      "Interrupted by a server restart. Please try again.",
+      "processing",
+      staleThresholdIso,
+    ],
+  });
+  const count = result?.rowsAffected ?? 0;
+  if (count > 0) {
+    console.log(
+      `[apply-migrations] Cleaned up ${count} stale processing review(s).`,
+    );
+  }
+} catch (err) {
+  console.warn(
+    "[apply-migrations] Could not clean up stale processing reviews:",
+    err?.message ?? err,
+  );
+}
+
 // The libSQL client keeps a WebSocket-ish connection alive, which stops Node
 // from exiting on its own. Close it explicitly so Railway's startCommand can
 // move on to `next start`.
