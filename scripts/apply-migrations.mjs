@@ -93,3 +93,13 @@ for (const dir of migrationDirs) {
 }
 
 console.log("[apply-migrations] ✓ All migrations applied.");
+
+// The libSQL client keeps a WebSocket-ish connection alive, which stops Node
+// from exiting on its own. Close it explicitly so Railway's startCommand can
+// move on to `next start`.
+try {
+  client.close();
+} catch {
+  // Best-effort; not fatal if the runtime doesn't expose close().
+}
+process.exit(0);
