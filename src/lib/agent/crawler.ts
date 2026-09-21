@@ -179,37 +179,65 @@ async function capturePage(
   await page.waitForTimeout(1_200);
   console.log(`[crawl:${label}] scrolling`);
 
+  // Some Framer/SPA case-study pages wedge CDP on the first page.evaluate
+  // after goto — the browser is alive but never responds. Wrap every
+  // evaluate in a short race so a wedged call bails out fast and we move on
+  // with whatever we have.
+  const withTimeout = <T>(p: Promise<T>, ms: number, fallback: T): Promise<T> =>
+    Promise.race([
+      p,
+      new Promise<T>((resolve) => setTimeout(() => resolve(fallback), ms)),
+    ]);
+
   // Try to trigger any lazy-loaded content by scrolling to the bottom.
-  await page
-    .evaluate(() => {
-      window.scrollTo(0, document.body.scrollHeight);
-    })
-    .catch(() => {});
+  await withTimeout(
+    page
+      .evaluate(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+      })
+      .catch(() => {}),
+    5_000,
+    undefined,
+  );
   await page.waitForTimeout(600);
-  await page
-    .evaluate(() => {
-      window.scrollTo(0, 0);
-    })
-    .catch(() => {});
+  await withTimeout(
+    page
+      .evaluate(() => {
+        window.scrollTo(0, 0);
+      })
+      .catch(() => {}),
+    5_000,
+    undefined,
+  );
   await page.waitForTimeout(200);
 
   console.log(`[crawl:${label}] extracting title + text`);
-  const title = await page.title();
+  const title = await withTimeout(page.title().catch(() => ""), 5_000, "");
 
-  const text = await page.evaluate((maxChars) => {
-    const body = document.body.cloneNode(true) as HTMLElement;
-    body.querySelectorAll("script, style, noscript, svg").forEach((el) =>
-      el.remove(),
-    );
-    const raw = (body as HTMLElement).innerText ?? "";
-    return raw.replace(/\s+/g, " ").trim().slice(0, maxChars);
-  }, MAX_TEXT_CHARS);
+  const text = await withTimeout(
+    page
+      .evaluate((maxChars) => {
+        const body = document.body.cloneNode(true) as HTMLElement;
+        body.querySelectorAll("script, style, noscript, svg").forEach((el) =>
+          el.remove(),
+        );
+        const raw = (body as HTMLElement).innerText ?? "";
+        return raw.replace(/\s+/g, " ").trim().slice(0, maxChars);
+      }, MAX_TEXT_CHARS)
+      .catch(() => ""),
+    15_000,
+    "",
+  );
 
   console.log(`[crawl:${label}] taking screenshot`);
   // Cap height for very long pages — both for Anthropic image limits and UI.
-  const fullHeight = await page
-    .evaluate(() => document.documentElement.scrollHeight)
-    .catch(() => VIEWPORT_HEIGHT);
+  const fullHeight = await withTimeout(
+    page
+      .evaluate(() => document.documentElement.scrollHeight)
+      .catch(() => VIEWPORT_HEIGHT),
+    5_000,
+    VIEWPORT_HEIGHT,
+  );
   const cappedHeight = Math.min(
     Math.max(fullHeight, VIEWPORT_HEIGHT),
     SCREENSHOT_HEIGHT_CAP,
