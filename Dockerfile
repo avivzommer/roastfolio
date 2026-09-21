@@ -32,13 +32,13 @@ RUN npm run build
 # ----- Runtime -----
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV PORT=3000
+ENV PORT=8080
 
 # Screenshots are persisted via Railway Volumes, which mounts a persistent disk
 # at /app/public/screenshots at runtime. No Docker VOLUME directive needed —
 # Railway rejects it. The directory is created automatically when the volume mounts.
 
-EXPOSE 3000
+EXPOSE 8080
 
 # Start Next.js directly. Schema migrations are applied manually to Turso via
 # `turso db shell` because Prisma 7.x's CLI does not yet support libsql:// URLs.
