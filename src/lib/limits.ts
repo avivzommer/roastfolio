@@ -85,11 +85,31 @@ export interface RateLimitStatus {
   retryAfterSeconds: number;
 }
 
+function rateLimitAllowlist(): Set<string> {
+  const raw = process.env.RATE_LIMIT_ALLOWLIST_IPS ?? "";
+  return new Set(
+    raw
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean),
+  );
+}
+
 /** Counts Review rows by IP in the last hour and reports whether the IP is blocked. */
 export async function getRateLimit(ip: string): Promise<RateLimitStatus> {
   const limit = ipRateLimitPerHour();
   if (!ip || ip === "unknown") {
     // We can't bucket reliably, but don't fully block — admin sees this in history.
+    return {
+      ip,
+      countInLastHour: 0,
+      limit,
+      blocked: false,
+      retryAfterSeconds: 0,
+    };
+  }
+  // Allowlisted IPs (e.g. the owner's home IP for testing) bypass the check.
+  if (rateLimitAllowlist().has(ip)) {
     return {
       ip,
       countInLastHour: 0,
