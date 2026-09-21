@@ -216,20 +216,45 @@ export async function submitWaitlist(formData: FormData) {
 /**
  * Records user feedback on a review. Tolerates duplicate calls — each call
  * inserts a new row, so the latest sentiment wins implicitly when summarized.
+ * Also fires a best-effort email notification to the site owner.
  */
 export async function submitFeedback(
   reviewId: string,
   helpful: boolean,
   comment?: string,
 ) {
+  const trimmed = comment?.trim() || null;
   await prisma.feedback.create({
     data: {
       id: nanoid(10),
       reviewId,
       helpful,
-      comment: comment?.trim() || null,
+      comment: trimmed,
     },
   });
+
+  // Fire-and-forget notification. Wrapped in a self-invoked async so the
+  // caller returns as soon as the DB write is done, regardless of Resend
+  // latency or availability. Errors are swallowed inside email.ts.
+  void (async () => {
+    try {
+      const review = await prisma.review.findUnique({
+        where: { id: reviewId },
+        select: { portfolioUrl: true },
+      });
+      if (!review) return;
+      const { sendFeedbackNotification } = await import("./email");
+      await sendFeedbackNotification({
+        reviewId,
+        helpful,
+        comment: trimmed,
+        portfolioUrl: review.portfolioUrl,
+        siteBaseUrl: process.env.PUBLIC_BASE_URL ?? "https://roastfolio.up.railway.app",
+      });
+    } catch (err) {
+      console.error("[submitFeedback] notification failed:", err);
+    }
+  })();
 }
 
 /**

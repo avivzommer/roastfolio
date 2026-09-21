@@ -10,7 +10,7 @@ import {
 import type { ReviewReport } from "@/lib/types";
 import { SENIORITY_LABEL, VERDICT_LABEL } from "@/lib/types";
 import { RatingChip } from "@/components/review/rating-chip";
-import { LogOut, ArrowLeft, Mail } from "lucide-react";
+import { LogOut, ArrowLeft, Mail, MessageSquare } from "lucide-react";
 
 function formatDate(d: Date) {
   return d.toISOString().slice(0, 10);
@@ -97,6 +97,10 @@ export default async function AdminHistoryPage() {
         <Link href="/admin/waitlist" className="m3-btn">
           <Mail className="size-4" />
           Waitlist
+        </Link>
+        <Link href="/admin/feedback" className="m3-btn">
+          <MessageSquare className="size-4" />
+          Feedback
         </Link>
         <Link href="/" className="m3-btn">
           <ArrowLeft className="size-4" />
