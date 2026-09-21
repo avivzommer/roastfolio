@@ -1,0 +1,38 @@
+# Upload-time excludes — what NOT to send to Railway's build.
+# Mirrors .dockerignore (which Railway uses at build, but not at upload).
+
+# Dependencies + build outputs (Docker rebuilds these inside the image)
+node_modules
+.next
+.git
+.gitignore
+
+# Local env files (Railway provides env vars at runtime)
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+
+# Local DB (production uses Turso)
+*.db
+*.db-journal
+dev.db*
+
+# Local screenshots (production writes to a mounted volume)
+/public/screenshots
+
+# Prisma client (regenerated inside the image)
+/generated/prisma
+
+# Editor / OS noise
+.DS_Store
+.vscode
+.idea
+*.swp
+*.log
+/coverage
+
+# Playwright cached browsers
+playwright-report
+test-results

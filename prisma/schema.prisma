@@ -1,0 +1,60 @@
+// Portfolio Review AI — V1 schema
+// One Review per submission. Feedback linked separately.
+// No User model in V1 (no accounts).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Review {
+  id              String     @id
+  createdAt       DateTime   @default(now())
+  portfolioUrl    String
+  targetSeniority String     @default("unspecified")
+  /// Delivery style requested by the user: "chill" | "honest" | "spicy".
+  /// Threads into the LLM tone dial. Default matches the pre-heat-level behavior.
+  heatLevel       String     @default("honest")
+  status          String     @default("pending")
+  costCents       Int        @default(0)
+  /// Serialized ReviewReport JSON. Null while pending/processing or after failure.
+  report          String?
+  failureReason   String?
+  /// Client IP at submission time. Used for per-IP rate limiting + admin visibility.
+  ipAddress       String?
+  feedback        Feedback[]
+
+  @@index([createdAt])
+  @@index([status])
+  @@index([ipAddress, createdAt])
+}
+
+model Feedback {
+  id        String   @id
+  createdAt DateTime @default(now())
+  reviewId  String
+  helpful   Boolean
+  comment   String?
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@index([reviewId])
+}
+
+/// Waitlist entries collected when the monthly API budget is exhausted.
+/// One row per email — resubmits update the portfolioUrl in place.
+model Waitlist {
+  id           String   @id
+  createdAt    DateTime @default(now())
+  email        String   @unique
+  portfolioUrl String
+  /// Client IP at submission time. Used for spam signal + per-IP rate limiting.
+  ipAddress    String?
+  /// Admin flips this to true once we've emailed the user that we've reopened.
+  notified     Boolean  @default(false)
+
+  @@index([createdAt])
+}

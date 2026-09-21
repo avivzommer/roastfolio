@@ -1,0 +1,331 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+  --font-heading: var(--font-plex-sans);
+
+  /* M3 rating tiers — text-based scoring (Strong / Good / Developing / Needs Work). */
+  --color-rt-strong: var(--rt-strong);
+  --color-rt-strong-bg: var(--rt-strong-bg);
+  --color-rt-good: var(--rt-good);
+  --color-rt-good-bg: var(--rt-good-bg);
+  --color-rt-developing: var(--rt-developing);
+  --color-rt-developing-bg: var(--rt-developing-bg);
+  --color-rt-needswork: var(--rt-needswork);
+  --color-rt-needswork-bg: var(--rt-needswork-bg);
+
+  /* M3 surface levels — soft neutral grays. */
+  --color-s-lowest: var(--s-lowest);
+  --color-s-low: var(--s-low);
+  --color-s-container: var(--s-container);
+  --color-s-high: var(--s-high);
+  --color-s-highest: var(--s-highest);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+
+  /* M3 primary/secondary/tertiary roles. */
+  --color-m3-primary: var(--m3-primary);
+  --color-m3-on-primary: var(--m3-on-primary);
+  --color-m3-primary-container: var(--m3-primary-container);
+  --color-m3-on-primary-container: var(--m3-on-primary-container);
+  --color-m3-secondary-container: var(--m3-secondary-container);
+  --color-m3-on-secondary-container: var(--m3-on-secondary-container);
+
+  /* M3 pop accents (used sparingly for callouts). */
+  --color-pop-pink: var(--pop-pink);
+  --color-pop-pink-ink: var(--pop-pink-ink);
+
+  /* M3 radius scale (expressive — generous corners). */
+  --radius-m3-xs: var(--r-xs);
+  --radius-m3-sm: var(--r-sm);
+  --radius-m3-md: var(--r-md);
+  --radius-m3-lg: var(--r-lg);
+  --radius-m3-xl: var(--r-xl);
+  --radius-m3-full: var(--r-full);
+
+  /* Verdict semantic colors — kept for admin history table. */
+  --color-verdict-strong: var(--verdict-strong);
+  --color-verdict-pass: var(--verdict-pass);
+  --color-verdict-borderline: var(--verdict-borderline);
+  --color-verdict-weak: var(--verdict-weak);
+  --color-verdict-fail: var(--verdict-fail);
+  --color-verdict-unable: var(--verdict-unable);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* === Base surfaces (M3 Expressive — soft neutrals) === */
+  --background: #FCFBFD;
+  --foreground: #1C1B1E;
+  --card: #FFFFFF;
+  --card-foreground: #1C1B1E;
+  --popover: #FFFFFF;
+  --popover-foreground: #1C1B1E;
+  --primary: #2A282E;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F0F4;
+  --secondary-foreground: #1C1B1E;
+  --muted: #F6F5F8;
+  --muted-foreground: #48464B;
+  --accent: #F0EFF3;
+  --accent-foreground: #1C1B1E;
+  --destructive: #C0392B;
+  --border: #E2E0E5;
+  --input: #E2E0E5;
+  --ring: #2A282E;
+  --chart-1: #2A282E;
+  --chart-2: #5B5961;
+  --chart-3: #8C8990;
+  --chart-4: #C7C5CB;
+  --chart-5: #E2E0E5;
+  --radius: 0.875rem;
+
+  /* === M3 rating tiers === */
+  --rt-strong:     #0F5132;
+  --rt-strong-bg:  #BFEBC8;
+  --rt-strong-line:#A3DDB0;
+  --rt-strong-dot: #2E7D44;
+  --rt-good:       #00214D;
+  --rt-good-bg:    #D9E2FF;
+  --rt-good-line:  #C2D3FF;
+  --rt-good-dot:   #2D5BB8;
+  --rt-developing: #5A3B00;
+  --rt-developing-bg: #FFDDAE;
+  --rt-developing-line: #F6CE97;
+  --rt-developing-dot: #C77900;
+  --rt-needswork:  #5E1014;
+  --rt-needswork-bg: #FFDAD6;
+  --rt-needswork-line: #FBCCC7;
+  --rt-needswork-dot: #C0392B;
+
+  /* === M3 surface levels === */
+  --s-lowest: #FFFFFF;
+  --s-low:     #FCFBFD;
+  --s-container: #F6F5F8;
+  --s-high:    #F1F0F4;
+  --s-highest: #EBEAEF;
+  --on-surface: #1C1B1E;
+  --on-surface-variant: #48464B;
+  --outline: #8C8990;
+  --outline-variant: #E2E0E5;
+
+  /* === M3 primary/secondary roles === */
+  --m3-primary: #2A282E;
+  --m3-on-primary: #FFFFFF;
+  --m3-primary-container: #F0EFF3;
+  --m3-on-primary-container: #1C1B1E;
+  --m3-secondary-container: #F1F0F4;
+  --m3-on-secondary-container: #1C1B1E;
+
+  /* === M3 pop accents === */
+  --pop-pink: #F9B9FA;
+  --pop-pink-ink: #74357A;
+
+  /* === M3 shape scale === */
+  --r-xs: 8px;
+  --r-sm: 14px;
+  --r-md: 20px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+  --r-full: 999px;
+
+  /* === M3 elevation === */
+  --e1: 0 1px 2px rgba(28,27,30,.10), 0 1px 3px 1px rgba(28,27,30,.06);
+  --e2: 0 1px 2px rgba(28,27,30,.12), 0 2px 6px 2px rgba(28,27,30,.08);
+  --e3: 0 4px 8px 3px rgba(28,27,30,.08), 0 1px 3px rgba(28,27,30,.12);
+
+  /* === Motion === */
+  --spring: cubic-bezier(.34, 1.4, .5, 1);
+  --ease: cubic-bezier(.2, 0, 0, 1);
+
+  /* === Verdict colors (kept for admin history) === */
+  --verdict-strong: oklch(0.55 0.13 155);
+  --verdict-pass: oklch(0.65 0.1 150);
+  --verdict-borderline: oklch(0.75 0.13 75);
+  --verdict-weak: oklch(0.68 0.14 50);
+  --verdict-fail: oklch(0.58 0.18 25);
+  --verdict-unable: oklch(0.6 0.02 280);
+  --sidebar: #FCFBFD;
+  --sidebar-foreground: #1C1B1E;
+  --sidebar-primary: #2A282E;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F1F0F4;
+  --sidebar-accent-foreground: #1C1B1E;
+  --sidebar-border: #E2E0E5;
+  --sidebar-ring: #8C8990;
+}
+
+.dark {
+  --background: oklch(0.16 0 0);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.21 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.21 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.92 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.27 0 0);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.24 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.27 0 0);
+  --accent-foreground: oklch(0.97 0 0);
+  --destructive: oklch(0.68 0.18 25);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.65 0.08 240);
+  --chart-1: oklch(0.7 0.1 240);
+  --chart-2: oklch(0.6 0.05 230);
+  --chart-3: oklch(0.55 0 0);
+  --chart-4: oklch(0.4 0 0);
+  --chart-5: oklch(0.8 0 0);
+
+  --verdict-strong: oklch(0.7 0.13 155);
+  --verdict-pass: oklch(0.78 0.1 150);
+  --verdict-borderline: oklch(0.82 0.13 75);
+  --verdict-weak: oklch(0.76 0.14 50);
+  --verdict-fail: oklch(0.68 0.18 25);
+  --verdict-unable: oklch(0.7 0.02 280);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01" on, "ss03" on;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  /* Tighten heading display tracking, M3 Expressive style. */
+  h1, h2, h3 {
+    letter-spacing: -0.01em;
+  }
+}
+
+/* M3 Expressive utilities — used directly via @apply in components or inline. */
+.m3-eyebrow {
+  font-family: var(--font-plex-sans), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m3-primary);
+}
+
+/* Rating chip — text tier with a colored dot. */
+.rating-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 30px;
+  padding: 0 14px;
+  border-radius: var(--r-full);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  flex: none;
+}
+.rating-chip.sm { height: 26px; padding: 0 11px; font-size: 12px; }
+.rating-chip__dot { width: 8px; height: 8px; border-radius: 999px; flex: none; }
+
+.rating-chip--strong     { color: var(--rt-strong);     background: var(--rt-strong-bg); }
+.rating-chip--strong     .rating-chip__dot { background: var(--rt-strong-dot); }
+.rating-chip--good       { color: var(--rt-good);       background: var(--rt-good-bg); }
+.rating-chip--good       .rating-chip__dot { background: var(--rt-good-dot); }
+.rating-chip--developing { color: var(--rt-developing); background: var(--rt-developing-bg); }
+.rating-chip--developing .rating-chip__dot { background: var(--rt-developing-dot); }
+.rating-chip--needswork  { color: var(--rt-needswork);  background: var(--rt-needswork-bg); }
+.rating-chip--needswork  .rating-chip__dot { background: var(--rt-needswork-dot); }
+
+/* Pill button (M3 bar style). */
+.m3-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: var(--r-full);
+  background: var(--s-container);
+  border: none;
+  color: var(--m3-primary);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: box-shadow 0.2s var(--ease), background 0.2s var(--ease);
+}
+.m3-btn:hover { background: var(--s-high); }
+.m3-btn--primary {
+  background: var(--m3-primary);
+  color: var(--m3-on-primary);
+  box-shadow: var(--e1);
+}
+.m3-btn--primary:hover {
+  background: var(--m3-primary);
+  box-shadow: var(--e2);
+}
+.m3-btn--lg { height: 52px; padding: 0 28px; font-size: 15px; font-weight: 700; }
+
+/* Hidden until needed (rolling animations off for now). */
+.reveal { opacity: 1; }
