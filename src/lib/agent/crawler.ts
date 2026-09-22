@@ -17,7 +17,10 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { chromium, type Browser, type Page } from "playwright";
 
-const GOTO_TIMEOUT_MS = 20_000;
+// 45s tolerates Framer / Vercel / SPA cold-loads over Railway's shared CPU.
+// Any host that legitimately can't reach domcontentloaded in 45s isn't
+// something we can meaningfully evaluate anyway.
+const GOTO_TIMEOUT_MS = 45_000;
 const MAX_CASE_STUDIES = 5;
 const MAX_TEXT_CHARS = 8_000;
 const VIEWPORT_WIDTH = 1440;
