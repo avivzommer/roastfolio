@@ -189,32 +189,56 @@ export default async function LandingPage({
             ) : (
               <form
                 action={submitReview}
-                className="rf-enter rf-enter-4 mt-9 flex w-full flex-col items-stretch gap-3 sm:flex-row"
+                className="rf-enter rf-enter-4 mt-9 flex w-full flex-col items-stretch gap-3"
                 style={{ maxWidth: 560 }}
               >
+                <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row">
+                  <input
+                    name="portfolioUrl"
+                    type="text"
+                    inputMode="url"
+                    placeholder="your-portfolio.com"
+                    required
+                    autoComplete="url"
+                    spellCheck={false}
+                    autoCapitalize="off"
+                    className="min-w-0 flex-1 outline-none focus:border-[var(--ink)]"
+                    style={{
+                      fontFamily: "var(--f-body)",
+                      fontSize: 16,
+                      color: "var(--ink)",
+                      background: "var(--white)",
+                      border: "1.5px solid var(--rule)",
+                      borderRadius: 12,
+                      paddingInline: 20,
+                      paddingBlock: 18,
+                      textAlign: "left",
+                    }}
+                  />
+                  <RoastCTA />
+                </div>
                 <input
-                  name="portfolioUrl"
-                  type="text"
-                  inputMode="url"
-                  placeholder="your-portfolio.com"
-                  required
-                  autoComplete="url"
+                  name="casePassword"
+                  type="password"
+                  placeholder="Case study password (optional)"
+                  autoComplete="off"
                   spellCheck={false}
                   autoCapitalize="off"
+                  maxLength={100}
                   className="min-w-0 flex-1 outline-none focus:border-[var(--ink)]"
                   style={{
                     fontFamily: "var(--f-body)",
-                    fontSize: 16,
+                    fontSize: 15,
                     color: "var(--ink)",
                     background: "var(--white)",
                     border: "1.5px solid var(--rule)",
                     borderRadius: 12,
                     paddingInline: 20,
-                    paddingBlock: 18,
+                    paddingBlock: 14,
                     textAlign: "left",
+                    opacity: 0.9,
                   }}
                 />
-                <RoastCTA />
               </form>
             ))}
 

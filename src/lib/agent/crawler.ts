@@ -1,41 +1,36 @@
 /**
- * Portfolio crawler — uses headless Chromium via Playwright.
+ * Portfolio crawler — Firecrawl-powered.
  *
  * The reviewer agent needs to *see* a portfolio the way a human does, not
- * the way `curl` does. Most modern portfolios (Framer, Webflow, custom Next
- * sites) render almost nothing in raw HTML — text appears only after JS runs.
+ * the way `curl` does. Modern portfolios (Framer, Webflow, custom Next sites)
+ * render almost nothing in raw HTML — text appears only after JS runs.
  *
- * This module opens the URL in a real browser, waits for the page to settle,
- * captures the rendered text and a full-page screenshot, then finds links
- * that look like case studies and does the same for each (cap at 5).
+ * Instead of running Playwright/Chromium inside our container (which was
+ * flaky on Railway's shared CPU and added ~1.6GB to the image), we call
+ * Firecrawl's hosted scrape API: they run the browser, we get back
+ * markdown + links + a hosted screenshot URL.
  *
- * When screenshotDir is provided, each PNG is also written to disk so the UI
- * can render it via <img>.
+ * For password-gated case studies, Firecrawl's `actions` parameter lets us
+ * script a click + type + Enter sequence to unlock the page before scraping.
  */
 
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { chromium, type Browser, type Page } from "playwright";
 
-// 45s tolerates Framer / Vercel / SPA cold-loads over Railway's shared CPU.
-// Any host that legitimately can't reach domcontentloaded in 45s isn't
-// something we can meaningfully evaluate anyway.
-const GOTO_TIMEOUT_MS = 45_000;
+const FIRECRAWL_SCRAPE_URL = "https://api.firecrawl.dev/v2/scrape";
 const MAX_CASE_STUDIES = 5;
 const MAX_TEXT_CHARS = 8_000;
-const VIEWPORT_WIDTH = 1440;
-const VIEWPORT_HEIGHT = 900;
-/** Cap full-page screenshot height. Some homepages scroll forever.
- *  Lower means smaller PNG → fewer image tokens to Claude → faster LLM round-trip
- *  and lower OOM risk on the small Railway container. 4500px is enough to cover
- *  a typical hero + below-the-fold content. */
-const SCREENSHOT_HEIGHT_CAP = 4_500;
+// Firecrawl handles its own timeouts internally; this is our outer bound.
+const SCRAPE_TIMEOUT_MS = 90_000;
 
 export interface CrawlOptions {
   /** If set, screenshots are written here as PNG files. */
   screenshotDir?: string;
   /** Public URL prefix (e.g. /screenshots/abc). Combined with filename. */
   publicPathPrefix?: string;
+  /** Optional password for gated case studies. When set, we run the
+   *  click-type-Enter action sequence on each case-study scrape. */
+  casePassword?: string | null;
 }
 
 export interface CrawledPage {
@@ -55,232 +50,204 @@ export interface CrawledPortfolio {
   errors: string[];
 }
 
+type FirecrawlAction =
+  | { type: "wait"; milliseconds: number }
+  | { type: "click"; selector: string }
+  | { type: "write"; text: string }
+  | { type: "press"; key: string };
+
+interface FirecrawlScrapeResponse {
+  success?: boolean;
+  data?: {
+    markdown?: string;
+    links?: string[];
+    screenshot?: string;
+    metadata?: {
+      title?: string;
+      sourceURL?: string;
+      url?: string;
+      statusCode?: number;
+    };
+  };
+  error?: string;
+}
+
+/**
+ * Build the password-unlock action sequence. Clicks the password input,
+ * types the password, presses Enter. Pressing Enter is more portable than
+ * guessing a submit-button selector across Framer / Webflow / custom gates.
+ */
+function passwordActions(password: string): FirecrawlAction[] {
+  return [
+    { type: "wait", milliseconds: 1500 },
+    { type: "click", selector: "input[type='password']" },
+    { type: "write", text: password },
+    { type: "press", key: "Enter" },
+    { type: "wait", milliseconds: 2500 },
+  ];
+}
+
+async function callFirecrawl(
+  url: string,
+  opts: { withActions?: FirecrawlAction[] } = {},
+): Promise<FirecrawlScrapeResponse> {
+  const apiKey = process.env.FIRECRAWL_API_KEY;
+  if (!apiKey) {
+    throw new Error("FIRECRAWL_API_KEY is not set");
+  }
+  const body: Record<string, unknown> = {
+    url,
+    formats: ["markdown", "screenshot", "links"],
+    screenshotOptions: { fullPage: true },
+    onlyMainContent: false,
+    // Live fetch; portfolios change and we never want a stale snapshot.
+    maxAge: 0,
+    timeout: SCRAPE_TIMEOUT_MS,
+  };
+  if (opts.withActions && opts.withActions.length > 0) {
+    body.actions = opts.withActions;
+  }
+
+  const controller = new AbortController();
+  const abortTimer = setTimeout(
+    () => controller.abort(),
+    SCRAPE_TIMEOUT_MS + 10_000,
+  );
+  try {
+    const res = await fetch(FIRECRAWL_SCRAPE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+    const json = (await res.json()) as FirecrawlScrapeResponse;
+    if (!res.ok || !json.success) {
+      throw new Error(json.error ?? `firecrawl ${res.status}`);
+    }
+    return json;
+  } finally {
+    clearTimeout(abortTimer);
+  }
+}
+
+/**
+ * Download the hosted screenshot URL Firecrawl returns, save to disk if
+ * screenshotDir is set, and return the base64 for the LLM.
+ */
+async function persistScreenshot(
+  screenshotUrl: string | undefined,
+  label: string,
+  options: CrawlOptions,
+): Promise<{ base64: string; publicPath?: string }> {
+  if (!screenshotUrl) return { base64: "" };
+
+  const res = await fetch(screenshotUrl);
+  if (!res.ok) {
+    throw new Error(`screenshot download ${res.status}`);
+  }
+  const buffer = Buffer.from(await res.arrayBuffer());
+
+  let publicPath: string | undefined;
+  if (options.screenshotDir) {
+    await mkdir(options.screenshotDir, { recursive: true });
+    const filename = `${label}.png`;
+    await writeFile(join(options.screenshotDir, filename), buffer);
+    if (options.publicPathPrefix) {
+      publicPath = `${options.publicPathPrefix}/${filename}`;
+    }
+  }
+
+  return { base64: buffer.toString("base64"), publicPath };
+}
+
+async function scrapePage(
+  url: string,
+  label: string,
+  options: CrawlOptions,
+  withActions?: FirecrawlAction[],
+): Promise<{ page: CrawledPage; links: string[] }> {
+  console.log(`[crawl:${label}] firecrawl scrape ${url}`);
+  const result = await callFirecrawl(url, { withActions });
+  const data = result.data ?? {};
+  console.log(
+    `[crawl:${label}] firecrawl done; markdownLen=${(data.markdown ?? "").length}; links=${(data.links ?? []).length}`,
+  );
+
+  const text = (data.markdown ?? "").slice(0, MAX_TEXT_CHARS);
+  const title = data.metadata?.title ?? url;
+  const finalUrl = data.metadata?.sourceURL ?? data.metadata?.url ?? url;
+
+  const shot = await persistScreenshot(data.screenshot, label, options);
+  console.log(`[crawl:${label}] screenshot persisted (${shot.base64.length} b64 chars)`);
+
+  return {
+    page: {
+      url: finalUrl,
+      title,
+      text,
+      screenshotBase64: shot.base64,
+      screenshotPath: shot.publicPath,
+    },
+    links: data.links ?? [],
+  };
+}
+
 export async function crawlPortfolio(
   url: string,
   options: CrawlOptions = {},
 ): Promise<CrawledPortfolio> {
   const errors: string[] = [];
-  let browser: Browser | undefined;
 
-  try {
-    // Flags required to run headless Chromium reliably inside Docker/Railway.
-    // Without --disable-dev-shm-usage, the browser tab crashes on memory-heavy
-    // pages because Chromium's default /dev/shm is too small in containers.
-    browser = await chromium.launch({
-      headless: true,
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-        "--disable-gpu",
-      ],
-    });
-    const context = await browser.newContext({
-      viewport: { width: VIEWPORT_WIDTH, height: VIEWPORT_HEIGHT },
-      userAgent:
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0 Safari/537.36 PortfolioReviewBot/1.0",
-    });
-    const page = await context.newPage();
-    console.log(`[crawl] browser ready; homepage=${url}`);
+  console.log(`[crawl] starting; url=${url}; hasPassword=${!!options.casePassword}`);
 
-    const homepage = await capturePage(page, url, "homepage", options);
-    console.log(`[crawl] homepage captured; textLen=${homepage.text.length}`);
-    const caseStudyUrls = await findCaseStudyUrls(page, url, homepage.url);
-    console.log(`[crawl] found ${caseStudyUrls.length} case-study url(s)`);
+  // ---------- Homepage (1 credit; also gives us the link list) ----------
+  const home = await scrapePage(url, "homepage", options);
+  const homepage = home.page;
+  const homepageUrl = homepage.url;
 
-    const caseStudies: CrawledPage[] = [];
-    for (let i = 0; i < Math.min(caseStudyUrls.length, MAX_CASE_STUDIES); i++) {
-      const csUrl = caseStudyUrls[i];
-      console.log(`[crawl] case-study ${i + 1}/${Math.min(caseStudyUrls.length, MAX_CASE_STUDIES)}: ${csUrl}`);
-      try {
-        const label = `cs-${i + 1}`;
-        // Hard outer timeout — if Chromium wedges silently and Playwright's
-        // own timeouts don't fire, we still bail out and move on.
-        const PER_URL_WALLCLOCK_MS = 120_000;
-        const cs = await Promise.race([
-          capturePage(page, csUrl, label, options),
-          new Promise<never>((_, reject) =>
-            setTimeout(
-              () => reject(new Error(`wallclock timeout after ${PER_URL_WALLCLOCK_MS}ms`)),
-              PER_URL_WALLCLOCK_MS,
-            ),
-          ),
-        ]);
-        caseStudies.push(cs);
-      } catch (err) {
-        errors.push(
-          `Could not capture ${csUrl}: ${String(err).slice(0, 140)}`,
-        );
-      }
-    }
+  // ---------- Case study discovery ----------
+  const caseStudyUrls = pickCaseStudyUrls(home.links, homepageUrl, homepage.text);
+  console.log(`[crawl] found ${caseStudyUrls.length} candidate case-study url(s)`);
 
-    // Fallback for state-routed SPAs (e.g., a portfolio where each case study
-    // is opened by clicking a <div class="cursor-pointer"> card and the URL
-    // never changes). Only runs when no link-based case studies were captured.
-    if (caseStudies.length === 0) {
-      const cardCount = await countClickableCards(page);
-      for (let i = 0; i < Math.min(cardCount, MAX_CASE_STUDIES); i++) {
-        try {
-          // Reset to homepage between cards — clicking a card swaps the visible
-          // content, and we need a clean slate to find the next card by index.
-          await page.goto(homepage.url, {
-            waitUntil: "domcontentloaded",
-            timeout: GOTO_TIMEOUT_MS,
-          });
-          await page.waitForTimeout(1_500);
+  // ---------- Case studies ----------
+  const caseStudies: CrawledPage[] = [];
+  const actions = options.casePassword
+    ? passwordActions(options.casePassword)
+    : undefined;
 
-          await clickNthCard(page, i);
-          await page.waitForTimeout(1_800);
-
-          const label = `cs-${i + 1}`;
-          const cs = await capturePage(
-            page,
-            page.url(),
-            label,
-            options,
-            { skipNavigate: true },
-          );
-          caseStudies.push(cs);
-        } catch (err) {
-          errors.push(
-            `Could not capture card #${i + 1}: ${String(err).slice(0, 140)}`,
-          );
-        }
-      }
-    }
-
-    return {
-      homepageUrl: url,
-      homepage,
-      caseStudies,
-      errors,
-    };
-  } finally {
-    if (browser) {
-      await browser.close().catch(() => {});
-    }
-  }
-}
-
-async function capturePage(
-  page: Page,
-  url: string,
-  label: string,
-  options: CrawlOptions,
-  flags: { skipNavigate?: boolean } = {},
-): Promise<CrawledPage> {
-  if (!flags.skipNavigate) {
-    console.log(`[crawl:${label}] goto ${url}`);
-    await page.goto(url, {
-      waitUntil: "domcontentloaded",
-      timeout: GOTO_TIMEOUT_MS,
-    });
-    console.log(`[crawl:${label}] goto done`);
-  }
-
-  // Give SPA frameworks a moment to hydrate.
-  await page.waitForTimeout(1_200);
-  console.log(`[crawl:${label}] scrolling`);
-
-  // Some Framer/SPA case-study pages wedge CDP on the first page.evaluate
-  // after goto — the browser is alive but never responds. Wrap every
-  // evaluate in a short race so a wedged call bails out fast and we move on
-  // with whatever we have.
-  const withTimeout = <T>(p: Promise<T>, ms: number, fallback: T): Promise<T> =>
-    Promise.race([
-      p,
-      new Promise<T>((resolve) => setTimeout(() => resolve(fallback), ms)),
-    ]);
-
-  // Try to trigger any lazy-loaded content by scrolling to the bottom.
-  await withTimeout(
-    page
-      .evaluate(() => {
-        window.scrollTo(0, document.body.scrollHeight);
-      })
-      .catch(() => {}),
-    5_000,
-    undefined,
-  );
-  await page.waitForTimeout(600);
-  await withTimeout(
-    page
-      .evaluate(() => {
-        window.scrollTo(0, 0);
-      })
-      .catch(() => {}),
-    5_000,
-    undefined,
-  );
-  await page.waitForTimeout(200);
-
-  console.log(`[crawl:${label}] extracting title + text`);
-  const title = await withTimeout(page.title().catch(() => ""), 5_000, "");
-
-  const text = await withTimeout(
-    page
-      .evaluate((maxChars) => {
-        const body = document.body.cloneNode(true) as HTMLElement;
-        body.querySelectorAll("script, style, noscript, svg").forEach((el) =>
-          el.remove(),
-        );
-        const raw = (body as HTMLElement).innerText ?? "";
-        return raw.replace(/\s+/g, " ").trim().slice(0, maxChars);
-      }, MAX_TEXT_CHARS)
-      .catch(() => ""),
-    15_000,
-    "",
-  );
-
-  console.log(`[crawl:${label}] taking screenshot`);
-  // Cap height for very long pages — both for Anthropic image limits and UI.
-  const fullHeight = await withTimeout(
-    page
-      .evaluate(() => document.documentElement.scrollHeight)
-      .catch(() => VIEWPORT_HEIGHT),
-    5_000,
-    VIEWPORT_HEIGHT,
-  );
-  const cappedHeight = Math.min(
-    Math.max(fullHeight, VIEWPORT_HEIGHT),
-    SCREENSHOT_HEIGHT_CAP,
-  );
-
-  const screenshotBuffer = await page.screenshot({
-    type: "png",
-    clip: { x: 0, y: 0, width: VIEWPORT_WIDTH, height: cappedHeight },
-    // Default Playwright timeout is 30s. Encoding a 1440×8000 PNG on Railway's
-    // shared CPU can exceed that; bump to 90s.
-    timeout: 90_000,
-  });
-  console.log(`[crawl:${label}] screenshot ok (${cappedHeight}px)`);
-
-  let screenshotPath: string | undefined;
-  if (options.screenshotDir) {
-    await mkdir(options.screenshotDir, { recursive: true });
-    const filename = `${label}.png`;
-    await writeFile(join(options.screenshotDir, filename), screenshotBuffer);
-    if (options.publicPathPrefix) {
-      screenshotPath = `${options.publicPathPrefix}/${filename}`;
+  for (let i = 0; i < Math.min(caseStudyUrls.length, MAX_CASE_STUDIES); i++) {
+    const csUrl = caseStudyUrls[i];
+    const label = `cs-${i + 1}`;
+    console.log(`[crawl] case-study ${i + 1}/${Math.min(caseStudyUrls.length, MAX_CASE_STUDIES)}: ${csUrl}`);
+    try {
+      const cs = await scrapePage(csUrl, label, options, actions);
+      caseStudies.push(cs.page);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      errors.push(`Could not capture ${csUrl}: ${msg.slice(0, 140)}`);
+      console.warn(`[crawl] ${label} failed: ${msg.slice(0, 140)}`);
     }
   }
 
   return {
-    url: page.url(),
-    title: title || url,
-    text,
-    screenshotBase64: screenshotBuffer.toString("base64"),
-    screenshotPath,
+    homepageUrl,
+    homepage,
+    caseStudies,
+    errors,
   };
 }
 
 // ---------------------------------------------------------------------------
-// Link discovery — multi-signal scoring (path + text + card pattern + DOM).
+// Link scoring — pure logic, no browser needed. Used to filter the homepage's
+// outgoing links down to probable case-study URLs.
 // ---------------------------------------------------------------------------
 
 /**
- * Pure scoring function — exposed so we can test it without spinning up
- * a browser. Returns higher numbers for links more likely to be case studies.
+ * Pure scoring function — exposed so we can test it without any network.
+ * Returns higher numbers for links more likely to be case studies.
  */
 export function scoreCandidate(input: {
   path: string;
@@ -316,11 +283,11 @@ export function scoreCandidate(input: {
   if (/view\s+(project|work|case|study)/i.test(lowText)) score += 3;
   if (/(read|learn|explore|view)\s+more/i.test(lowText)) score += 2;
 
-  // Card-pattern signals.
+  // Card-pattern signals (only when we have DOM context — Firecrawl doesn't).
   if (input.hasImage && input.hasHeading) score += 4;
   else if (input.hasImage || input.hasHeading) score += 2;
 
-  // DOM context.
+  // DOM context (same).
   if (input.inFooter) score -= 4;
   if (input.inMain) score += 1;
 
@@ -335,157 +302,76 @@ const FILE_EXT =
   /\.(pdf|png|jpe?g|svg|webp|gif|zip|mp4|mov|webm|avi|css|js|woff2?|ttf|otf)$/i;
 const MIN_SCORE = 3;
 
-async function findCaseStudyUrls(
-  page: Page,
-  baseUrl: string,
+/**
+ * Filter + rank Firecrawl's `links` array down to probable case-study URLs.
+ * Same scoring heuristic as the old crawler, minus the DOM context (we
+ * only know the URL + whatever text appears nearby in the markdown).
+ */
+export function pickCaseStudyUrls(
+  rawLinks: string[],
   homepageUrl: string,
-): Promise<string[]> {
-  const baseHost = new URL(baseUrl).host;
+  markdown: string,
+): string[] {
+  const baseHost = new URL(homepageUrl).host;
+  const homepagePath = new URL(homepageUrl).pathname.replace(/\/$/, "") || "/";
 
-  const rawLinks = await page.$$eval("a[href]", (anchors) =>
-    anchors.map((a) => {
-      const link = a as HTMLAnchorElement;
-      let inFooter = false;
-      let inNav = false;
-      let inMain = false;
-      let node: Element | null = link.parentElement;
-      while (node && node !== document.body) {
-        const tag = node.tagName.toLowerCase();
-        const role = (node.getAttribute("role") || "").toLowerCase();
-        if (tag === "footer" || role === "contentinfo") inFooter = true;
-        if (tag === "nav" || role === "navigation") inNav = true;
-        if (tag === "main" || tag === "article" || role === "main") inMain = true;
-        node = node.parentElement;
-      }
-      const card =
-        link.closest(
-          "article, [class*='card' i], [class*='project' i], [class*='work' i], [class*='case' i]",
-        ) ||
-        link.parentElement ||
-        link;
-      const cardEl = card as Element;
-      const hasImage = !!cardEl.querySelector("img, picture");
-      const hasHeading = !!cardEl.querySelector(
-        "h1, h2, h3, h4, h5, h6, [class*='title' i], [class*='heading' i]",
-      );
-      return {
-        href: link.href,
-        text: (
-          (link as HTMLElement).innerText ||
-          link.textContent ||
-          ""
-        )
-          .trim()
-          .slice(0, 140),
-        inFooter,
-        inNav,
-        inMain,
-        hasImage,
-        hasHeading,
-      };
-    }),
-  );
+  const seen = new Set<string>();
+  const scored: Array<{ url: string; score: number }> = [];
 
-  const scored = new Map<string, number>();
-  for (const link of rawLinks) {
-    let parsed: URL;
+  for (const raw of rawLinks) {
+    let u: URL;
     try {
-      parsed = new URL(link.href);
+      u = new URL(raw);
     } catch {
       continue;
     }
-    if (parsed.host !== baseHost) continue;
-    if (parsed.href === homepageUrl) continue;
-    if (parsed.pathname === "/" || parsed.pathname === "") continue;
-    if (FILE_EXT.test(parsed.pathname)) continue;
-    if (/^(mailto|tel|javascript):/i.test(parsed.href)) continue;
-    if (NEGATIVE_PATH.test(parsed.pathname)) continue;
+
+    // Only same-host, non-asset, non-anchor links.
+    if (u.host !== baseHost) continue;
+    if (u.hash) continue;
+    if (FILE_EXT.test(u.pathname)) continue;
+    if (NEGATIVE_PATH.test(u.pathname)) continue;
+    const normalizedPath = u.pathname.replace(/\/$/, "") || "/";
+    if (normalizedPath === homepagePath) continue;
+
+    // Dedupe by normalized URL (host + path, no query/hash).
+    const key = `${u.host}${normalizedPath}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    // Find the link's text from the markdown — look for [text](url) pairs.
+    // Not perfect, but gives us something to score.
+    const linkText = extractLinkText(markdown, raw);
 
     const score = scoreCandidate({
-      path: parsed.pathname,
-      text: link.text,
-      hasImage: link.hasImage,
-      hasHeading: link.hasHeading,
-      inFooter: link.inFooter,
-      inNav: link.inNav,
-      inMain: link.inMain,
+      path: u.pathname,
+      text: linkText,
+      // Firecrawl's response gives us URLs but not nearby DOM — set these
+      // false and rely on path + text signals, which are the strongest ones.
+      hasImage: false,
+      hasHeading: false,
+      inFooter: false,
+      inNav: false,
+      inMain: true, // default-neutral assumption
     });
-    if (score < MIN_SCORE) continue;
 
-    const prev = scored.get(parsed.href) ?? 0;
-    if (score > prev) scored.set(parsed.href, score);
+    if (score >= MIN_SCORE) {
+      scored.push({ url: raw, score });
+    }
   }
 
-  return Array.from(scored.entries())
-    .sort((a, b) => b[1] - a[1])
-    .map(([url]) => url);
+  scored.sort((a, b) => b.score - a.score);
+  return scored.map((s) => s.url);
 }
-
-// ---------------------------------------------------------------------------
-// Clickable-card discovery — for SPAs where case studies are state-routed.
-// ---------------------------------------------------------------------------
 
 /**
- * Returns the count of clickable "card" elements on the page — the fallback
- * used when no <a href> case studies were found. Cards are divs/sections with
- * `cursor: pointer` containing an image (or background-image) and meaningful
- * text. Anchors and buttons are excluded (already handled by link discovery).
- *
- * The heading requirement was intentionally dropped after portfolios built
- * with Figma Sites came up: that runtime renders EVERYTHING as <div>/<p>
- * with no semantic tags at all, so requiring <h1>-<h6> hid every case study.
- * The text-length filter (>= 15 chars) still rejects short nav items like
- * "About" or "Projects" that might slip past the image check via icons.
+ * Find the text label of a markdown link given its URL. Returns empty string
+ * if the link isn't in the markdown or has no visible text.
  */
-async function countClickableCards(page: Page): Promise<number> {
-  return await page.evaluate(() => {
-    const all = Array.from(document.querySelectorAll("*"));
-    const candidates = all.filter((el) => {
-      if (el.tagName === "BUTTON" || el.tagName === "A") return false;
-      const cs = getComputedStyle(el);
-      if (cs.cursor !== "pointer") return false;
-      const text = (el.textContent || "").trim();
-      if (text.length < 15 || text.length > 500) return false;
-      // Image can be an <img>/<picture> OR any descendant using a CSS
-      // background-image (common in Figma Sites and Webflow).
-      const hasInlineImage = !!el.querySelector("img, picture");
-      const hasBgImage = Array.from(el.querySelectorAll("*")).some((d) => {
-        const bg = getComputedStyle(d as Element).backgroundImage;
-        return bg && bg !== "none";
-      });
-      return hasInlineImage || hasBgImage;
-    });
-    // Keep only deepest matches (avoid counting parent + child both).
-    const deepest = candidates.filter(
-      (el) => !candidates.some((other) => other !== el && el.contains(other)),
-    );
-    return deepest.length;
-  });
-}
-
-/** Clicks the i-th clickable card matching the same heuristic as the counter. */
-async function clickNthCard(page: Page, index: number): Promise<void> {
-  await page.evaluate((idx) => {
-    const all = Array.from(document.querySelectorAll("*"));
-    const candidates = all.filter((el) => {
-      if (el.tagName === "BUTTON" || el.tagName === "A") return false;
-      const cs = getComputedStyle(el);
-      if (cs.cursor !== "pointer") return false;
-      const text = (el.textContent || "").trim();
-      if (text.length < 15 || text.length > 500) return false;
-      const hasInlineImage = !!el.querySelector("img, picture");
-      const hasBgImage = Array.from(el.querySelectorAll("*")).some((d) => {
-        const bg = getComputedStyle(d as Element).backgroundImage;
-        return bg && bg !== "none";
-      });
-      return hasInlineImage || hasBgImage;
-    });
-    const deepest = candidates.filter(
-      (el) => !candidates.some((other) => other !== el && el.contains(other)),
-    );
-    const el = deepest[idx] as HTMLElement | undefined;
-    if (!el) throw new Error(`No clickable card at index ${idx}`);
-    el.scrollIntoView({ block: "center" });
-    el.click();
-  }, index);
+function extractLinkText(markdown: string, url: string): string {
+  // Escape regex special chars in the URL.
+  const escaped = url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp(`\\[([^\\]]+)\\]\\(${escaped}\\)`);
+  const match = markdown.match(re);
+  return match?.[1]?.replace(/\s+/g, " ").trim().slice(0, 140) ?? "";
 }

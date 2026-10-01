@@ -26,6 +26,9 @@ model Review {
   failureReason   String?
   /// Client IP at submission time. Used for per-IP rate limiting + admin visibility.
   ipAddress       String?
+  /// Optional password for gated case studies. Set at submission, cleared the
+  /// moment the crawl completes so secrets don't linger in the DB.
+  casePassword    String?
   feedback        Feedback[]
 
   @@index([createdAt])

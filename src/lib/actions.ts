@@ -42,6 +42,13 @@ const SubmitSchema = z.object({
     .enum(["auto", "junior", "mid", "senior"])
     .default("auto"),
   heatLevel: z.enum(["chill", "honest", "spicy"]).default("honest"),
+  // Optional case-study password. Short cap to avoid abuse / log bloat.
+  casePassword: z
+    .string()
+    .trim()
+    .max(100, "Password is too long.")
+    .optional()
+    .transform((v) => (v && v.length > 0 ? v : undefined)),
 });
 
 /**
@@ -60,6 +67,7 @@ export async function submitReview(formData: FormData) {
     portfolioUrl: String(formData.get("portfolioUrl") ?? ""),
     targetSeniority: String(formData.get("targetSeniority") ?? "auto"),
     heatLevel: String(formData.get("heatLevel") ?? "honest"),
+    casePassword: String(formData.get("casePassword") ?? ""),
   };
 
   const parsed = SubmitSchema.safeParse(raw);
@@ -68,7 +76,7 @@ export async function submitReview(formData: FormData) {
     redirect(`/?error=${encodeURIComponent(first)}`);
   }
 
-  const { portfolioUrl, targetSeniority, heatLevel } = parsed.data;
+  const { portfolioUrl, targetSeniority, heatLevel, casePassword } = parsed.data;
   const inferredSeniority: Seniority =
     targetSeniority === "auto" ? "unspecified" : (targetSeniority as Seniority);
 
@@ -106,6 +114,7 @@ export async function submitReview(formData: FormData) {
       costCents: 0,
       report: null,
       ipAddress: ip,
+      casePassword: casePassword ?? null,
     },
   });
 

@@ -50,10 +50,27 @@ export async function runAgent(reviewId: string): Promise<void> {
 
     phase = "crawl";
     console.log(`[agent] ${reviewId} phase=crawl starting`);
-    const crawl = await crawlPortfolio(row.portfolioUrl, screenshotPaths(reviewId));
+    const crawl = await crawlPortfolio(row.portfolioUrl, {
+      ...screenshotPaths(reviewId),
+      casePassword: row.casePassword ?? null,
+    });
     console.log(
       `[agent] ${reviewId} phase=crawl done; caseStudies=${crawl.caseStudies.length}; errors=${crawl.errors.length}`,
     );
+
+    // Clear the password from the DB the moment it has served its purpose.
+    // Keeps secrets out of long-lived storage even if the LLM phase then
+    // throws or the admin panel leaks row data.
+    if (row.casePassword) {
+      await prisma.review
+        .update({ where: { id: reviewId }, data: { casePassword: null } })
+        .catch((err) => {
+          console.warn(
+            `[agent] ${reviewId} failed to clear casePassword:`,
+            err,
+          );
+        });
+    }
 
     const nothingExtracted =
       crawl.homepage.text.length < 40 && crawl.caseStudies.length === 0;
@@ -125,6 +142,9 @@ export async function runAgent(reviewId: string): Promise<void> {
         data: {
           status: "failed",
           failureReason: `${phase}: ${message}`.slice(0, 500),
+          // Also wipe the password on failure — no reason to keep a secret
+          // sitting next to a dead review row.
+          casePassword: null,
         },
       })
       .catch(() => {});

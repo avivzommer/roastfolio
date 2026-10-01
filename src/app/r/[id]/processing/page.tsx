@@ -17,7 +17,7 @@ const STAGES = [
   "Plating up the roast",
 ];
 
-const STAGE_ADVANCE_MS = 3_000;
+const STAGE_ADVANCE_MS = 6_000;
 const POLL_INTERVAL_MS = 2_000;
 
 const TOKENS: React.CSSProperties = {
@@ -144,12 +144,17 @@ export default function ProcessingPage({
         .rf-enter-3 { animation-delay: 260ms; }
         .rf-enter-4 { animation-delay: 380ms; }
 
+        /* Full-cycle animation: slow fade-in, hold, slow fade-out.
+           Duration matches STAGE_ADVANCE_MS so each stage completes its
+           cycle exactly as the next one mounts. */
         @keyframes rf-stage-in {
-          from { opacity: 0; transform: translateY(14px); }
-          to   { opacity: 1; transform: translateY(0); }
+          0%   { opacity: 0; transform: translateY(18px); }
+          20%  { opacity: 1; transform: translateY(0); }
+          80%  { opacity: 1; transform: translateY(0); }
+          100% { opacity: 0; transform: translateY(-10px); }
         }
         .rf-stage {
-          animation: rf-stage-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+          animation: rf-stage-in ${STAGE_ADVANCE_MS}ms cubic-bezier(0.4, 0, 0.2, 1) both;
         }
         @media (prefers-reduced-motion: reduce) {
           .rf-enter, .rf-stage {

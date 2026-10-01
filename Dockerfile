@@ -1,13 +1,12 @@
 # =============================================================================
 # Production Dockerfile for Railway (and any other Docker-aware platform).
 #
-# Base image: Microsoft's Playwright image. It bundles Node 22, Chromium, and
-# every system library Playwright needs (fonts, glibc bits, libgbm, libnss, …).
-# Using it instead of node-slim saves us ~10 lines of apt-get installs and
-# guarantees the headless browser actually runs.
+# Slim Node base — the crawl runs on Firecrawl's hosted browser so there's no
+# Chromium or Playwright inside this image. Image size dropped from ~1.6GB
+# (Microsoft Playwright image) to ~250MB.
 # =============================================================================
 
-FROM mcr.microsoft.com/playwright:v1.55.0-noble AS base
+FROM node:22-slim AS base
 
 WORKDIR /app
 
@@ -20,10 +19,6 @@ RUN npm ci
 
 # ----- Copy source -----
 COPY . .
-
-# Make sure the locally-installed Playwright Chromium matches our npm version
-# (the base image's Chromium tracks Microsoft's tag, not our package.json).
-RUN npx playwright install chromium
 
 # Prisma client generation + Next.js build
 RUN npx prisma generate
@@ -40,6 +35,6 @@ ENV PORT=8080
 
 EXPOSE 8080
 
-# Start Next.js directly. Schema migrations are applied manually to Turso via
-# `turso db shell` because Prisma 7.x's CLI does not yet support libsql:// URLs.
-CMD ["npm", "run", "start"]
+# Startup script runs migrations against Turso, cleans up any orphaned
+# "processing" rows from a previous crash, then hands off to Next.js.
+CMD ["sh", "scripts/start.sh"]
