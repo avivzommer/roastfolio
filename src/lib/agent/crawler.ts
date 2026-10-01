@@ -16,12 +16,18 @@
 
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import sharp from "sharp";
 
 const FIRECRAWL_SCRAPE_URL = "https://api.firecrawl.dev/v2/scrape";
 const MAX_CASE_STUDIES = 5;
 const MAX_TEXT_CHARS = 8_000;
 // Firecrawl handles its own timeouts internally; this is our outer bound.
 const SCRAPE_TIMEOUT_MS = 90_000;
+// Claude rejects any image with either dimension > 8000px. Full-page
+// screenshots of long case studies routinely cross this. We crop the top
+// portion before sending to the LLM, which keeps hero + above-the-fold
+// context (where UI craft is judged) and discards infinite-scroll tails.
+const MAX_SCREENSHOT_HEIGHT = 7_500;
 
 export interface CrawlOptions {
   /** If set, screenshots are written here as PNG files. */
@@ -154,19 +160,42 @@ async function persistScreenshot(
   if (!res.ok) {
     throw new Error(`screenshot download ${res.status}`);
   }
-  const buffer = Buffer.from(await res.arrayBuffer());
+  const fullBuffer = Buffer.from(await res.arrayBuffer());
+
+  // The full-page PNG goes to disk as-is — the review UI shows the whole
+  // scrollable screenshot. For the LLM we send a cropped-to-top variant
+  // because Claude's image inputs cap at 8000px per side.
+  const meta = await sharp(fullBuffer).metadata();
+  const needsCrop =
+    typeof meta.height === "number" && meta.height > MAX_SCREENSHOT_HEIGHT;
+  const llmBuffer = needsCrop
+    ? await sharp(fullBuffer)
+        .extract({
+          left: 0,
+          top: 0,
+          width: meta.width ?? 1920,
+          height: MAX_SCREENSHOT_HEIGHT,
+        })
+        .png()
+        .toBuffer()
+    : fullBuffer;
+  if (needsCrop) {
+    console.log(
+      `[crawl:${label}] cropped screenshot ${meta.width}x${meta.height} → ${meta.width}x${MAX_SCREENSHOT_HEIGHT} for LLM`,
+    );
+  }
 
   let publicPath: string | undefined;
   if (options.screenshotDir) {
     await mkdir(options.screenshotDir, { recursive: true });
     const filename = `${label}.png`;
-    await writeFile(join(options.screenshotDir, filename), buffer);
+    await writeFile(join(options.screenshotDir, filename), fullBuffer);
     if (options.publicPathPrefix) {
       publicPath = `${options.publicPathPrefix}/${filename}`;
     }
   }
 
-  return { base64: buffer.toString("base64"), publicPath };
+  return { base64: llmBuffer.toString("base64"), publicPath };
 }
 
 async function scrapePage(
@@ -218,18 +247,39 @@ export async function crawlPortfolio(
   const caseStudyUrls = pickCaseStudyUrls(home.links, homepageUrl, homepage.text);
   console.log(`[crawl] found ${caseStudyUrls.length} candidate case-study url(s)`);
 
+  // Which case-study URLs look password-gated based on the homepage markdown?
+  // Firecrawl errors the whole scrape if the password click action targets
+  // a page with no password input, so we only send the actions on URLs we
+  // actually think are gated — avoids wrongly killing non-gated case studies.
+  const gatedUrls = options.casePassword
+    ? detectGatedUrls(homepage.text)
+    : new Set<string>();
+  if (options.casePassword) {
+    console.log(
+      `[crawl] gated urls (will unlock with password): ${gatedUrls.size}`,
+    );
+  }
+
   // ---------- Case studies ----------
   const caseStudies: CrawledPage[] = [];
-  const actions = options.casePassword
+  const unlockActions = options.casePassword
     ? passwordActions(options.casePassword)
     : undefined;
 
   for (let i = 0; i < Math.min(caseStudyUrls.length, MAX_CASE_STUDIES); i++) {
     const csUrl = caseStudyUrls[i];
     const label = `cs-${i + 1}`;
-    console.log(`[crawl] case-study ${i + 1}/${Math.min(caseStudyUrls.length, MAX_CASE_STUDIES)}: ${csUrl}`);
+    const useUnlock = unlockActions && gatedUrls.has(normalizeUrl(csUrl));
+    console.log(
+      `[crawl] case-study ${i + 1}/${Math.min(caseStudyUrls.length, MAX_CASE_STUDIES)}: ${csUrl}${useUnlock ? " (unlocking)" : ""}`,
+    );
     try {
-      const cs = await scrapePage(csUrl, label, options, actions);
+      const cs = await scrapePage(
+        csUrl,
+        label,
+        options,
+        useUnlock ? unlockActions : undefined,
+      );
       caseStudies.push(cs.page);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
@@ -380,4 +430,41 @@ function extractLinkText(markdown: string, url: string): string {
   const re = new RegExp(`\\[([^\\]]+)\\]\\(${escaped}\\)`);
   const match = markdown.match(re);
   return match?.[1]?.replace(/\s+/g, " ").trim().slice(0, 140) ?? "";
+}
+
+const GATE_PHRASES = /password\s*required|protected\s*content|enter\s*password|this\s*case\s*study\s*is\s*password/i;
+
+/**
+ * Return the set of URLs on the homepage that look password-gated.
+ * We parse `[text block](url)` entries and check whether the text block
+ * contains telltale phrases ("Password required", etc.). Returned URLs are
+ * normalized (trailing slash removed, hash stripped) so the per-case-study
+ * check matches reliably.
+ */
+export function detectGatedUrls(homepageMarkdown: string): Set<string> {
+  const gated = new Set<string>();
+  // Match [label text](url) across the whole markdown. The label can span
+  // newlines in Firecrawl's output (bracketed card-style blocks), so use
+  // non-greedy with [\s\S].
+  const linkRe = /\[([\s\S]*?)\]\((https?:\/\/[^\s)]+)\)/g;
+  let m: RegExpExecArray | null;
+  while ((m = linkRe.exec(homepageMarkdown)) !== null) {
+    const label = m[1];
+    const url = m[2];
+    if (GATE_PHRASES.test(label)) {
+      gated.add(normalizeUrl(url));
+    }
+  }
+  return gated;
+}
+
+/** Canonicalize a URL for Set comparisons: no hash, no trailing slash. */
+function normalizeUrl(raw: string): string {
+  try {
+    const u = new URL(raw);
+    const path = u.pathname.replace(/\/$/, "") || "/";
+    return `${u.origin}${path}`;
+  } catch {
+    return raw;
+  }
 }
