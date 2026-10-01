@@ -292,8 +292,54 @@ export async function crawlPortfolio(
   const homepageUrl = homepage.url;
 
   // ---------- Case study discovery ----------
-  const caseStudyUrls = pickCaseStudyUrls(home.links, homepageUrl, homepage.text);
-  console.log(`[crawl] found ${caseStudyUrls.length} candidate case-study url(s)`);
+  let caseStudyUrls = pickCaseStudyUrls(home.links, homepageUrl, homepage.text);
+  console.log(`[crawl] found ${caseStudyUrls.length} candidate case-study url(s) from homepage`);
+
+  // Index-page fallback. Some portfolios list case studies on a second-level
+  // index like /works, /projects, /portfolio. If the homepage only produced
+  // 0-1 candidates AND the single candidate (or any homepage link) matches an
+  // index-page name, scrape that index too and merge its outbound links.
+  if (caseStudyUrls.length <= 1) {
+    const indexUrl = findIndexPageUrl(home.links, homepageUrl);
+    if (indexUrl) {
+      console.log(
+        `[crawl] few candidates from homepage; crawling index page ${indexUrl} for case-study links`,
+      );
+      try {
+        const indexScrape = await scrapePage(
+          indexUrl,
+          "index-scan",
+          options,
+          // When the whole site is gated, the index page also needs the
+          // password unlock before we can see its links.
+          options.casePassword
+            ? passwordActions(options.casePassword)
+            : undefined,
+        );
+        const subUrls = pickCaseStudyUrls(
+          indexScrape.links,
+          homepageUrl,
+          indexScrape.rawMarkdown,
+        );
+        console.log(`[crawl] index page yielded ${subUrls.length} extra candidate(s)`);
+        // Dedupe while preserving order and keeping the original homepage
+        // candidate first (in case it IS a real case study).
+        const seen = new Set<string>();
+        const merged: string[] = [];
+        for (const u of [...caseStudyUrls, ...subUrls]) {
+          const key = normalizeUrl(u);
+          if (seen.has(key)) continue;
+          seen.add(key);
+          merged.push(u);
+        }
+        caseStudyUrls = merged;
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        console.warn(`[crawl] index page scan failed: ${msg.slice(0, 140)}`);
+      }
+    }
+  }
+  console.log(`[crawl] final candidate list: ${caseStudyUrls.length} url(s)`);
 
   // Password-targeting strategy:
   //   - If site was gated at the root → every case study is behind the same
@@ -509,6 +555,38 @@ export function detectGatedUrls(homepageMarkdown: string): Set<string> {
     }
   }
   return gated;
+}
+
+const INDEX_PATHS =
+  /^\/(?:works?|projects?|portfolio|showcase|designs?|case[\s_\-]?stud(?:y|ies)?)\/?$/i;
+
+/**
+ * Return the most likely "work index" page on the same host — the thing a
+ * designer would call /works, /projects, /portfolio, etc. Returns undefined
+ * when no index-looking page appears in the link set.
+ */
+export function findIndexPageUrl(
+  rawLinks: string[],
+  homepageUrl: string,
+): string | undefined {
+  const baseHost = new URL(homepageUrl).host;
+  const homepagePath = new URL(homepageUrl).pathname.replace(/\/$/, "") || "/";
+  for (const raw of rawLinks) {
+    let u: URL;
+    try {
+      u = new URL(raw);
+    } catch {
+      continue;
+    }
+    if (u.host !== baseHost) continue;
+    if (u.hash) continue;
+    const normalizedPath = u.pathname.replace(/\/$/, "") || "/";
+    if (normalizedPath === homepagePath) continue;
+    if (INDEX_PATHS.test(u.pathname)) {
+      return raw;
+    }
+  }
+  return undefined;
 }
 
 /** Canonicalize a URL for Set comparisons: no hash, no trailing slash. */
