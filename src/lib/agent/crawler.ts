@@ -79,6 +79,26 @@ interface FirecrawlScrapeResponse {
 }
 
 /**
+ * Pattern-match a Firecrawl response to tell whether the page we got back
+ * is a password gate (site-level or page-level) rather than real content.
+ * Returns true when the password hasn't been applied yet and the page
+ * clearly shows a "Enter password" / 401 state.
+ */
+function looksLikePasswordGate(
+  markdown: string | undefined,
+  statusCode: number | undefined,
+): boolean {
+  if (statusCode === 401) return true;
+  if (!markdown) return false;
+  const short = markdown.length < 300;
+  const hasPhrase =
+    /enter\s*password|password\s*required|password\s*protected|site\s*is\s*password|this\s*case\s*study\s*is\s*password/i.test(
+      markdown,
+    );
+  return short && hasPhrase;
+}
+
+/**
  * Build the password-unlock action sequence. Clicks the password input,
  * types the password, presses Enter. Pressing Enter is more portable than
  * guessing a submit-button selector across Framer / Webflow / custom gates.
@@ -203,15 +223,23 @@ async function scrapePage(
   label: string,
   options: CrawlOptions,
   withActions?: FirecrawlAction[],
-): Promise<{ page: CrawledPage; links: string[] }> {
-  console.log(`[crawl:${label}] firecrawl scrape ${url}`);
+): Promise<{
+  page: CrawledPage;
+  links: string[];
+  statusCode?: number;
+  rawMarkdown: string;
+}> {
+  console.log(
+    `[crawl:${label}] firecrawl scrape ${url}${withActions ? " (with actions)" : ""}`,
+  );
   const result = await callFirecrawl(url, { withActions });
   const data = result.data ?? {};
+  const rawMarkdown = data.markdown ?? "";
   console.log(
-    `[crawl:${label}] firecrawl done; markdownLen=${(data.markdown ?? "").length}; links=${(data.links ?? []).length}`,
+    `[crawl:${label}] firecrawl done; status=${data.metadata?.statusCode}; markdownLen=${rawMarkdown.length}; links=${(data.links ?? []).length}`,
   );
 
-  const text = (data.markdown ?? "").slice(0, MAX_TEXT_CHARS);
+  const text = rawMarkdown.slice(0, MAX_TEXT_CHARS);
   const title = data.metadata?.title ?? url;
   const finalUrl = data.metadata?.sourceURL ?? data.metadata?.url ?? url;
 
@@ -227,6 +255,8 @@ async function scrapePage(
       screenshotPath: shot.publicPath,
     },
     links: data.links ?? [],
+    statusCode: data.metadata?.statusCode,
+    rawMarkdown,
   };
 }
 
@@ -239,7 +269,25 @@ export async function crawlPortfolio(
   console.log(`[crawl] starting; url=${url}; hasPassword=${!!options.casePassword}`);
 
   // ---------- Homepage (1 credit; also gives us the link list) ----------
-  const home = await scrapePage(url, "homepage", options);
+  // First try without actions. If the response looks like a site-level
+  // password gate and we have a password, retry with the unlock sequence.
+  let home = await scrapePage(url, "homepage", options);
+  let siteWasGated = false;
+  if (
+    options.casePassword &&
+    looksLikePasswordGate(home.rawMarkdown, home.statusCode)
+  ) {
+    console.log(
+      `[crawl] homepage appears site-level gated — retrying with password`,
+    );
+    siteWasGated = true;
+    home = await scrapePage(
+      url,
+      "homepage",
+      options,
+      passwordActions(options.casePassword),
+    );
+  }
   const homepage = home.page;
   const homepageUrl = homepage.url;
 
@@ -247,16 +295,20 @@ export async function crawlPortfolio(
   const caseStudyUrls = pickCaseStudyUrls(home.links, homepageUrl, homepage.text);
   console.log(`[crawl] found ${caseStudyUrls.length} candidate case-study url(s)`);
 
-  // Which case-study URLs look password-gated based on the homepage markdown?
-  // Firecrawl errors the whole scrape if the password click action targets
-  // a page with no password input, so we only send the actions on URLs we
-  // actually think are gated — avoids wrongly killing non-gated case studies.
-  const gatedUrls = options.casePassword
+  // Password-targeting strategy:
+  //   - If site was gated at the root → every case study is behind the same
+  //     gate (Firecrawl starts a fresh browser per scrape, so no cookie
+  //     carries over). Apply unlock on ALL case studies.
+  //   - Otherwise → only apply unlock on URLs the homepage markdown labeled
+  //     "Password required" (the Framer per-case-study pattern). This avoids
+  //     the "Element not found" error when the click action targets a public
+  //     page with no password input.
+  const gatedUrls = options.casePassword && !siteWasGated
     ? detectGatedUrls(homepage.text)
     : new Set<string>();
   if (options.casePassword) {
     console.log(
-      `[crawl] gated urls (will unlock with password): ${gatedUrls.size}`,
+      `[crawl] gated urls (will unlock with password): ${siteWasGated ? "all (site-gated)" : gatedUrls.size}`,
     );
   }
 
@@ -269,7 +321,8 @@ export async function crawlPortfolio(
   for (let i = 0; i < Math.min(caseStudyUrls.length, MAX_CASE_STUDIES); i++) {
     const csUrl = caseStudyUrls[i];
     const label = `cs-${i + 1}`;
-    const useUnlock = unlockActions && gatedUrls.has(normalizeUrl(csUrl));
+    const useUnlock =
+      unlockActions && (siteWasGated || gatedUrls.has(normalizeUrl(csUrl)));
     console.log(
       `[crawl] case-study ${i + 1}/${Math.min(caseStudyUrls.length, MAX_CASE_STUDIES)}: ${csUrl}${useUnlock ? " (unlocking)" : ""}`,
     );
