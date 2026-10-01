@@ -24,6 +24,9 @@ model Review {
   /// Serialized ReviewReport JSON. Null while pending/processing or after failure.
   report          String?
   failureReason   String?
+  /// Classifies a failure as "system" (we broke) vs "user" (portfolio has
+  /// nothing to read). Drives which copy the processing page shows.
+  failureKind     String?
   /// Client IP at submission time. Used for per-IP rate limiting + admin visibility.
   ipAddress       String?
   /// Optional password for gated case studies. Set at submission, cleared the
@@ -45,6 +48,31 @@ model Feedback {
   review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
 
   @@index([reviewId])
+}
+
+/// Operational errors from the agent pipeline — crawl / LLM / save failures
+/// we want to review in batch rather than lose to Railway's log rotation.
+/// A row is written whenever runAgent catches an unexpected exception.
+model ReviewError {
+  id           String   @id
+  createdAt    DateTime @default(now())
+  /// Which agent phase threw: "crawl", "llm", "save", "unknown".
+  phase        String
+  /// "system" when we broke, "user" when the portfolio has nothing we can
+  /// read (admin can filter so weekly reviews focus on system issues).
+  kind         String
+  /// Short error message, truncated to 500 chars.
+  message      String
+  /// Optional review ID the error belonged to, when known.
+  reviewId     String?
+  /// Optional portfolio URL for triage context.
+  portfolioUrl String?
+  /// Admin flips this to true once the underlying bug has been addressed.
+  resolved     Boolean  @default(false)
+
+  @@index([createdAt])
+  @@index([resolved, createdAt])
+  @@index([kind])
 }
 
 /// Waitlist entries collected when the monthly API budget is exhausted.

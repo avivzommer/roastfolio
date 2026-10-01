@@ -34,7 +34,7 @@ const TOKENS: React.CSSProperties = {
 type Phase =
   | { kind: "running" }
   | { kind: "completed" }
-  | { kind: "failed"; reason: string | null };
+  | { kind: "failed"; reason: string | null; failureKind: string | null };
 
 export default function ProcessingPage({
   params,
@@ -67,7 +67,11 @@ export default function ProcessingPage({
         setPhase({ kind: "completed" });
         router.replace(`/r/${id}`);
       } else if (status.status === "failed") {
-        setPhase({ kind: "failed", reason: status.failureReason });
+        setPhase({
+          kind: "failed",
+          reason: status.failureReason,
+          failureKind: status.failureKind,
+        });
       }
     };
     void poll();
@@ -95,14 +99,18 @@ export default function ProcessingPage({
             className="mt-5 text-[28px] font-bold tracking-tight"
             style={{ color: "var(--on-surface)" }}
           >
-            Review couldn&rsquo;t finish
+            {phase.failureKind === "system"
+              ? "Something went wrong on our end"
+              : "Review couldn’t finish"}
           </h1>
           <p
             className="mt-3.5 text-sm leading-relaxed"
             style={{ color: "var(--on-surface-variant)" }}
           >
-            {phase.reason ??
-              "Something went wrong while reviewing this portfolio."}
+            {phase.failureKind === "system"
+              ? "This isn’t about your portfolio — our reviewer hit a snag. Please try again in a few minutes. If it keeps happening, let us know."
+              : (phase.reason ??
+                "Something went wrong while reviewing this portfolio.")}
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-2">

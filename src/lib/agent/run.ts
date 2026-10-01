@@ -18,6 +18,7 @@ import type { Seniority } from "../types";
 import { crawlPortfolio } from "./crawler";
 import { generateReview } from "./llm";
 import type { HeatLevel } from "./prompt";
+import { classifyError, logReviewError } from "../review-errors";
 
 function screenshotPaths(reviewId: string): {
   screenshotDir: string;
@@ -75,13 +76,24 @@ export async function runAgent(reviewId: string): Promise<void> {
     const nothingExtracted =
       crawl.homepage.text.length < 40 && crawl.caseStudies.length === 0;
     if (nothingExtracted) {
+      const userMessage =
+        "Could not extract readable content from this portfolio.";
       await prisma.review.update({
         where: { id: reviewId },
         data: {
           status: "failed",
-          failureReason:
-            "Could not extract readable content from this portfolio.",
+          failureReason: userMessage,
+          failureKind: "user",
         },
+      });
+      // Still worth logging — a run of these in a week can hint at a crawler
+      // regression rather than real portfolios being bad.
+      void logReviewError({
+        reviewId,
+        phase: "crawl",
+        kind: "user",
+        message: userMessage,
+        portfolioUrl: row.portfolioUrl,
       });
       console.warn(
         `[agent] ${reviewId} empty crawl after ${Date.now() - start}ms`,
@@ -129,19 +141,41 @@ export async function runAgent(reviewId: string): Promise<void> {
       }; errors=${crawl.errors.length}`,
     );
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
+    const { kind, message } = classifyError(err, phase);
     console.error(
       `[agent] ${reviewId} FAILED in phase=${phase} after ${
         Date.now() - start
-      }ms:`,
+      }ms (${kind}):`,
       message,
     );
+
+    // Load the portfolio URL for the error log; may fail if the row itself
+    // is unreachable, which we tolerate.
+    const row = await prisma.review
+      .findUnique({
+        where: { id: reviewId },
+        select: { portfolioUrl: true },
+      })
+      .catch(() => null);
+
+    void logReviewError({
+      reviewId,
+      phase,
+      kind,
+      message: `${phase}: ${message}`,
+      portfolioUrl: row?.portfolioUrl,
+    });
+
+    // Store a technical reason for admin visibility, plus the kind so the
+    // user-facing processing page can swap in friendlier copy for "system"
+    // failures that aren't the designer's fault.
     await prisma.review
       .update({
         where: { id: reviewId },
         data: {
           status: "failed",
           failureReason: `${phase}: ${message}`.slice(0, 500),
+          failureKind: kind,
           // Also wipe the password on failure — no reason to keep a secret
           // sitting next to a dead review row.
           casePassword: null,

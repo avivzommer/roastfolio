@@ -3,7 +3,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { isAdmin } from "@/lib/auth";
 import { logoutAdmin } from "@/lib/actions";
-import { LogOut, ArrowLeft, ListChecks, MessageSquare } from "lucide-react";
+import { LogOut, ArrowLeft, ListChecks, MessageSquare, AlertTriangle } from "lucide-react";
 
 function formatDate(d: Date) {
   return d.toISOString().slice(0, 10);
@@ -69,6 +69,10 @@ export default async function AdminWaitlistPage() {
         <Link href="/admin/feedback" className="m3-btn">
           <MessageSquare className="size-4" />
           Feedback
+        </Link>
+        <Link href="/admin/errors" className="m3-btn">
+          <AlertTriangle className="size-4" />
+          Errors
         </Link>
         <Link href="/" className="m3-btn">
           <ArrowLeft className="size-4" />

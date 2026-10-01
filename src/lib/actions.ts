@@ -134,16 +134,23 @@ export async function submitReview(formData: FormData) {
 export async function getReviewStatus(id: string): Promise<{
   status: ReviewStatus;
   failureReason: string | null;
+  failureKind: string | null;
   portfolioUrl: string;
 } | null> {
   const row = await prisma.review.findUnique({
     where: { id },
-    select: { status: true, failureReason: true, portfolioUrl: true },
+    select: {
+      status: true,
+      failureReason: true,
+      failureKind: true,
+      portfolioUrl: true,
+    },
   });
   if (!row) return null;
   return {
     status: row.status as ReviewStatus,
     failureReason: row.failureReason,
+    failureKind: row.failureKind,
     portfolioUrl: row.portfolioUrl,
   };
 }
@@ -264,6 +271,28 @@ export async function submitFeedback(
       console.error("[submitFeedback] notification failed:", err);
     }
   })();
+}
+
+/**
+ * Admin flips a ReviewError row's `resolved` flag. Used from the error
+ * triage page to clear fixed issues out of the weekly review list.
+ */
+export async function toggleReviewErrorResolved(formData: FormData) {
+  const admin = await isAdmin();
+  if (!admin) {
+    redirect("/admin/login");
+  }
+  const id = String(formData.get("id") ?? "");
+  if (!id) return;
+  const row = await prisma.reviewError.findUnique({
+    where: { id },
+    select: { resolved: true },
+  });
+  if (!row) return;
+  await prisma.reviewError.update({
+    where: { id },
+    data: { resolved: !row.resolved },
+  });
 }
 
 /**
