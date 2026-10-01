@@ -97,8 +97,14 @@ async function callFirecrawl(
   }
   const body: Record<string, unknown> = {
     url,
-    formats: ["markdown", "screenshot", "links"],
-    screenshotOptions: { fullPage: true },
+    // Firecrawl v2 moved screenshot options inside the formats array (as an
+    // object entry) and no longer accepts a top-level `screenshotOptions`
+    // key. Keeping the plain-string entries for markdown + links.
+    formats: [
+      "markdown",
+      "links",
+      { type: "screenshot", fullPage: true },
+    ],
     onlyMainContent: false,
     // Live fetch; portfolios change and we never want a stale snapshot.
     maxAge: 0,
