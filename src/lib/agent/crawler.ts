@@ -339,7 +339,9 @@ export async function crawlPortfolio(
       }
     }
   }
-  console.log(`[crawl] final candidate list: ${caseStudyUrls.length} url(s)`);
+  console.log(
+    `[crawl] final candidate list: ${caseStudyUrls.length} url(s): ${caseStudyUrls.slice(0, MAX_CASE_STUDIES).join(", ")}`,
+  );
 
   // Password-targeting strategy:
   //   - If site was gated at the root → every case study is behind the same
@@ -418,7 +420,11 @@ export function scoreCandidate(input: {
   // URL-path signals (high confidence on convention-following sites).
   if (/case[\s\-_/]?stud/i.test(input.path)) score += 6;
   if (/\/project[s]?(\/|$)/i.test(input.path)) score += 5;
-  if (/\/work(\/|$)/i.test(input.path)) score += 4;
+  // Match /work, /works, and nested paths like /works/agora-xyz. Earlier
+  // version missed the plural+subpath case (/\/work(\/|$)/ fails on /works/)
+  // which caused the Lior Shagan review to only find the index page, not
+  // the individual case studies inside it.
+  if (/\/works?(\/|$)/i.test(input.path)) score += 4;
   if (/portfolio/i.test(input.path)) score += 3;
 
   // Root-level slug — catches Framer/Webflow sites where case studies live
