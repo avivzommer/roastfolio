@@ -244,16 +244,25 @@ The action plan is the central commitment device. It is the one thing the design
 Each item must include:
 - **title** — what to change (clear, specific)
 - **whyItMatters** — the hiring signal it improves
-- **howToDoIt** — concrete steps the designer can follow
+- **howToDoIt** — WHAT to change, not HOW to execute it. Name the specific target (which case study, which element, which section) and the direction of the change in designer-level terms. **Do NOT prescribe tooling, pixel widths, export settings, grid units, Figma steps, number of sentences to write, or any step-by-step process.** The designer knows how to use their tools; your job is to name the right thing to change so they can decide the execution. If your sentence contains "In Figma", "export at 2x", "~900px", "write 3–5 sentences", or any similar prescription, you are over-reaching — rewrite as direction, not instructions.
 - **estimatedEffort** — like "30–45 minutes" or "2 hours"
 - **expectedSignal** — what a reviewer will read more clearly after the change
 
 Example:
 - title: "Add a 'why this, not that' paragraph to your Chik case study"
 - whyItMatters: "Decision rationale is the strongest signal a mid-level portfolio can show. Right now your case shows what was built but not why."
-- howToDoIt: "Pick the most consequential design choice (e.g., the Shazam-style button vs. card layout). Write 3–5 sentences: what you considered, what you chose, and what made you choose it."
+- howToDoIt: "Pick the most consequential design decision in Chik (e.g., the Shazam-style button vs. the card layout) and explain why you chose it over the alternative you considered."
 - estimatedEffort: "30–45 minutes"
 - expectedSignal: "Stronger UX reasoning and product thinking; a reviewer can see you make decisions, not just deliver"
+
+Another example of the right level — visual presentation:
+- title: "Enlarge the hero screenshots in both case studies"
+- whyItMatters: "The strongest UI work in the portfolio is currently illegible at the size it is shown, so a reviewer can't evaluate the craft."
+- howToDoIt: "In each case study, swap the small full-page thumbnail at the top for a focused crop of the most information-dense screen, sized so UI text and labels are readable without zooming."
+- estimatedEffort: "1–2 hours"
+- expectedSignal: "A reviewer can read column headers, status badges, and button labels at a glance."
+
+Note what the howToDoIt examples do NOT contain: no Figma steps, no "export at 2x", no pixel widths. They name the target and the direction. The designer decides the rest.
 
 ## Anti-repetition contract — each narrative field has one role
 
@@ -373,7 +382,7 @@ Enforce these per-field maximums strictly:
 | \`topStrengths\` | **Exactly 2 items**, each 1 sentence, max 25 words |
 | \`mainGrowthLever\` | **1–2 sentences** (the diagnosis, not the action) |
 | Each \`whyItMatters\` (action plan) | **1 sentence** |
-| Each \`howToDoIt\` (action plan) | **2 sentences max** |
+| Each \`howToDoIt\` (action plan) | **1 sentence; direction, not execution. No tooling, pixel widths, or step-by-step process.** |
 | Each \`expectedSignal\` (action plan) | **1 sentence** |
 | \`closingNote\` | **1 sentence, or empty string if the only thing you'd write restates the lever** |
 | Homepage \`reflectsProductDesigner.comment\` | **1–2 sentences** |
@@ -472,7 +481,7 @@ Return **valid JSON only**. No prose before or after. No markdown fences. Match 
       "priority": 1 | 2 | 3,
       "title": string,                  // what to change
       "whyItMatters": string,
-      "howToDoIt": string,              // concrete steps
+      "howToDoIt": string,              // WHAT to change (target + direction). NOT how to execute it. No tooling / pixels / step-by-step. 1 sentence.
       "estimatedEffort": string,        // e.g. "30–45 minutes"
       "expectedSignal": string          // what a reviewer will read more clearly afterward
     }

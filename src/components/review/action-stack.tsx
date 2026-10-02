@@ -160,7 +160,7 @@ function ActionRow({
             />
             <DetailRow
               icon={<List className="size-3" />}
-              label="How to do it"
+              label="What to change"
               value={item.howToDoIt}
             />
             <div
