@@ -305,7 +305,7 @@ export async function loginAdmin(formData: FormData) {
     redirect(`/admin/login?error=${encodeURIComponent("Incorrect password.")}`);
   }
   await setAdminCookie();
-  redirect("/admin/history");
+  redirect("/admin");
 }
 
 /** Clears the admin session and bounces back to the landing page. */

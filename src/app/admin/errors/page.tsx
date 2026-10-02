@@ -77,7 +77,7 @@ export default async function AdminErrorsPage({
           WebkitBackdropFilter: "saturate(150%) blur(16px)",
         }}
       >
-        <Link href="/" className="flex items-center gap-3.5">
+        <Link href="/admin" className="flex items-center gap-3.5">
           <div
             className="flex h-11 w-11 items-center justify-center rounded-full text-base font-bold tracking-wide"
             style={{
