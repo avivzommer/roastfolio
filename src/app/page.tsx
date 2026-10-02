@@ -3,6 +3,7 @@ import { submitReview } from "@/lib/actions";
 import { isAdmin } from "@/lib/auth";
 import { getMonthlyBudget } from "@/lib/limits";
 import { RoastCTA } from "./roast-cta";
+import { CasePasswordField } from "./case-password-field";
 import { WaitlistForm } from "./waitlist-form";
 
 const TOKENS: React.CSSProperties = {
@@ -217,28 +218,7 @@ export default async function LandingPage({
                   />
                   <RoastCTA />
                 </div>
-                <input
-                  name="casePassword"
-                  type="password"
-                  placeholder="Case study password (optional)"
-                  autoComplete="off"
-                  spellCheck={false}
-                  autoCapitalize="off"
-                  maxLength={100}
-                  className="min-w-0 flex-1 outline-none focus:border-[var(--ink)]"
-                  style={{
-                    fontFamily: "var(--f-body)",
-                    fontSize: 15,
-                    color: "var(--ink)",
-                    background: "var(--white)",
-                    border: "1.5px solid var(--rule)",
-                    borderRadius: 12,
-                    paddingInline: 20,
-                    paddingBlock: 14,
-                    textAlign: "left",
-                    opacity: 0.9,
-                  }}
-                />
+                <CasePasswordField />
               </form>
             ))}
 

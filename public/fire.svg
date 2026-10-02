@@ -192,7 +192,7 @@
   }
 }
 #Flame_motion_rig {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation: kf_Flame_motion_rig_transform_0 2s linear 1;
 }
 @keyframes kf_Vector_transform_0 {
@@ -406,7 +406,7 @@
   }
 }
 #Vector {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_transform_0 2s linear 1,
     kf_Vector_opacity_0 2s linear 1;
@@ -622,7 +622,7 @@
   }
 }
 #Vector_2 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_2_transform_0 2s linear 1,
     kf_Vector_2_opacity_0 2s linear 1;
@@ -838,7 +838,7 @@
   }
 }
 #Vector_3 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_3_transform_0 2s linear 1,
     kf_Vector_3_opacity_0 2s linear 1;
@@ -1054,7 +1054,7 @@
   }
 }
 #Vector_4 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_4_transform_0 2s linear 1,
     kf_Vector_4_opacity_0 2s linear 1;
@@ -1089,7 +1089,7 @@
   }
 }
 #Vector_5 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_5_transform_0 2s linear 1,
     kf_Vector_5_opacity_0 2s linear 1;
@@ -1124,7 +1124,7 @@
   }
 }
 #Vector_6 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_6_transform_0 2s linear 1,
     kf_Vector_6_opacity_0 2s linear 1;
@@ -1159,7 +1159,7 @@
   }
 }
 #Vector_7 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_7_transform_0 2s linear 1,
     kf_Vector_7_opacity_0 2s linear 1;
@@ -1194,7 +1194,7 @@
   }
 }
 #Vector_8 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_8_transform_0 2s linear 1,
     kf_Vector_8_opacity_0 2s linear 1;
@@ -1229,7 +1229,7 @@
   }
 }
 #Vector_9 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_9_transform_0 2s linear 1,
     kf_Vector_9_opacity_0 2s linear 1;
@@ -1264,7 +1264,7 @@
   }
 }
 #Vector_10 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_10_transform_0 2s linear 1,
     kf_Vector_10_opacity_0 2s linear 1;
@@ -1299,7 +1299,7 @@
   }
 }
 #Vector_11 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_11_transform_0 2s linear 1,
     kf_Vector_11_opacity_0 2s linear 1;
@@ -1334,7 +1334,7 @@
   }
 }
 #Vector_12 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_12_transform_0 2s linear 1,
     kf_Vector_12_opacity_0 2s linear 1;
@@ -1369,7 +1369,7 @@
   }
 }
 #Vector_13 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_13_transform_0 2s linear 1,
     kf_Vector_13_opacity_0 2s linear 1;
@@ -1404,7 +1404,7 @@
   }
 }
 #Vector_14 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_14_transform_0 2s linear 1,
     kf_Vector_14_opacity_0 2s linear 1;
@@ -1439,7 +1439,7 @@
   }
 }
 #Vector_15 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_15_transform_0 2s linear 1,
     kf_Vector_15_opacity_0 2s linear 1;
@@ -1474,7 +1474,7 @@
   }
 }
 #Vector_16 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_16_transform_0 2s linear 1,
     kf_Vector_16_opacity_0 2s linear 1;
@@ -1509,7 +1509,7 @@
   }
 }
 #Vector_17 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_17_transform_0 2s linear 1,
     kf_Vector_17_opacity_0 2s linear 1;
@@ -1544,7 +1544,7 @@
   }
 }
 #Vector_18 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_18_transform_0 2s linear 1,
     kf_Vector_18_opacity_0 2s linear 1;
@@ -1579,7 +1579,7 @@
   }
 }
 #Vector_19 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_19_transform_0 2s linear 1,
     kf_Vector_19_opacity_0 2s linear 1;
@@ -1614,7 +1614,7 @@
   }
 }
 #Vector_20 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_20_transform_0 2s linear 1,
     kf_Vector_20_opacity_0 2s linear 1;
@@ -1649,7 +1649,7 @@
   }
 }
 #Vector_21 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_21_transform_0 2s linear 1,
     kf_Vector_21_opacity_0 2s linear 1;
@@ -1684,7 +1684,7 @@
   }
 }
 #Vector_22 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_22_transform_0 2s linear 1,
     kf_Vector_22_opacity_0 2s linear 1;
@@ -1719,7 +1719,7 @@
   }
 }
 #Vector_23 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_23_transform_0 2s linear 1,
     kf_Vector_23_opacity_0 2s linear 1;
@@ -1754,7 +1754,7 @@
   }
 }
 #Vector_24 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_24_transform_0 2s linear 1,
     kf_Vector_24_opacity_0 2s linear 1;
@@ -1789,7 +1789,7 @@
   }
 }
 #Vector_25 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_25_transform_0 2s linear 1,
     kf_Vector_25_opacity_0 2s linear 1;
@@ -1824,7 +1824,7 @@
   }
 }
 #Vector_26 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_26_transform_0 2s linear 1,
     kf_Vector_26_opacity_0 2s linear 1;
@@ -1859,7 +1859,7 @@
   }
 }
 #Vector_27 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_27_transform_0 2s linear 1,
     kf_Vector_27_opacity_0 2s linear 1;
@@ -1894,7 +1894,7 @@
   }
 }
 #Vector_28 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_28_transform_0 2s linear 1,
     kf_Vector_28_opacity_0 2s linear 1;
@@ -1929,7 +1929,7 @@
   }
 }
 #Vector_29 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_29_transform_0 2s linear 1,
     kf_Vector_29_opacity_0 2s linear 1;
@@ -1964,7 +1964,7 @@
   }
 }
 #Vector_30 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_30_transform_0 2s linear 1,
     kf_Vector_30_opacity_0 2s linear 1;
@@ -1999,7 +1999,7 @@
   }
 }
 #Vector_31 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_31_transform_0 2s linear 1,
     kf_Vector_31_opacity_0 2s linear 1;
@@ -2034,7 +2034,7 @@
   }
 }
 #Vector_32 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_32_transform_0 2s linear 1,
     kf_Vector_32_opacity_0 2s linear 1;
@@ -2069,7 +2069,7 @@
   }
 }
 #Vector_33 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_33_transform_0 2s linear 1,
     kf_Vector_33_opacity_0 2s linear 1;
@@ -2104,7 +2104,7 @@
   }
 }
 #Vector_34 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_34_transform_0 2s linear 1,
     kf_Vector_34_opacity_0 2s linear 1;
@@ -2139,7 +2139,7 @@
   }
 }
 #Vector_35 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_35_transform_0 2s linear 1,
     kf_Vector_35_opacity_0 2s linear 1;
@@ -2174,7 +2174,7 @@
   }
 }
 #Vector_36 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_36_transform_0 2s linear 1,
     kf_Vector_36_opacity_0 2s linear 1;
@@ -2209,7 +2209,7 @@
   }
 }
 #Vector_37 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_37_transform_0 2s linear 1,
     kf_Vector_37_opacity_0 2s linear 1;
@@ -2244,7 +2244,7 @@
   }
 }
 #Vector_38 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_38_transform_0 2s linear 1,
     kf_Vector_38_opacity_0 2s linear 1;
@@ -2279,7 +2279,7 @@
   }
 }
 #Vector_39 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_39_transform_0 2s linear 1,
     kf_Vector_39_opacity_0 2s linear 1;
@@ -2314,7 +2314,7 @@
   }
 }
 #Vector_40 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_40_transform_0 2s linear 1,
     kf_Vector_40_opacity_0 2s linear 1;
@@ -2349,7 +2349,7 @@
   }
 }
 #Vector_41 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_41_transform_0 2s linear 1,
     kf_Vector_41_opacity_0 2s linear 1;
@@ -2384,7 +2384,7 @@
   }
 }
 #Vector_42 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_42_transform_0 2s linear 1,
     kf_Vector_42_opacity_0 2s linear 1;
@@ -2419,7 +2419,7 @@
   }
 }
 #Vector_43 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_43_transform_0 2s linear 1,
     kf_Vector_43_opacity_0 2s linear 1;
@@ -2454,7 +2454,7 @@
   }
 }
 #Vector_44 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_44_transform_0 2s linear 1,
     kf_Vector_44_opacity_0 2s linear 1;
@@ -2489,7 +2489,7 @@
   }
 }
 #Vector_45 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_45_transform_0 2s linear 1,
     kf_Vector_45_opacity_0 2s linear 1;
@@ -2524,7 +2524,7 @@
   }
 }
 #Vector_46 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_46_transform_0 2s linear 1,
     kf_Vector_46_opacity_0 2s linear 1;
@@ -2559,7 +2559,7 @@
   }
 }
 #Vector_47 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_47_transform_0 2s linear 1,
     kf_Vector_47_opacity_0 2s linear 1;
@@ -2594,7 +2594,7 @@
   }
 }
 #Vector_48 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_48_transform_0 2s linear 1,
     kf_Vector_48_opacity_0 2s linear 1;
@@ -2629,7 +2629,7 @@
   }
 }
 #Vector_49 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_49_transform_0 2s linear 1,
     kf_Vector_49_opacity_0 2s linear 1;
@@ -2664,7 +2664,7 @@
   }
 }
 #Vector_50 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_50_transform_0 2s linear 1,
     kf_Vector_50_opacity_0 2s linear 1;
@@ -2699,7 +2699,7 @@
   }
 }
 #Vector_51 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_51_transform_0 2s linear 1,
     kf_Vector_51_opacity_0 2s linear 1;
@@ -2734,7 +2734,7 @@
   }
 }
 #Vector_52 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_52_transform_0 2s linear 1,
     kf_Vector_52_opacity_0 2s linear 1;
@@ -2769,7 +2769,7 @@
   }
 }
 #Vector_53 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_53_transform_0 2s linear 1,
     kf_Vector_53_opacity_0 2s linear 1;
@@ -2804,7 +2804,7 @@
   }
 }
 #Vector_54 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_54_transform_0 2s linear 1,
     kf_Vector_54_opacity_0 2s linear 1;
@@ -2839,7 +2839,7 @@
   }
 }
 #Vector_55 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_55_transform_0 2s linear 1,
     kf_Vector_55_opacity_0 2s linear 1;
@@ -2874,7 +2874,7 @@
   }
 }
 #Vector_56 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_56_transform_0 2s linear 1,
     kf_Vector_56_opacity_0 2s linear 1;
@@ -2909,7 +2909,7 @@
   }
 }
 #Vector_57 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_57_transform_0 2s linear 1,
     kf_Vector_57_opacity_0 2s linear 1;
@@ -2944,7 +2944,7 @@
   }
 }
 #Vector_58 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_58_transform_0 2s linear 1,
     kf_Vector_58_opacity_0 2s linear 1;
@@ -2979,7 +2979,7 @@
   }
 }
 #Vector_59 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_59_transform_0 2s linear 1,
     kf_Vector_59_opacity_0 2s linear 1;
@@ -3014,7 +3014,7 @@
   }
 }
 #Vector_60 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_60_transform_0 2s linear 1,
     kf_Vector_60_opacity_0 2s linear 1;
@@ -3049,7 +3049,7 @@
   }
 }
 #Vector_61 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_61_transform_0 2s linear 1,
     kf_Vector_61_opacity_0 2s linear 1;
@@ -3084,7 +3084,7 @@
   }
 }
 #Vector_62 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_62_transform_0 2s linear 1,
     kf_Vector_62_opacity_0 2s linear 1;
@@ -3119,7 +3119,7 @@
   }
 }
 #Vector_63 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_63_transform_0 2s linear 1,
     kf_Vector_63_opacity_0 2s linear 1;
@@ -3154,7 +3154,7 @@
   }
 }
 #Vector_64 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_64_transform_0 2s linear 1,
     kf_Vector_64_opacity_0 2s linear 1;
@@ -3189,7 +3189,7 @@
   }
 }
 #Vector_65 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_65_transform_0 2s linear 1,
     kf_Vector_65_opacity_0 2s linear 1;
@@ -3224,7 +3224,7 @@
   }
 }
 #Vector_66 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_66_transform_0 2s linear 1,
     kf_Vector_66_opacity_0 2s linear 1;
@@ -3259,7 +3259,7 @@
   }
 }
 #Vector_67 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_67_transform_0 2s linear 1,
     kf_Vector_67_opacity_0 2s linear 1;
@@ -3294,7 +3294,7 @@
   }
 }
 #Vector_68 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_68_transform_0 2s linear 1,
     kf_Vector_68_opacity_0 2s linear 1;
@@ -3329,7 +3329,7 @@
   }
 }
 #Vector_69 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_69_transform_0 2s linear 1,
     kf_Vector_69_opacity_0 2s linear 1;
@@ -3364,7 +3364,7 @@
   }
 }
 #Vector_70 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_70_transform_0 2s linear 1,
     kf_Vector_70_opacity_0 2s linear 1;
@@ -3399,7 +3399,7 @@
   }
 }
 #Vector_71 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_71_transform_0 2s linear 1,
     kf_Vector_71_opacity_0 2s linear 1;
@@ -3434,7 +3434,7 @@
   }
 }
 #Vector_72 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_72_transform_0 2s linear 1,
     kf_Vector_72_opacity_0 2s linear 1;
@@ -3469,7 +3469,7 @@
   }
 }
 #Vector_73 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_73_transform_0 2s linear 1,
     kf_Vector_73_opacity_0 2s linear 1;
@@ -3504,7 +3504,7 @@
   }
 }
 #Vector_74 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_74_transform_0 2s linear 1,
     kf_Vector_74_opacity_0 2s linear 1;
@@ -3539,7 +3539,7 @@
   }
 }
 #Vector_75 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_75_transform_0 2s linear 1,
     kf_Vector_75_opacity_0 2s linear 1;
@@ -3574,7 +3574,7 @@
   }
 }
 #Vector_76 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_76_transform_0 2s linear 1,
     kf_Vector_76_opacity_0 2s linear 1;
@@ -3609,7 +3609,7 @@
   }
 }
 #Vector_77 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_77_transform_0 2s linear 1,
     kf_Vector_77_opacity_0 2s linear 1;
@@ -3644,7 +3644,7 @@
   }
 }
 #Vector_78 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_78_transform_0 2s linear 1,
     kf_Vector_78_opacity_0 2s linear 1;
@@ -3679,7 +3679,7 @@
   }
 }
 #Vector_79 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_79_transform_0 2s linear 1,
     kf_Vector_79_opacity_0 2s linear 1;
@@ -3714,7 +3714,7 @@
   }
 }
 #Vector_80 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_80_transform_0 2s linear 1,
     kf_Vector_80_opacity_0 2s linear 1;
@@ -3749,7 +3749,7 @@
   }
 }
 #Vector_81 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_81_transform_0 2s linear 1,
     kf_Vector_81_opacity_0 2s linear 1;
@@ -3784,7 +3784,7 @@
   }
 }
 #Vector_82 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_82_transform_0 2s linear 1,
     kf_Vector_82_opacity_0 2s linear 1;
@@ -3819,7 +3819,7 @@
   }
 }
 #Vector_83 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_83_transform_0 2s linear 1,
     kf_Vector_83_opacity_0 2s linear 1;
@@ -3854,7 +3854,7 @@
   }
 }
 #Vector_84 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_84_transform_0 2s linear 1,
     kf_Vector_84_opacity_0 2s linear 1;
@@ -3889,7 +3889,7 @@
   }
 }
 #Vector_85 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_85_transform_0 2s linear 1,
     kf_Vector_85_opacity_0 2s linear 1;
@@ -3924,7 +3924,7 @@
   }
 }
 #Vector_86 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_86_transform_0 2s linear 1,
     kf_Vector_86_opacity_0 2s linear 1;
@@ -3959,7 +3959,7 @@
   }
 }
 #Vector_87 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_87_transform_0 2s linear 1,
     kf_Vector_87_opacity_0 2s linear 1;
@@ -3994,7 +3994,7 @@
   }
 }
 #Vector_88 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_88_transform_0 2s linear 1,
     kf_Vector_88_opacity_0 2s linear 1;
@@ -4029,7 +4029,7 @@
   }
 }
 #Vector_89 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_89_transform_0 2s linear 1,
     kf_Vector_89_opacity_0 2s linear 1;
@@ -4064,7 +4064,7 @@
   }
 }
 #Vector_90 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_90_transform_0 2s linear 1,
     kf_Vector_90_opacity_0 2s linear 1;
@@ -4099,7 +4099,7 @@
   }
 }
 #Vector_91 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_91_transform_0 2s linear 1,
     kf_Vector_91_opacity_0 2s linear 1;
@@ -4134,7 +4134,7 @@
   }
 }
 #Vector_92 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_92_transform_0 2s linear 1,
     kf_Vector_92_opacity_0 2s linear 1;
@@ -4169,7 +4169,7 @@
   }
 }
 #Vector_93 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_93_transform_0 2s linear 1,
     kf_Vector_93_opacity_0 2s linear 1;
@@ -4204,7 +4204,7 @@
   }
 }
 #Vector_94 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_94_transform_0 2s linear 1,
     kf_Vector_94_opacity_0 2s linear 1;
@@ -4239,7 +4239,7 @@
   }
 }
 #Vector_95 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_95_transform_0 2s linear 1,
     kf_Vector_95_opacity_0 2s linear 1;
@@ -4274,7 +4274,7 @@
   }
 }
 #Vector_96 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_96_transform_0 2s linear 1,
     kf_Vector_96_opacity_0 2s linear 1;
@@ -4309,7 +4309,7 @@
   }
 }
 #Vector_97 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_97_transform_0 2s linear 1,
     kf_Vector_97_opacity_0 2s linear 1;
@@ -4344,7 +4344,7 @@
   }
 }
 #Vector_98 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_98_transform_0 2s linear 1,
     kf_Vector_98_opacity_0 2s linear 1;
@@ -4379,7 +4379,7 @@
   }
 }
 #Vector_99 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_99_transform_0 2s linear 1,
     kf_Vector_99_opacity_0 2s linear 1;
@@ -4414,7 +4414,7 @@
   }
 }
 #Vector_100 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_100_transform_0 2s linear 1,
     kf_Vector_100_opacity_0 2s linear 1;
@@ -4449,7 +4449,7 @@
   }
 }
 #Vector_101 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_101_transform_0 2s linear 1,
     kf_Vector_101_opacity_0 2s linear 1;
@@ -4484,7 +4484,7 @@
   }
 }
 #Vector_102 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_102_transform_0 2s linear 1,
     kf_Vector_102_opacity_0 2s linear 1;
@@ -4519,7 +4519,7 @@
   }
 }
 #Vector_103 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_103_transform_0 2s linear 1,
     kf_Vector_103_opacity_0 2s linear 1;
@@ -4554,7 +4554,7 @@
   }
 }
 #Vector_104 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_104_transform_0 2s linear 1,
     kf_Vector_104_opacity_0 2s linear 1;
@@ -4589,7 +4589,7 @@
   }
 }
 #Vector_105 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_105_transform_0 2s linear 1,
     kf_Vector_105_opacity_0 2s linear 1;
@@ -4624,7 +4624,7 @@
   }
 }
 #Vector_106 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_106_transform_0 2s linear 1,
     kf_Vector_106_opacity_0 2s linear 1;
@@ -4659,7 +4659,7 @@
   }
 }
 #Vector_107 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_107_transform_0 2s linear 1,
     kf_Vector_107_opacity_0 2s linear 1;
@@ -4694,7 +4694,7 @@
   }
 }
 #Vector_108 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_108_transform_0 2s linear 1,
     kf_Vector_108_opacity_0 2s linear 1;
@@ -4729,7 +4729,7 @@
   }
 }
 #Vector_109 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_109_transform_0 2s linear 1,
     kf_Vector_109_opacity_0 2s linear 1;
@@ -4764,7 +4764,7 @@
   }
 }
 #Vector_110 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_110_transform_0 2s linear 1,
     kf_Vector_110_opacity_0 2s linear 1;
@@ -4799,7 +4799,7 @@
   }
 }
 #Vector_111 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_111_transform_0 2s linear 1,
     kf_Vector_111_opacity_0 2s linear 1;
@@ -4834,7 +4834,7 @@
   }
 }
 #Vector_112 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_112_transform_0 2s linear 1,
     kf_Vector_112_opacity_0 2s linear 1;
@@ -4869,7 +4869,7 @@
   }
 }
 #Vector_113 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_113_transform_0 2s linear 1,
     kf_Vector_113_opacity_0 2s linear 1;
@@ -4904,7 +4904,7 @@
   }
 }
 #Vector_114 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_114_transform_0 2s linear 1,
     kf_Vector_114_opacity_0 2s linear 1;
@@ -4939,7 +4939,7 @@
   }
 }
 #Vector_115 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_115_transform_0 2s linear 1,
     kf_Vector_115_opacity_0 2s linear 1;
@@ -4974,7 +4974,7 @@
   }
 }
 #Vector_116 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_116_transform_0 2s linear 1,
     kf_Vector_116_opacity_0 2s linear 1;
@@ -5009,7 +5009,7 @@
   }
 }
 #Vector_117 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_117_transform_0 2s linear 1,
     kf_Vector_117_opacity_0 2s linear 1;
@@ -5044,7 +5044,7 @@
   }
 }
 #Vector_118 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_118_transform_0 2s linear 1,
     kf_Vector_118_opacity_0 2s linear 1;
@@ -5079,7 +5079,7 @@
   }
 }
 #Vector_119 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_119_transform_0 2s linear 1,
     kf_Vector_119_opacity_0 2s linear 1;
@@ -5114,7 +5114,7 @@
   }
 }
 #Vector_120 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_120_transform_0 2s linear 1,
     kf_Vector_120_opacity_0 2s linear 1;
@@ -5149,7 +5149,7 @@
   }
 }
 #Vector_121 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_121_transform_0 2s linear 1,
     kf_Vector_121_opacity_0 2s linear 1;
@@ -5184,7 +5184,7 @@
   }
 }
 #Vector_122 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_122_transform_0 2s linear 1,
     kf_Vector_122_opacity_0 2s linear 1;
@@ -5219,7 +5219,7 @@
   }
 }
 #Vector_123 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_123_transform_0 2s linear 1,
     kf_Vector_123_opacity_0 2s linear 1;
@@ -5254,7 +5254,7 @@
   }
 }
 #Vector_124 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_124_transform_0 2s linear 1,
     kf_Vector_124_opacity_0 2s linear 1;
@@ -5289,7 +5289,7 @@
   }
 }
 #Vector_125 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_125_transform_0 2s linear 1,
     kf_Vector_125_opacity_0 2s linear 1;
@@ -5324,7 +5324,7 @@
   }
 }
 #Vector_126 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_126_transform_0 2s linear 1,
     kf_Vector_126_opacity_0 2s linear 1;
@@ -5359,7 +5359,7 @@
   }
 }
 #Vector_127 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_127_transform_0 2s linear 1,
     kf_Vector_127_opacity_0 2s linear 1;
@@ -5394,7 +5394,7 @@
   }
 }
 #Vector_128 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_128_transform_0 2s linear 1,
     kf_Vector_128_opacity_0 2s linear 1;
@@ -5429,7 +5429,7 @@
   }
 }
 #Vector_129 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_129_transform_0 2s linear 1,
     kf_Vector_129_opacity_0 2s linear 1;
@@ -5464,7 +5464,7 @@
   }
 }
 #Vector_130 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_130_transform_0 2s linear 1,
     kf_Vector_130_opacity_0 2s linear 1;
@@ -5499,7 +5499,7 @@
   }
 }
 #Vector_131 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_131_transform_0 2s linear 1,
     kf_Vector_131_opacity_0 2s linear 1;
@@ -5534,7 +5534,7 @@
   }
 }
 #Vector_132 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_132_transform_0 2s linear 1,
     kf_Vector_132_opacity_0 2s linear 1;
@@ -5569,7 +5569,7 @@
   }
 }
 #Vector_133 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_133_transform_0 2s linear 1,
     kf_Vector_133_opacity_0 2s linear 1;
@@ -5604,7 +5604,7 @@
   }
 }
 #Vector_134 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_134_transform_0 2s linear 1,
     kf_Vector_134_opacity_0 2s linear 1;
@@ -5639,7 +5639,7 @@
   }
 }
 #Vector_135 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_135_transform_0 2s linear 1,
     kf_Vector_135_opacity_0 2s linear 1;
@@ -5674,7 +5674,7 @@
   }
 }
 #Vector_136 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_136_transform_0 2s linear 1,
     kf_Vector_136_opacity_0 2s linear 1;
@@ -5709,7 +5709,7 @@
   }
 }
 #Vector_137 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_137_transform_0 2s linear 1,
     kf_Vector_137_opacity_0 2s linear 1;
@@ -5744,7 +5744,7 @@
   }
 }
 #Vector_138 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_138_transform_0 2s linear 1,
     kf_Vector_138_opacity_0 2s linear 1;
@@ -5779,7 +5779,7 @@
   }
 }
 #Vector_139 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_139_transform_0 2s linear 1,
     kf_Vector_139_opacity_0 2s linear 1;
@@ -5814,7 +5814,7 @@
   }
 }
 #Vector_140 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_140_transform_0 2s linear 1,
     kf_Vector_140_opacity_0 2s linear 1;
@@ -5849,7 +5849,7 @@
   }
 }
 #Vector_141 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_141_transform_0 2s linear 1,
     kf_Vector_141_opacity_0 2s linear 1;
@@ -5884,7 +5884,7 @@
   }
 }
 #Vector_142 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_142_transform_0 2s linear 1,
     kf_Vector_142_opacity_0 2s linear 1;
@@ -5919,7 +5919,7 @@
   }
 }
 #Vector_143 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_143_transform_0 2s linear 1,
     kf_Vector_143_opacity_0 2s linear 1;
@@ -5954,7 +5954,7 @@
   }
 }
 #Vector_144 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_144_transform_0 2s linear 1,
     kf_Vector_144_opacity_0 2s linear 1;
@@ -5989,7 +5989,7 @@
   }
 }
 #Vector_145 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_145_transform_0 2s linear 1,
     kf_Vector_145_opacity_0 2s linear 1;
@@ -6024,7 +6024,7 @@
   }
 }
 #Vector_146 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_146_transform_0 2s linear 1,
     kf_Vector_146_opacity_0 2s linear 1;
@@ -6059,7 +6059,7 @@
   }
 }
 #Vector_147 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_147_transform_0 2s linear 1,
     kf_Vector_147_opacity_0 2s linear 1;
@@ -6094,7 +6094,7 @@
   }
 }
 #Vector_148 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_148_transform_0 2s linear 1,
     kf_Vector_148_opacity_0 2s linear 1;
@@ -6129,7 +6129,7 @@
   }
 }
 #Vector_149 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_149_transform_0 2s linear 1,
     kf_Vector_149_opacity_0 2s linear 1;
@@ -6164,7 +6164,7 @@
   }
 }
 #Vector_150 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_150_transform_0 2s linear 1,
     kf_Vector_150_opacity_0 2s linear 1;
@@ -6199,7 +6199,7 @@
   }
 }
 #Vector_151 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_151_transform_0 2s linear 1,
     kf_Vector_151_opacity_0 2s linear 1;
@@ -6234,7 +6234,7 @@
   }
 }
 #Vector_152 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_152_transform_0 2s linear 1,
     kf_Vector_152_opacity_0 2s linear 1;
@@ -6269,7 +6269,7 @@
   }
 }
 #Vector_153 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_153_transform_0 2s linear 1,
     kf_Vector_153_opacity_0 2s linear 1;
@@ -6304,7 +6304,7 @@
   }
 }
 #Vector_154 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_154_transform_0 2s linear 1,
     kf_Vector_154_opacity_0 2s linear 1;
@@ -6339,7 +6339,7 @@
   }
 }
 #Vector_155 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_155_transform_0 2s linear 1,
     kf_Vector_155_opacity_0 2s linear 1;
@@ -6374,7 +6374,7 @@
   }
 }
 #Vector_156 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_156_transform_0 2s linear 1,
     kf_Vector_156_opacity_0 2s linear 1;
@@ -6409,7 +6409,7 @@
   }
 }
 #Vector_157 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_157_transform_0 2s linear 1,
     kf_Vector_157_opacity_0 2s linear 1;
@@ -6444,7 +6444,7 @@
   }
 }
 #Vector_158 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_158_transform_0 2s linear 1,
     kf_Vector_158_opacity_0 2s linear 1;
@@ -6479,7 +6479,7 @@
   }
 }
 #Vector_159 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_159_transform_0 2s linear 1,
     kf_Vector_159_opacity_0 2s linear 1;
@@ -6514,7 +6514,7 @@
   }
 }
 #Vector_160 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_160_transform_0 2s linear 1,
     kf_Vector_160_opacity_0 2s linear 1;
@@ -6549,7 +6549,7 @@
   }
 }
 #Vector_161 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_161_transform_0 2s linear 1,
     kf_Vector_161_opacity_0 2s linear 1;
@@ -6584,7 +6584,7 @@
   }
 }
 #Vector_162 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_162_transform_0 2s linear 1,
     kf_Vector_162_opacity_0 2s linear 1;
@@ -6619,7 +6619,7 @@
   }
 }
 #Vector_163 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_163_transform_0 2s linear 1,
     kf_Vector_163_opacity_0 2s linear 1;
@@ -6654,7 +6654,7 @@
   }
 }
 #Vector_164 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_164_transform_0 2s linear 1,
     kf_Vector_164_opacity_0 2s linear 1;
@@ -6689,7 +6689,7 @@
   }
 }
 #Vector_165 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_165_transform_0 2s linear 1,
     kf_Vector_165_opacity_0 2s linear 1;
@@ -6724,7 +6724,7 @@
   }
 }
 #Vector_166 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_166_transform_0 2s linear 1,
     kf_Vector_166_opacity_0 2s linear 1;
@@ -6759,7 +6759,7 @@
   }
 }
 #Vector_167 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_167_transform_0 2s linear 1,
     kf_Vector_167_opacity_0 2s linear 1;
@@ -6794,7 +6794,7 @@
   }
 }
 #Vector_168 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_168_transform_0 2s linear 1,
     kf_Vector_168_opacity_0 2s linear 1;
@@ -6829,7 +6829,7 @@
   }
 }
 #Vector_169 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_169_transform_0 2s linear 1,
     kf_Vector_169_opacity_0 2s linear 1;
@@ -6864,7 +6864,7 @@
   }
 }
 #Vector_170 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_170_transform_0 2s linear 1,
     kf_Vector_170_opacity_0 2s linear 1;
@@ -6899,7 +6899,7 @@
   }
 }
 #Vector_171 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_171_transform_0 2s linear 1,
     kf_Vector_171_opacity_0 2s linear 1;
@@ -6934,7 +6934,7 @@
   }
 }
 #Vector_172 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_172_transform_0 2s linear 1,
     kf_Vector_172_opacity_0 2s linear 1;
@@ -6969,7 +6969,7 @@
   }
 }
 #Vector_173 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_173_transform_0 2s linear 1,
     kf_Vector_173_opacity_0 2s linear 1;
@@ -7004,7 +7004,7 @@
   }
 }
 #Vector_174 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_174_transform_0 2s linear 1,
     kf_Vector_174_opacity_0 2s linear 1;
@@ -7039,7 +7039,7 @@
   }
 }
 #Vector_175 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_175_transform_0 2s linear 1,
     kf_Vector_175_opacity_0 2s linear 1;
@@ -7074,7 +7074,7 @@
   }
 }
 #Vector_176 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_176_transform_0 2s linear 1,
     kf_Vector_176_opacity_0 2s linear 1;
@@ -7109,7 +7109,7 @@
   }
 }
 #Vector_177 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_177_transform_0 2s linear 1,
     kf_Vector_177_opacity_0 2s linear 1;
@@ -7144,7 +7144,7 @@
   }
 }
 #Vector_178 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_178_transform_0 2s linear 1,
     kf_Vector_178_opacity_0 2s linear 1;
@@ -7179,7 +7179,7 @@
   }
 }
 #Vector_179 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_179_transform_0 2s linear 1,
     kf_Vector_179_opacity_0 2s linear 1;
@@ -7214,7 +7214,7 @@
   }
 }
 #Vector_180 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_180_transform_0 2s linear 1,
     kf_Vector_180_opacity_0 2s linear 1;
@@ -7249,7 +7249,7 @@
   }
 }
 #Vector_181 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_181_transform_0 2s linear 1,
     kf_Vector_181_opacity_0 2s linear 1;
@@ -7284,7 +7284,7 @@
   }
 }
 #Vector_182 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_182_transform_0 2s linear 1,
     kf_Vector_182_opacity_0 2s linear 1;
@@ -7319,7 +7319,7 @@
   }
 }
 #Vector_183 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_183_transform_0 2s linear 1,
     kf_Vector_183_opacity_0 2s linear 1;
@@ -7354,7 +7354,7 @@
   }
 }
 #Vector_184 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_184_transform_0 2s linear 1,
     kf_Vector_184_opacity_0 2s linear 1;
@@ -7389,7 +7389,7 @@
   }
 }
 #Vector_185 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_185_transform_0 2s linear 1,
     kf_Vector_185_opacity_0 2s linear 1;
@@ -7424,7 +7424,7 @@
   }
 }
 #Vector_186 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_186_transform_0 2s linear 1,
     kf_Vector_186_opacity_0 2s linear 1;
@@ -7459,7 +7459,7 @@
   }
 }
 #Vector_187 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_187_transform_0 2s linear 1,
     kf_Vector_187_opacity_0 2s linear 1;
@@ -7494,7 +7494,7 @@
   }
 }
 #Vector_188 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_188_transform_0 2s linear 1,
     kf_Vector_188_opacity_0 2s linear 1;
@@ -7529,7 +7529,7 @@
   }
 }
 #Vector_189 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_189_transform_0 2s linear 1,
     kf_Vector_189_opacity_0 2s linear 1;
@@ -7564,7 +7564,7 @@
   }
 }
 #Vector_190 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_190_transform_0 2s linear 1,
     kf_Vector_190_opacity_0 2s linear 1;
@@ -7599,7 +7599,7 @@
   }
 }
 #Vector_191 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_191_transform_0 2s linear 1,
     kf_Vector_191_opacity_0 2s linear 1;
@@ -7634,7 +7634,7 @@
   }
 }
 #Vector_192 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_192_transform_0 2s linear 1,
     kf_Vector_192_opacity_0 2s linear 1;
@@ -7669,7 +7669,7 @@
   }
 }
 #Vector_193 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_193_transform_0 2s linear 1,
     kf_Vector_193_opacity_0 2s linear 1;
@@ -7704,7 +7704,7 @@
   }
 }
 #Vector_194 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_194_transform_0 2s linear 1,
     kf_Vector_194_opacity_0 2s linear 1;
@@ -7739,7 +7739,7 @@
   }
 }
 #Vector_195 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_195_transform_0 2s linear 1,
     kf_Vector_195_opacity_0 2s linear 1;
@@ -7774,7 +7774,7 @@
   }
 }
 #Vector_196 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_196_transform_0 2s linear 1,
     kf_Vector_196_opacity_0 2s linear 1;
@@ -7809,7 +7809,7 @@
   }
 }
 #Vector_197 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_197_transform_0 2s linear 1,
     kf_Vector_197_opacity_0 2s linear 1;
@@ -7844,7 +7844,7 @@
   }
 }
 #Vector_198 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_198_transform_0 2s linear 1,
     kf_Vector_198_opacity_0 2s linear 1;
@@ -7879,7 +7879,7 @@
   }
 }
 #Vector_199 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_199_transform_0 2s linear 1,
     kf_Vector_199_opacity_0 2s linear 1;
@@ -7914,7 +7914,7 @@
   }
 }
 #Vector_200 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_200_transform_0 2s linear 1,
     kf_Vector_200_opacity_0 2s linear 1;
@@ -7949,7 +7949,7 @@
   }
 }
 #Vector_201 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_201_transform_0 2s linear 1,
     kf_Vector_201_opacity_0 2s linear 1;
@@ -7984,7 +7984,7 @@
   }
 }
 #Vector_202 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_202_transform_0 2s linear 1,
     kf_Vector_202_opacity_0 2s linear 1;
@@ -8019,7 +8019,7 @@
   }
 }
 #Vector_203 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_203_transform_0 2s linear 1,
     kf_Vector_203_opacity_0 2s linear 1;
@@ -8054,7 +8054,7 @@
   }
 }
 #Vector_204 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_204_transform_0 2s linear 1,
     kf_Vector_204_opacity_0 2s linear 1;
@@ -8089,7 +8089,7 @@
   }
 }
 #Vector_205 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_205_transform_0 2s linear 1,
     kf_Vector_205_opacity_0 2s linear 1;
@@ -8124,7 +8124,7 @@
   }
 }
 #Vector_206 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_206_transform_0 2s linear 1,
     kf_Vector_206_opacity_0 2s linear 1;
@@ -8159,7 +8159,7 @@
   }
 }
 #Vector_207 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_207_transform_0 2s linear 1,
     kf_Vector_207_opacity_0 2s linear 1;
@@ -8194,7 +8194,7 @@
   }
 }
 #Vector_208 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_208_transform_0 2s linear 1,
     kf_Vector_208_opacity_0 2s linear 1;
@@ -8229,7 +8229,7 @@
   }
 }
 #Vector_209 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_209_transform_0 2s linear 1,
     kf_Vector_209_opacity_0 2s linear 1;
@@ -8264,7 +8264,7 @@
   }
 }
 #Vector_210 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_210_transform_0 2s linear 1,
     kf_Vector_210_opacity_0 2s linear 1;
@@ -8299,7 +8299,7 @@
   }
 }
 #Vector_211 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_211_transform_0 2s linear 1,
     kf_Vector_211_opacity_0 2s linear 1;
@@ -8334,7 +8334,7 @@
   }
 }
 #Vector_212 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_212_transform_0 2s linear 1,
     kf_Vector_212_opacity_0 2s linear 1;
@@ -8369,7 +8369,7 @@
   }
 }
 #Vector_213 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_213_transform_0 2s linear 1,
     kf_Vector_213_opacity_0 2s linear 1;
@@ -8404,7 +8404,7 @@
   }
 }
 #Vector_214 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_214_transform_0 2s linear 1,
     kf_Vector_214_opacity_0 2s linear 1;
@@ -8439,7 +8439,7 @@
   }
 }
 #Vector_215 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_215_transform_0 2s linear 1,
     kf_Vector_215_opacity_0 2s linear 1;
@@ -8474,7 +8474,7 @@
   }
 }
 #Vector_216 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_216_transform_0 2s linear 1,
     kf_Vector_216_opacity_0 2s linear 1;
@@ -8509,7 +8509,7 @@
   }
 }
 #Vector_217 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_217_transform_0 2s linear 1,
     kf_Vector_217_opacity_0 2s linear 1;
@@ -8544,7 +8544,7 @@
   }
 }
 #Vector_218 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_218_transform_0 2s linear 1,
     kf_Vector_218_opacity_0 2s linear 1;
@@ -8579,7 +8579,7 @@
   }
 }
 #Vector_219 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_219_transform_0 2s linear 1,
     kf_Vector_219_opacity_0 2s linear 1;
@@ -8614,7 +8614,7 @@
   }
 }
 #Vector_220 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_220_transform_0 2s linear 1,
     kf_Vector_220_opacity_0 2s linear 1;
@@ -8649,7 +8649,7 @@
   }
 }
 #Vector_221 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_221_transform_0 2s linear 1,
     kf_Vector_221_opacity_0 2s linear 1;
@@ -8684,7 +8684,7 @@
   }
 }
 #Vector_222 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_222_transform_0 2s linear 1,
     kf_Vector_222_opacity_0 2s linear 1;
@@ -8719,7 +8719,7 @@
   }
 }
 #Vector_223 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_223_transform_0 2s linear 1,
     kf_Vector_223_opacity_0 2s linear 1;
@@ -8754,7 +8754,7 @@
   }
 }
 #Vector_224 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_224_transform_0 2s linear 1,
     kf_Vector_224_opacity_0 2s linear 1;
@@ -8789,7 +8789,7 @@
   }
 }
 #Vector_225 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_225_transform_0 2s linear 1,
     kf_Vector_225_opacity_0 2s linear 1;
@@ -8824,7 +8824,7 @@
   }
 }
 #Vector_226 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_226_transform_0 2s linear 1,
     kf_Vector_226_opacity_0 2s linear 1;
@@ -8859,7 +8859,7 @@
   }
 }
 #Vector_227 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_227_transform_0 2s linear 1,
     kf_Vector_227_opacity_0 2s linear 1;
@@ -8894,7 +8894,7 @@
   }
 }
 #Vector_228 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_228_transform_0 2s linear 1,
     kf_Vector_228_opacity_0 2s linear 1;
@@ -8929,7 +8929,7 @@
   }
 }
 #Vector_229 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_229_transform_0 2s linear 1,
     kf_Vector_229_opacity_0 2s linear 1;
@@ -8964,7 +8964,7 @@
   }
 }
 #Vector_230 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_230_transform_0 2s linear 1,
     kf_Vector_230_opacity_0 2s linear 1;
@@ -8999,7 +8999,7 @@
   }
 }
 #Vector_231 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_231_transform_0 2s linear 1,
     kf_Vector_231_opacity_0 2s linear 1;
@@ -9034,7 +9034,7 @@
   }
 }
 #Vector_232 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_232_transform_0 2s linear 1,
     kf_Vector_232_opacity_0 2s linear 1;
@@ -9069,7 +9069,7 @@
   }
 }
 #Vector_233 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_233_transform_0 2s linear 1,
     kf_Vector_233_opacity_0 2s linear 1;
@@ -9104,7 +9104,7 @@
   }
 }
 #Vector_234 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_234_transform_0 2s linear 1,
     kf_Vector_234_opacity_0 2s linear 1;
@@ -9139,7 +9139,7 @@
   }
 }
 #Vector_235 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_235_transform_0 2s linear 1,
     kf_Vector_235_opacity_0 2s linear 1;
@@ -9174,7 +9174,7 @@
   }
 }
 #Vector_236 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_236_transform_0 2s linear 1,
     kf_Vector_236_opacity_0 2s linear 1;
@@ -9209,7 +9209,7 @@
   }
 }
 #Vector_237 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_237_transform_0 2s linear 1,
     kf_Vector_237_opacity_0 2s linear 1;
@@ -9244,7 +9244,7 @@
   }
 }
 #Vector_238 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_238_transform_0 2s linear 1,
     kf_Vector_238_opacity_0 2s linear 1;
@@ -9460,7 +9460,7 @@
   }
 }
 #Vector_239 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_239_transform_0 2s linear 1,
     kf_Vector_239_opacity_0 2s linear 1;
@@ -9495,7 +9495,7 @@
   }
 }
 #Vector_240 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_240_transform_0 2s linear 1,
     kf_Vector_240_opacity_0 2s linear 1;
@@ -9530,7 +9530,7 @@
   }
 }
 #Vector_241 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_241_transform_0 2s linear 1,
     kf_Vector_241_opacity_0 2s linear 1;
@@ -9565,7 +9565,7 @@
   }
 }
 #Vector_242 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_242_transform_0 2s linear 1,
     kf_Vector_242_opacity_0 2s linear 1;
@@ -9600,7 +9600,7 @@
   }
 }
 #Vector_243 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_243_transform_0 2s linear 1,
     kf_Vector_243_opacity_0 2s linear 1;
@@ -9635,7 +9635,7 @@
   }
 }
 #Vector_244 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_244_transform_0 2s linear 1,
     kf_Vector_244_opacity_0 2s linear 1;
@@ -9670,7 +9670,7 @@
   }
 }
 #Vector_245 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_245_transform_0 2s linear 1,
     kf_Vector_245_opacity_0 2s linear 1;
@@ -9705,7 +9705,7 @@
   }
 }
 #Vector_246 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_246_transform_0 2s linear 1,
     kf_Vector_246_opacity_0 2s linear 1;
@@ -9740,7 +9740,7 @@
   }
 }
 #Vector_247 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_247_transform_0 2s linear 1,
     kf_Vector_247_opacity_0 2s linear 1;
@@ -9775,7 +9775,7 @@
   }
 }
 #Vector_248 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_248_transform_0 2s linear 1,
     kf_Vector_248_opacity_0 2s linear 1;
@@ -9810,7 +9810,7 @@
   }
 }
 #Vector_249 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_249_transform_0 2s linear 1,
     kf_Vector_249_opacity_0 2s linear 1;
@@ -9845,7 +9845,7 @@
   }
 }
 #Vector_250 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_250_transform_0 2s linear 1,
     kf_Vector_250_opacity_0 2s linear 1;
@@ -9880,7 +9880,7 @@
   }
 }
 #Vector_251 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_251_transform_0 2s linear 1,
     kf_Vector_251_opacity_0 2s linear 1;
@@ -9915,7 +9915,7 @@
   }
 }
 #Vector_252 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_252_transform_0 2s linear 1,
     kf_Vector_252_opacity_0 2s linear 1;
@@ -9950,7 +9950,7 @@
   }
 }
 #Vector_253 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_253_transform_0 2s linear 1,
     kf_Vector_253_opacity_0 2s linear 1;
@@ -9985,7 +9985,7 @@
   }
 }
 #Vector_254 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_254_transform_0 2s linear 1,
     kf_Vector_254_opacity_0 2s linear 1;
@@ -10020,7 +10020,7 @@
   }
 }
 #Vector_255 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_255_transform_0 2s linear 1,
     kf_Vector_255_opacity_0 2s linear 1;
@@ -10055,7 +10055,7 @@
   }
 }
 #Vector_256 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_256_transform_0 2s linear 1,
     kf_Vector_256_opacity_0 2s linear 1;
@@ -10090,7 +10090,7 @@
   }
 }
 #Vector_257 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_257_transform_0 2s linear 1,
     kf_Vector_257_opacity_0 2s linear 1;
@@ -10125,7 +10125,7 @@
   }
 }
 #Vector_258 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_258_transform_0 2s linear 1,
     kf_Vector_258_opacity_0 2s linear 1;
@@ -10160,7 +10160,7 @@
   }
 }
 #Vector_259 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_259_transform_0 2s linear 1,
     kf_Vector_259_opacity_0 2s linear 1;
@@ -10195,7 +10195,7 @@
   }
 }
 #Vector_260 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_260_transform_0 2s linear 1,
     kf_Vector_260_opacity_0 2s linear 1;
@@ -10230,7 +10230,7 @@
   }
 }
 #Vector_261 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_261_transform_0 2s linear 1,
     kf_Vector_261_opacity_0 2s linear 1;
@@ -10265,7 +10265,7 @@
   }
 }
 #Vector_262 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_262_transform_0 2s linear 1,
     kf_Vector_262_opacity_0 2s linear 1;
@@ -10300,7 +10300,7 @@
   }
 }
 #Vector_263 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_263_transform_0 2s linear 1,
     kf_Vector_263_opacity_0 2s linear 1;
@@ -10335,7 +10335,7 @@
   }
 }
 #Vector_264 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_264_transform_0 2s linear 1,
     kf_Vector_264_opacity_0 2s linear 1;
@@ -10370,7 +10370,7 @@
   }
 }
 #Vector_265 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_265_transform_0 2s linear 1,
     kf_Vector_265_opacity_0 2s linear 1;
@@ -10405,7 +10405,7 @@
   }
 }
 #Vector_266 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_266_transform_0 2s linear 1,
     kf_Vector_266_opacity_0 2s linear 1;
@@ -10440,7 +10440,7 @@
   }
 }
 #Vector_267 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_267_transform_0 2s linear 1,
     kf_Vector_267_opacity_0 2s linear 1;
@@ -10475,7 +10475,7 @@
   }
 }
 #Vector_268 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_268_transform_0 2s linear 1,
     kf_Vector_268_opacity_0 2s linear 1;
@@ -10510,7 +10510,7 @@
   }
 }
 #Vector_269 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_269_transform_0 2s linear 1,
     kf_Vector_269_opacity_0 2s linear 1;
@@ -10545,7 +10545,7 @@
   }
 }
 #Vector_270 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_270_transform_0 2s linear 1,
     kf_Vector_270_opacity_0 2s linear 1;
@@ -10580,7 +10580,7 @@
   }
 }
 #Vector_271 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_271_transform_0 2s linear 1,
     kf_Vector_271_opacity_0 2s linear 1;
@@ -10615,7 +10615,7 @@
   }
 }
 #Vector_272 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_272_transform_0 2s linear 1,
     kf_Vector_272_opacity_0 2s linear 1;
@@ -10650,7 +10650,7 @@
   }
 }
 #Vector_273 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_273_transform_0 2s linear 1,
     kf_Vector_273_opacity_0 2s linear 1;
@@ -10685,7 +10685,7 @@
   }
 }
 #Vector_274 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_274_transform_0 2s linear 1,
     kf_Vector_274_opacity_0 2s linear 1;
@@ -10720,7 +10720,7 @@
   }
 }
 #Vector_275 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_275_transform_0 2s linear 1,
     kf_Vector_275_opacity_0 2s linear 1;
@@ -10755,7 +10755,7 @@
   }
 }
 #Vector_276 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_276_transform_0 2s linear 1,
     kf_Vector_276_opacity_0 2s linear 1;
@@ -10790,7 +10790,7 @@
   }
 }
 #Vector_277 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_277_transform_0 2s linear 1,
     kf_Vector_277_opacity_0 2s linear 1;
@@ -10825,7 +10825,7 @@
   }
 }
 #Vector_278 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_278_transform_0 2s linear 1,
     kf_Vector_278_opacity_0 2s linear 1;
@@ -10860,7 +10860,7 @@
   }
 }
 #Vector_279 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_279_transform_0 2s linear 1,
     kf_Vector_279_opacity_0 2s linear 1;
@@ -10895,7 +10895,7 @@
   }
 }
 #Vector_280 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_280_transform_0 2s linear 1,
     kf_Vector_280_opacity_0 2s linear 1;
@@ -10930,7 +10930,7 @@
   }
 }
 #Vector_281 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_281_transform_0 2s linear 1,
     kf_Vector_281_opacity_0 2s linear 1;
@@ -10965,7 +10965,7 @@
   }
 }
 #Vector_282 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_282_transform_0 2s linear 1,
     kf_Vector_282_opacity_0 2s linear 1;
@@ -11000,7 +11000,7 @@
   }
 }
 #Vector_283 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_283_transform_0 2s linear 1,
     kf_Vector_283_opacity_0 2s linear 1;
@@ -11035,7 +11035,7 @@
   }
 }
 #Vector_284 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_284_transform_0 2s linear 1,
     kf_Vector_284_opacity_0 2s linear 1;
@@ -11070,7 +11070,7 @@
   }
 }
 #Vector_285 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_285_transform_0 2s linear 1,
     kf_Vector_285_opacity_0 2s linear 1;
@@ -11105,7 +11105,7 @@
   }
 }
 #Vector_286 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_286_transform_0 2s linear 1,
     kf_Vector_286_opacity_0 2s linear 1;
@@ -11140,7 +11140,7 @@
   }
 }
 #Vector_287 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_287_transform_0 2s linear 1,
     kf_Vector_287_opacity_0 2s linear 1;
@@ -11175,7 +11175,7 @@
   }
 }
 #Vector_288 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_288_transform_0 2s linear 1,
     kf_Vector_288_opacity_0 2s linear 1;
@@ -11210,7 +11210,7 @@
   }
 }
 #Vector_289 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_289_transform_0 2s linear 1,
     kf_Vector_289_opacity_0 2s linear 1;
@@ -11245,7 +11245,7 @@
   }
 }
 #Vector_290 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_290_transform_0 2s linear 1,
     kf_Vector_290_opacity_0 2s linear 1;
@@ -11280,7 +11280,7 @@
   }
 }
 #Vector_291 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_291_transform_0 2s linear 1,
     kf_Vector_291_opacity_0 2s linear 1;
@@ -11315,7 +11315,7 @@
   }
 }
 #Vector_292 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_292_transform_0 2s linear 1,
     kf_Vector_292_opacity_0 2s linear 1;
@@ -11350,7 +11350,7 @@
   }
 }
 #Vector_293 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_293_transform_0 2s linear 1,
     kf_Vector_293_opacity_0 2s linear 1;
@@ -11385,7 +11385,7 @@
   }
 }
 #Vector_294 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_294_transform_0 2s linear 1,
     kf_Vector_294_opacity_0 2s linear 1;
@@ -11420,7 +11420,7 @@
   }
 }
 #Vector_295 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_295_transform_0 2s linear 1,
     kf_Vector_295_opacity_0 2s linear 1;
@@ -11455,7 +11455,7 @@
   }
 }
 #Vector_296 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_296_transform_0 2s linear 1,
     kf_Vector_296_opacity_0 2s linear 1;
@@ -11490,7 +11490,7 @@
   }
 }
 #Vector_297 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_297_transform_0 2s linear 1,
     kf_Vector_297_opacity_0 2s linear 1;
@@ -11525,7 +11525,7 @@
   }
 }
 #Vector_298 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_298_transform_0 2s linear 1,
     kf_Vector_298_opacity_0 2s linear 1;
@@ -11560,7 +11560,7 @@
   }
 }
 #Vector_299 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_299_transform_0 2s linear 1,
     kf_Vector_299_opacity_0 2s linear 1;
@@ -11595,7 +11595,7 @@
   }
 }
 #Vector_300 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_300_transform_0 2s linear 1,
     kf_Vector_300_opacity_0 2s linear 1;
@@ -11630,7 +11630,7 @@
   }
 }
 #Vector_301 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_301_transform_0 2s linear 1,
     kf_Vector_301_opacity_0 2s linear 1;
@@ -11665,7 +11665,7 @@
   }
 }
 #Vector_302 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_302_transform_0 2s linear 1,
     kf_Vector_302_opacity_0 2s linear 1;
@@ -11700,7 +11700,7 @@
   }
 }
 #Vector_303 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_303_transform_0 2s linear 1,
     kf_Vector_303_opacity_0 2s linear 1;
@@ -11735,7 +11735,7 @@
   }
 }
 #Vector_304 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_304_transform_0 2s linear 1,
     kf_Vector_304_opacity_0 2s linear 1;
@@ -11770,7 +11770,7 @@
   }
 }
 #Vector_305 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_305_transform_0 2s linear 1,
     kf_Vector_305_opacity_0 2s linear 1;
@@ -11805,7 +11805,7 @@
   }
 }
 #Vector_306 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_306_transform_0 2s linear 1,
     kf_Vector_306_opacity_0 2s linear 1;
@@ -11840,7 +11840,7 @@
   }
 }
 #Vector_307 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_307_transform_0 2s linear 1,
     kf_Vector_307_opacity_0 2s linear 1;
@@ -11875,7 +11875,7 @@
   }
 }
 #Vector_308 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_308_transform_0 2s linear 1,
     kf_Vector_308_opacity_0 2s linear 1;
@@ -11910,7 +11910,7 @@
   }
 }
 #Vector_309 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_309_transform_0 2s linear 1,
     kf_Vector_309_opacity_0 2s linear 1;
@@ -11945,7 +11945,7 @@
   }
 }
 #Vector_310 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_310_transform_0 2s linear 1,
     kf_Vector_310_opacity_0 2s linear 1;
@@ -11980,7 +11980,7 @@
   }
 }
 #Vector_311 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_311_transform_0 2s linear 1,
     kf_Vector_311_opacity_0 2s linear 1;
@@ -12015,7 +12015,7 @@
   }
 }
 #Vector_312 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_312_transform_0 2s linear 1,
     kf_Vector_312_opacity_0 2s linear 1;
@@ -12050,7 +12050,7 @@
   }
 }
 #Vector_313 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_313_transform_0 2s linear 1,
     kf_Vector_313_opacity_0 2s linear 1;
@@ -12085,7 +12085,7 @@
   }
 }
 #Vector_314 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_314_transform_0 2s linear 1,
     kf_Vector_314_opacity_0 2s linear 1;
@@ -12120,7 +12120,7 @@
   }
 }
 #Vector_315 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_315_transform_0 2s linear 1,
     kf_Vector_315_opacity_0 2s linear 1;
@@ -12155,7 +12155,7 @@
   }
 }
 #Vector_316 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_316_transform_0 2s linear 1,
     kf_Vector_316_opacity_0 2s linear 1;
@@ -12190,7 +12190,7 @@
   }
 }
 #Vector_317 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_317_transform_0 2s linear 1,
     kf_Vector_317_opacity_0 2s linear 1;
@@ -12225,7 +12225,7 @@
   }
 }
 #Vector_318 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_318_transform_0 2s linear 1,
     kf_Vector_318_opacity_0 2s linear 1;
@@ -12260,7 +12260,7 @@
   }
 }
 #Vector_319 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_319_transform_0 2s linear 1,
     kf_Vector_319_opacity_0 2s linear 1;
@@ -12295,7 +12295,7 @@
   }
 }
 #Vector_320 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_320_transform_0 2s linear 1,
     kf_Vector_320_opacity_0 2s linear 1;
@@ -12330,7 +12330,7 @@
   }
 }
 #Vector_321 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_321_transform_0 2s linear 1,
     kf_Vector_321_opacity_0 2s linear 1;
@@ -12365,7 +12365,7 @@
   }
 }
 #Vector_322 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_322_transform_0 2s linear 1,
     kf_Vector_322_opacity_0 2s linear 1;
@@ -12400,7 +12400,7 @@
   }
 }
 #Vector_323 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_323_transform_0 2s linear 1,
     kf_Vector_323_opacity_0 2s linear 1;
@@ -12435,7 +12435,7 @@
   }
 }
 #Vector_324 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_324_transform_0 2s linear 1,
     kf_Vector_324_opacity_0 2s linear 1;
@@ -12470,7 +12470,7 @@
   }
 }
 #Vector_325 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_325_transform_0 2s linear 1,
     kf_Vector_325_opacity_0 2s linear 1;
@@ -12505,7 +12505,7 @@
   }
 }
 #Vector_326 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_326_transform_0 2s linear 1,
     kf_Vector_326_opacity_0 2s linear 1;
@@ -12540,7 +12540,7 @@
   }
 }
 #Vector_327 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_327_transform_0 2s linear 1,
     kf_Vector_327_opacity_0 2s linear 1;
@@ -12575,7 +12575,7 @@
   }
 }
 #Vector_328 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_328_transform_0 2s linear 1,
     kf_Vector_328_opacity_0 2s linear 1;
@@ -12610,7 +12610,7 @@
   }
 }
 #Vector_329 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_329_transform_0 2s linear 1,
     kf_Vector_329_opacity_0 2s linear 1;
@@ -12645,7 +12645,7 @@
   }
 }
 #Vector_330 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_330_transform_0 2s linear 1,
     kf_Vector_330_opacity_0 2s linear 1;
@@ -12680,7 +12680,7 @@
   }
 }
 #Vector_331 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_331_transform_0 2s linear 1,
     kf_Vector_331_opacity_0 2s linear 1;
@@ -12715,7 +12715,7 @@
   }
 }
 #Vector_332 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_332_transform_0 2s linear 1,
     kf_Vector_332_opacity_0 2s linear 1;
@@ -12750,7 +12750,7 @@
   }
 }
 #Vector_333 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_333_transform_0 2s linear 1,
     kf_Vector_333_opacity_0 2s linear 1;
@@ -12785,7 +12785,7 @@
   }
 }
 #Vector_334 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_334_transform_0 2s linear 1,
     kf_Vector_334_opacity_0 2s linear 1;
@@ -12820,7 +12820,7 @@
   }
 }
 #Vector_335 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_335_transform_0 2s linear 1,
     kf_Vector_335_opacity_0 2s linear 1;
@@ -12855,7 +12855,7 @@
   }
 }
 #Vector_336 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_336_transform_0 2s linear 1,
     kf_Vector_336_opacity_0 2s linear 1;
@@ -12890,7 +12890,7 @@
   }
 }
 #Vector_337 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_337_transform_0 2s linear 1,
     kf_Vector_337_opacity_0 2s linear 1;
@@ -12925,7 +12925,7 @@
   }
 }
 #Vector_338 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_338_transform_0 2s linear 1,
     kf_Vector_338_opacity_0 2s linear 1;
@@ -12960,7 +12960,7 @@
   }
 }
 #Vector_339 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_339_transform_0 2s linear 1,
     kf_Vector_339_opacity_0 2s linear 1;
@@ -12995,7 +12995,7 @@
   }
 }
 #Vector_340 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_340_transform_0 2s linear 1,
     kf_Vector_340_opacity_0 2s linear 1;
@@ -13030,7 +13030,7 @@
   }
 }
 #Vector_341 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_341_transform_0 2s linear 1,
     kf_Vector_341_opacity_0 2s linear 1;
@@ -13065,7 +13065,7 @@
   }
 }
 #Vector_342 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_342_transform_0 2s linear 1,
     kf_Vector_342_opacity_0 2s linear 1;
@@ -13100,7 +13100,7 @@
   }
 }
 #Vector_343 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_343_transform_0 2s linear 1,
     kf_Vector_343_opacity_0 2s linear 1;
@@ -13135,7 +13135,7 @@
   }
 }
 #Vector_344 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_344_transform_0 2s linear 1,
     kf_Vector_344_opacity_0 2s linear 1;
@@ -13170,7 +13170,7 @@
   }
 }
 #Vector_345 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_345_transform_0 2s linear 1,
     kf_Vector_345_opacity_0 2s linear 1;
@@ -13205,7 +13205,7 @@
   }
 }
 #Vector_346 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_346_transform_0 2s linear 1,
     kf_Vector_346_opacity_0 2s linear 1;
@@ -13240,7 +13240,7 @@
   }
 }
 #Vector_347 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_347_transform_0 2s linear 1,
     kf_Vector_347_opacity_0 2s linear 1;
@@ -13275,7 +13275,7 @@
   }
 }
 #Vector_348 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_348_transform_0 2s linear 1,
     kf_Vector_348_opacity_0 2s linear 1;
@@ -13310,7 +13310,7 @@
   }
 }
 #Vector_349 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_349_transform_0 2s linear 1,
     kf_Vector_349_opacity_0 2s linear 1;
@@ -13345,7 +13345,7 @@
   }
 }
 #Vector_350 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_350_transform_0 2s linear 1,
     kf_Vector_350_opacity_0 2s linear 1;
@@ -13380,7 +13380,7 @@
   }
 }
 #Vector_351 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_351_transform_0 2s linear 1,
     kf_Vector_351_opacity_0 2s linear 1;
@@ -13415,7 +13415,7 @@
   }
 }
 #Vector_352 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_352_transform_0 2s linear 1,
     kf_Vector_352_opacity_0 2s linear 1;
@@ -13450,7 +13450,7 @@
   }
 }
 #Vector_353 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_353_transform_0 2s linear 1,
     kf_Vector_353_opacity_0 2s linear 1;
@@ -13485,7 +13485,7 @@
   }
 }
 #Vector_354 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_354_transform_0 2s linear 1,
     kf_Vector_354_opacity_0 2s linear 1;
@@ -13520,7 +13520,7 @@
   }
 }
 #Vector_355 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_355_transform_0 2s linear 1,
     kf_Vector_355_opacity_0 2s linear 1;
@@ -13555,7 +13555,7 @@
   }
 }
 #Vector_356 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_356_transform_0 2s linear 1,
     kf_Vector_356_opacity_0 2s linear 1;
@@ -13590,7 +13590,7 @@
   }
 }
 #Vector_357 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_357_transform_0 2s linear 1,
     kf_Vector_357_opacity_0 2s linear 1;
@@ -13625,7 +13625,7 @@
   }
 }
 #Vector_358 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_358_transform_0 2s linear 1,
     kf_Vector_358_opacity_0 2s linear 1;
@@ -13660,7 +13660,7 @@
   }
 }
 #Vector_359 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_359_transform_0 2s linear 1,
     kf_Vector_359_opacity_0 2s linear 1;
@@ -13695,7 +13695,7 @@
   }
 }
 #Vector_360 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_360_transform_0 2s linear 1,
     kf_Vector_360_opacity_0 2s linear 1;
@@ -13730,7 +13730,7 @@
   }
 }
 #Vector_361 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_361_transform_0 2s linear 1,
     kf_Vector_361_opacity_0 2s linear 1;
@@ -13765,7 +13765,7 @@
   }
 }
 #Vector_362 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_362_transform_0 2s linear 1,
     kf_Vector_362_opacity_0 2s linear 1;
@@ -13800,7 +13800,7 @@
   }
 }
 #Vector_363 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_363_transform_0 2s linear 1,
     kf_Vector_363_opacity_0 2s linear 1;
@@ -13835,7 +13835,7 @@
   }
 }
 #Vector_364 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_364_transform_0 2s linear 1,
     kf_Vector_364_opacity_0 2s linear 1;
@@ -13870,7 +13870,7 @@
   }
 }
 #Vector_365 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_365_transform_0 2s linear 1,
     kf_Vector_365_opacity_0 2s linear 1;
@@ -13905,7 +13905,7 @@
   }
 }
 #Vector_366 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_366_transform_0 2s linear 1,
     kf_Vector_366_opacity_0 2s linear 1;
@@ -13940,7 +13940,7 @@
   }
 }
 #Vector_367 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_367_transform_0 2s linear 1,
     kf_Vector_367_opacity_0 2s linear 1;
@@ -13975,7 +13975,7 @@
   }
 }
 #Vector_368 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_368_transform_0 2s linear 1,
     kf_Vector_368_opacity_0 2s linear 1;
@@ -14010,7 +14010,7 @@
   }
 }
 #Vector_369 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_369_transform_0 2s linear 1,
     kf_Vector_369_opacity_0 2s linear 1;
@@ -14045,7 +14045,7 @@
   }
 }
 #Vector_370 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_370_transform_0 2s linear 1,
     kf_Vector_370_opacity_0 2s linear 1;
@@ -14080,7 +14080,7 @@
   }
 }
 #Vector_371 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_371_transform_0 2s linear 1,
     kf_Vector_371_opacity_0 2s linear 1;
@@ -14115,7 +14115,7 @@
   }
 }
 #Vector_372 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_372_transform_0 2s linear 1,
     kf_Vector_372_opacity_0 2s linear 1;
@@ -14150,7 +14150,7 @@
   }
 }
 #Vector_373 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_373_transform_0 2s linear 1,
     kf_Vector_373_opacity_0 2s linear 1;
@@ -14185,7 +14185,7 @@
   }
 }
 #Vector_374 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_374_transform_0 2s linear 1,
     kf_Vector_374_opacity_0 2s linear 1;
@@ -14220,7 +14220,7 @@
   }
 }
 #Vector_375 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_375_transform_0 2s linear 1,
     kf_Vector_375_opacity_0 2s linear 1;
@@ -14255,7 +14255,7 @@
   }
 }
 #Vector_376 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_376_transform_0 2s linear 1,
     kf_Vector_376_opacity_0 2s linear 1;
@@ -14290,7 +14290,7 @@
   }
 }
 #Vector_377 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_377_transform_0 2s linear 1,
     kf_Vector_377_opacity_0 2s linear 1;
@@ -14325,7 +14325,7 @@
   }
 }
 #Vector_378 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_378_transform_0 2s linear 1,
     kf_Vector_378_opacity_0 2s linear 1;
@@ -14360,7 +14360,7 @@
   }
 }
 #Vector_379 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_379_transform_0 2s linear 1,
     kf_Vector_379_opacity_0 2s linear 1;
@@ -14395,7 +14395,7 @@
   }
 }
 #Vector_380 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_380_transform_0 2s linear 1,
     kf_Vector_380_opacity_0 2s linear 1;
@@ -14430,7 +14430,7 @@
   }
 }
 #Vector_381 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_381_transform_0 2s linear 1,
     kf_Vector_381_opacity_0 2s linear 1;
@@ -14465,7 +14465,7 @@
   }
 }
 #Vector_382 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_382_transform_0 2s linear 1,
     kf_Vector_382_opacity_0 2s linear 1;
@@ -14500,7 +14500,7 @@
   }
 }
 #Vector_383 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_383_transform_0 2s linear 1,
     kf_Vector_383_opacity_0 2s linear 1;
@@ -14535,7 +14535,7 @@
   }
 }
 #Vector_384 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_384_transform_0 2s linear 1,
     kf_Vector_384_opacity_0 2s linear 1;
@@ -14570,7 +14570,7 @@
   }
 }
 #Vector_385 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_385_transform_0 2s linear 1,
     kf_Vector_385_opacity_0 2s linear 1;
@@ -14605,7 +14605,7 @@
   }
 }
 #Vector_386 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_386_transform_0 2s linear 1,
     kf_Vector_386_opacity_0 2s linear 1;
@@ -14640,7 +14640,7 @@
   }
 }
 #Vector_387 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_387_transform_0 2s linear 1,
     kf_Vector_387_opacity_0 2s linear 1;
@@ -14675,7 +14675,7 @@
   }
 }
 #Vector_388 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_388_transform_0 2s linear 1,
     kf_Vector_388_opacity_0 2s linear 1;
@@ -14710,7 +14710,7 @@
   }
 }
 #Vector_389 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_389_transform_0 2s linear 1,
     kf_Vector_389_opacity_0 2s linear 1;
@@ -14745,7 +14745,7 @@
   }
 }
 #Vector_390 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_390_transform_0 2s linear 1,
     kf_Vector_390_opacity_0 2s linear 1;
@@ -14780,7 +14780,7 @@
   }
 }
 #Vector_391 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_391_transform_0 2s linear 1,
     kf_Vector_391_opacity_0 2s linear 1;
@@ -14815,7 +14815,7 @@
   }
 }
 #Vector_392 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_392_transform_0 2s linear 1,
     kf_Vector_392_opacity_0 2s linear 1;
@@ -14850,7 +14850,7 @@
   }
 }
 #Vector_393 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_393_transform_0 2s linear 1,
     kf_Vector_393_opacity_0 2s linear 1;
@@ -14885,7 +14885,7 @@
   }
 }
 #Vector_394 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_394_transform_0 2s linear 1,
     kf_Vector_394_opacity_0 2s linear 1;
@@ -14920,7 +14920,7 @@
   }
 }
 #Vector_395 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_395_transform_0 2s linear 1,
     kf_Vector_395_opacity_0 2s linear 1;
@@ -14955,7 +14955,7 @@
   }
 }
 #Vector_396 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_396_transform_0 2s linear 1,
     kf_Vector_396_opacity_0 2s linear 1;
@@ -14990,7 +14990,7 @@
   }
 }
 #Vector_397 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_397_transform_0 2s linear 1,
     kf_Vector_397_opacity_0 2s linear 1;
@@ -15025,7 +15025,7 @@
   }
 }
 #Vector_398 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_398_transform_0 2s linear 1,
     kf_Vector_398_opacity_0 2s linear 1;
@@ -15060,7 +15060,7 @@
   }
 }
 #Vector_399 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_399_transform_0 2s linear 1,
     kf_Vector_399_opacity_0 2s linear 1;
@@ -15095,7 +15095,7 @@
   }
 }
 #Vector_400 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_400_transform_0 2s linear 1,
     kf_Vector_400_opacity_0 2s linear 1;
@@ -15130,7 +15130,7 @@
   }
 }
 #Vector_401 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_401_transform_0 2s linear 1,
     kf_Vector_401_opacity_0 2s linear 1;
@@ -15165,7 +15165,7 @@
   }
 }
 #Vector_402 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_402_transform_0 2s linear 1,
     kf_Vector_402_opacity_0 2s linear 1;
@@ -15200,7 +15200,7 @@
   }
 }
 #Vector_403 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_403_transform_0 2s linear 1,
     kf_Vector_403_opacity_0 2s linear 1;
@@ -15235,7 +15235,7 @@
   }
 }
 #Vector_404 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_404_transform_0 2s linear 1,
     kf_Vector_404_opacity_0 2s linear 1;
@@ -15270,7 +15270,7 @@
   }
 }
 #Vector_405 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_405_transform_0 2s linear 1,
     kf_Vector_405_opacity_0 2s linear 1;
@@ -15305,7 +15305,7 @@
   }
 }
 #Vector_406 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_406_transform_0 2s linear 1,
     kf_Vector_406_opacity_0 2s linear 1;
@@ -15340,7 +15340,7 @@
   }
 }
 #Vector_407 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_407_transform_0 2s linear 1,
     kf_Vector_407_opacity_0 2s linear 1;
@@ -15375,7 +15375,7 @@
   }
 }
 #Vector_408 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_408_transform_0 2s linear 1,
     kf_Vector_408_opacity_0 2s linear 1;
@@ -15410,7 +15410,7 @@
   }
 }
 #Vector_409 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_409_transform_0 2s linear 1,
     kf_Vector_409_opacity_0 2s linear 1;
@@ -15445,7 +15445,7 @@
   }
 }
 #Vector_410 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_410_transform_0 2s linear 1,
     kf_Vector_410_opacity_0 2s linear 1;
@@ -15480,7 +15480,7 @@
   }
 }
 #Vector_411 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_411_transform_0 2s linear 1,
     kf_Vector_411_opacity_0 2s linear 1;
@@ -15515,7 +15515,7 @@
   }
 }
 #Vector_412 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_412_transform_0 2s linear 1,
     kf_Vector_412_opacity_0 2s linear 1;
@@ -15550,7 +15550,7 @@
   }
 }
 #Vector_413 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_413_transform_0 2s linear 1,
     kf_Vector_413_opacity_0 2s linear 1;
@@ -15585,7 +15585,7 @@
   }
 }
 #Vector_414 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_414_transform_0 2s linear 1,
     kf_Vector_414_opacity_0 2s linear 1;
@@ -15620,7 +15620,7 @@
   }
 }
 #Vector_415 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_415_transform_0 2s linear 1,
     kf_Vector_415_opacity_0 2s linear 1;
@@ -15655,7 +15655,7 @@
   }
 }
 #Vector_416 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_416_transform_0 2s linear 1,
     kf_Vector_416_opacity_0 2s linear 1;
@@ -15690,7 +15690,7 @@
   }
 }
 #Vector_417 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_417_transform_0 2s linear 1,
     kf_Vector_417_opacity_0 2s linear 1;
@@ -15725,7 +15725,7 @@
   }
 }
 #Vector_418 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_418_transform_0 2s linear 1,
     kf_Vector_418_opacity_0 2s linear 1;
@@ -15760,7 +15760,7 @@
   }
 }
 #Vector_419 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_419_transform_0 2s linear 1,
     kf_Vector_419_opacity_0 2s linear 1;
@@ -15795,7 +15795,7 @@
   }
 }
 #Vector_420 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_420_transform_0 2s linear 1,
     kf_Vector_420_opacity_0 2s linear 1;
@@ -15830,7 +15830,7 @@
   }
 }
 #Vector_421 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_421_transform_0 2s linear 1,
     kf_Vector_421_opacity_0 2s linear 1;
@@ -15865,7 +15865,7 @@
   }
 }
 #Vector_422 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_422_transform_0 2s linear 1,
     kf_Vector_422_opacity_0 2s linear 1;
@@ -15900,7 +15900,7 @@
   }
 }
 #Vector_423 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_423_transform_0 2s linear 1,
     kf_Vector_423_opacity_0 2s linear 1;
@@ -15935,7 +15935,7 @@
   }
 }
 #Vector_424 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_424_transform_0 2s linear 1,
     kf_Vector_424_opacity_0 2s linear 1;
@@ -15970,7 +15970,7 @@
   }
 }
 #Vector_425 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_425_transform_0 2s linear 1,
     kf_Vector_425_opacity_0 2s linear 1;
@@ -16005,7 +16005,7 @@
   }
 }
 #Vector_426 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_426_transform_0 2s linear 1,
     kf_Vector_426_opacity_0 2s linear 1;
@@ -16040,7 +16040,7 @@
   }
 }
 #Vector_427 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_427_transform_0 2s linear 1,
     kf_Vector_427_opacity_0 2s linear 1;
@@ -16075,7 +16075,7 @@
   }
 }
 #Vector_428 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_428_transform_0 2s linear 1,
     kf_Vector_428_opacity_0 2s linear 1;
@@ -16110,7 +16110,7 @@
   }
 }
 #Vector_429 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_429_transform_0 2s linear 1,
     kf_Vector_429_opacity_0 2s linear 1;
@@ -16145,7 +16145,7 @@
   }
 }
 #Vector_430 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_430_transform_0 2s linear 1,
     kf_Vector_430_opacity_0 2s linear 1;
@@ -16180,7 +16180,7 @@
   }
 }
 #Vector_431 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_431_transform_0 2s linear 1,
     kf_Vector_431_opacity_0 2s linear 1;
@@ -16215,7 +16215,7 @@
   }
 }
 #Vector_432 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_432_transform_0 2s linear 1,
     kf_Vector_432_opacity_0 2s linear 1;
@@ -16250,7 +16250,7 @@
   }
 }
 #Vector_433 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_433_transform_0 2s linear 1,
     kf_Vector_433_opacity_0 2s linear 1;
@@ -16285,7 +16285,7 @@
   }
 }
 #Vector_434 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_434_transform_0 2s linear 1,
     kf_Vector_434_opacity_0 2s linear 1;
@@ -16320,7 +16320,7 @@
   }
 }
 #Vector_435 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_435_transform_0 2s linear 1,
     kf_Vector_435_opacity_0 2s linear 1;
@@ -16355,7 +16355,7 @@
   }
 }
 #Vector_436 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_436_transform_0 2s linear 1,
     kf_Vector_436_opacity_0 2s linear 1;
@@ -16390,7 +16390,7 @@
   }
 }
 #Vector_437 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_437_transform_0 2s linear 1,
     kf_Vector_437_opacity_0 2s linear 1;
@@ -16425,7 +16425,7 @@
   }
 }
 #Vector_438 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_438_transform_0 2s linear 1,
     kf_Vector_438_opacity_0 2s linear 1;
@@ -16460,7 +16460,7 @@
   }
 }
 #Vector_439 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_439_transform_0 2s linear 1,
     kf_Vector_439_opacity_0 2s linear 1;
@@ -16495,7 +16495,7 @@
   }
 }
 #Vector_440 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_440_transform_0 2s linear 1,
     kf_Vector_440_opacity_0 2s linear 1;
@@ -16530,7 +16530,7 @@
   }
 }
 #Vector_441 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_441_transform_0 2s linear 1,
     kf_Vector_441_opacity_0 2s linear 1;
@@ -16565,7 +16565,7 @@
   }
 }
 #Vector_442 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_442_transform_0 2s linear 1,
     kf_Vector_442_opacity_0 2s linear 1;
@@ -16600,7 +16600,7 @@
   }
 }
 #Vector_443 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_443_transform_0 2s linear 1,
     kf_Vector_443_opacity_0 2s linear 1;
@@ -16635,7 +16635,7 @@
   }
 }
 #Vector_444 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_444_transform_0 2s linear 1,
     kf_Vector_444_opacity_0 2s linear 1;
@@ -16670,7 +16670,7 @@
   }
 }
 #Vector_445 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_445_transform_0 2s linear 1,
     kf_Vector_445_opacity_0 2s linear 1;
@@ -16705,7 +16705,7 @@
   }
 }
 #Vector_446 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_446_transform_0 2s linear 1,
     kf_Vector_446_opacity_0 2s linear 1;
@@ -16740,7 +16740,7 @@
   }
 }
 #Vector_447 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_447_transform_0 2s linear 1,
     kf_Vector_447_opacity_0 2s linear 1;
@@ -16775,7 +16775,7 @@
   }
 }
 #Vector_448 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_448_transform_0 2s linear 1,
     kf_Vector_448_opacity_0 2s linear 1;
@@ -16810,7 +16810,7 @@
   }
 }
 #Vector_449 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_449_transform_0 2s linear 1,
     kf_Vector_449_opacity_0 2s linear 1;
@@ -16845,7 +16845,7 @@
   }
 }
 #Vector_450 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_450_transform_0 2s linear 1,
     kf_Vector_450_opacity_0 2s linear 1;
@@ -16880,7 +16880,7 @@
   }
 }
 #Vector_451 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_451_transform_0 2s linear 1,
     kf_Vector_451_opacity_0 2s linear 1;
@@ -16915,7 +16915,7 @@
   }
 }
 #Vector_452 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_452_transform_0 2s linear 1,
     kf_Vector_452_opacity_0 2s linear 1;
@@ -16950,7 +16950,7 @@
   }
 }
 #Vector_453 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_453_transform_0 2s linear 1,
     kf_Vector_453_opacity_0 2s linear 1;
@@ -16985,7 +16985,7 @@
   }
 }
 #Vector_454 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_454_transform_0 2s linear 1,
     kf_Vector_454_opacity_0 2s linear 1;
@@ -17020,7 +17020,7 @@
   }
 }
 #Vector_455 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_455_transform_0 2s linear 1,
     kf_Vector_455_opacity_0 2s linear 1;
@@ -17055,7 +17055,7 @@
   }
 }
 #Vector_456 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_456_transform_0 2s linear 1,
     kf_Vector_456_opacity_0 2s linear 1;
@@ -17090,7 +17090,7 @@
   }
 }
 #Vector_457 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_457_transform_0 2s linear 1,
     kf_Vector_457_opacity_0 2s linear 1;
@@ -17125,7 +17125,7 @@
   }
 }
 #Vector_458 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_458_transform_0 2s linear 1,
     kf_Vector_458_opacity_0 2s linear 1;
@@ -17160,7 +17160,7 @@
   }
 }
 #Vector_459 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_459_transform_0 2s linear 1,
     kf_Vector_459_opacity_0 2s linear 1;
@@ -17195,7 +17195,7 @@
   }
 }
 #Vector_460 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_460_transform_0 2s linear 1,
     kf_Vector_460_opacity_0 2s linear 1;
@@ -17230,7 +17230,7 @@
   }
 }
 #Vector_461 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_461_transform_0 2s linear 1,
     kf_Vector_461_opacity_0 2s linear 1;
@@ -17265,7 +17265,7 @@
   }
 }
 #Vector_462 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_462_transform_0 2s linear 1,
     kf_Vector_462_opacity_0 2s linear 1;
@@ -17300,7 +17300,7 @@
   }
 }
 #Vector_463 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_463_transform_0 2s linear 1,
     kf_Vector_463_opacity_0 2s linear 1;
@@ -17335,7 +17335,7 @@
   }
 }
 #Vector_464 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_464_transform_0 2s linear 1,
     kf_Vector_464_opacity_0 2s linear 1;
@@ -17370,7 +17370,7 @@
   }
 }
 #Vector_465 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_465_transform_0 2s linear 1,
     kf_Vector_465_opacity_0 2s linear 1;
@@ -17405,7 +17405,7 @@
   }
 }
 #Vector_466 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_466_transform_0 2s linear 1,
     kf_Vector_466_opacity_0 2s linear 1;
@@ -17440,7 +17440,7 @@
   }
 }
 #Vector_467 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_467_transform_0 2s linear 1,
     kf_Vector_467_opacity_0 2s linear 1;
@@ -17475,7 +17475,7 @@
   }
 }
 #Vector_468 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_468_transform_0 2s linear 1,
     kf_Vector_468_opacity_0 2s linear 1;
@@ -17510,7 +17510,7 @@
   }
 }
 #Vector_469 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_469_transform_0 2s linear 1,
     kf_Vector_469_opacity_0 2s linear 1;
@@ -17545,7 +17545,7 @@
   }
 }
 #Vector_470 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_470_transform_0 2s linear 1,
     kf_Vector_470_opacity_0 2s linear 1;
@@ -17580,7 +17580,7 @@
   }
 }
 #Vector_471 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_471_transform_0 2s linear 1,
     kf_Vector_471_opacity_0 2s linear 1;
@@ -17615,7 +17615,7 @@
   }
 }
 #Vector_472 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_472_transform_0 2s linear 1,
     kf_Vector_472_opacity_0 2s linear 1;
@@ -17650,7 +17650,7 @@
   }
 }
 #Vector_473 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_473_transform_0 2s linear 1,
     kf_Vector_473_opacity_0 2s linear 1;
@@ -17685,7 +17685,7 @@
   }
 }
 #Vector_474 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_474_transform_0 2s linear 1,
     kf_Vector_474_opacity_0 2s linear 1;
@@ -17720,7 +17720,7 @@
   }
 }
 #Vector_475 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_475_transform_0 2s linear 1,
     kf_Vector_475_opacity_0 2s linear 1;
@@ -17755,7 +17755,7 @@
   }
 }
 #Vector_476 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_476_transform_0 2s linear 1,
     kf_Vector_476_opacity_0 2s linear 1;
@@ -17790,7 +17790,7 @@
   }
 }
 #Vector_477 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_477_transform_0 2s linear 1,
     kf_Vector_477_opacity_0 2s linear 1;
@@ -17825,7 +17825,7 @@
   }
 }
 #Vector_478 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_478_transform_0 2s linear 1,
     kf_Vector_478_opacity_0 2s linear 1;
@@ -17860,7 +17860,7 @@
   }
 }
 #Vector_479 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_479_transform_0 2s linear 1,
     kf_Vector_479_opacity_0 2s linear 1;
@@ -17895,7 +17895,7 @@
   }
 }
 #Vector_480 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_480_transform_0 2s linear 1,
     kf_Vector_480_opacity_0 2s linear 1;
@@ -17930,7 +17930,7 @@
   }
 }
 #Vector_481 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_481_transform_0 2s linear 1,
     kf_Vector_481_opacity_0 2s linear 1;
@@ -17965,7 +17965,7 @@
   }
 }
 #Vector_482 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_482_transform_0 2s linear 1,
     kf_Vector_482_opacity_0 2s linear 1;
@@ -18000,7 +18000,7 @@
   }
 }
 #Vector_483 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_483_transform_0 2s linear 1,
     kf_Vector_483_opacity_0 2s linear 1;
@@ -18035,7 +18035,7 @@
   }
 }
 #Vector_484 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_484_transform_0 2s linear 1,
     kf_Vector_484_opacity_0 2s linear 1;
@@ -18070,7 +18070,7 @@
   }
 }
 #Vector_485 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_485_transform_0 2s linear 1,
     kf_Vector_485_opacity_0 2s linear 1;
@@ -18105,7 +18105,7 @@
   }
 }
 #Vector_486 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_486_transform_0 2s linear 1,
     kf_Vector_486_opacity_0 2s linear 1;
@@ -18140,7 +18140,7 @@
   }
 }
 #Vector_487 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_487_transform_0 2s linear 1,
     kf_Vector_487_opacity_0 2s linear 1;
@@ -18175,7 +18175,7 @@
   }
 }
 #Vector_488 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_488_transform_0 2s linear 1,
     kf_Vector_488_opacity_0 2s linear 1;
@@ -18210,7 +18210,7 @@
   }
 }
 #Vector_489 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_489_transform_0 2s linear 1,
     kf_Vector_489_opacity_0 2s linear 1;
@@ -18245,7 +18245,7 @@
   }
 }
 #Vector_490 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_490_transform_0 2s linear 1,
     kf_Vector_490_opacity_0 2s linear 1;
@@ -18280,7 +18280,7 @@
   }
 }
 #Vector_491 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_491_transform_0 2s linear 1,
     kf_Vector_491_opacity_0 2s linear 1;
@@ -18315,7 +18315,7 @@
   }
 }
 #Vector_492 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_492_transform_0 2s linear 1,
     kf_Vector_492_opacity_0 2s linear 1;
@@ -18350,7 +18350,7 @@
   }
 }
 #Vector_493 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_493_transform_0 2s linear 1,
     kf_Vector_493_opacity_0 2s linear 1;
@@ -18385,7 +18385,7 @@
   }
 }
 #Vector_494 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_494_transform_0 2s linear 1,
     kf_Vector_494_opacity_0 2s linear 1;
@@ -18420,7 +18420,7 @@
   }
 }
 #Vector_495 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_495_transform_0 2s linear 1,
     kf_Vector_495_opacity_0 2s linear 1;
@@ -18455,7 +18455,7 @@
   }
 }
 #Vector_496 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_496_transform_0 2s linear 1,
     kf_Vector_496_opacity_0 2s linear 1;
@@ -18490,7 +18490,7 @@
   }
 }
 #Vector_497 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_497_transform_0 2s linear 1,
     kf_Vector_497_opacity_0 2s linear 1;
@@ -18525,7 +18525,7 @@
   }
 }
 #Vector_498 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_498_transform_0 2s linear 1,
     kf_Vector_498_opacity_0 2s linear 1;
@@ -18560,7 +18560,7 @@
   }
 }
 #Vector_499 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_499_transform_0 2s linear 1,
     kf_Vector_499_opacity_0 2s linear 1;
@@ -18595,7 +18595,7 @@
   }
 }
 #Vector_500 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_500_transform_0 2s linear 1,
     kf_Vector_500_opacity_0 2s linear 1;
@@ -18630,7 +18630,7 @@
   }
 }
 #Vector_501 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_501_transform_0 2s linear 1,
     kf_Vector_501_opacity_0 2s linear 1;
@@ -18665,7 +18665,7 @@
   }
 }
 #Vector_502 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_502_transform_0 2s linear 1,
     kf_Vector_502_opacity_0 2s linear 1;
@@ -18700,7 +18700,7 @@
   }
 }
 #Vector_503 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_503_transform_0 2s linear 1,
     kf_Vector_503_opacity_0 2s linear 1;
@@ -18735,7 +18735,7 @@
   }
 }
 #Vector_504 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_504_transform_0 2s linear 1,
     kf_Vector_504_opacity_0 2s linear 1;
@@ -18770,7 +18770,7 @@
   }
 }
 #Vector_505 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_505_transform_0 2s linear 1,
     kf_Vector_505_opacity_0 2s linear 1;
@@ -18805,7 +18805,7 @@
   }
 }
 #Vector_506 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_506_transform_0 2s linear 1,
     kf_Vector_506_opacity_0 2s linear 1;
@@ -18840,7 +18840,7 @@
   }
 }
 #Vector_507 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_507_transform_0 2s linear 1,
     kf_Vector_507_opacity_0 2s linear 1;
@@ -18875,7 +18875,7 @@
   }
 }
 #Vector_508 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_508_transform_0 2s linear 1,
     kf_Vector_508_opacity_0 2s linear 1;
@@ -18910,7 +18910,7 @@
   }
 }
 #Vector_509 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_509_transform_0 2s linear 1,
     kf_Vector_509_opacity_0 2s linear 1;
@@ -18945,7 +18945,7 @@
   }
 }
 #Vector_510 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_510_transform_0 2s linear 1,
     kf_Vector_510_opacity_0 2s linear 1;
@@ -18980,7 +18980,7 @@
   }
 }
 #Vector_511 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_511_transform_0 2s linear 1,
     kf_Vector_511_opacity_0 2s linear 1;
@@ -19015,7 +19015,7 @@
   }
 }
 #Vector_512 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_512_transform_0 2s linear 1,
     kf_Vector_512_opacity_0 2s linear 1;
@@ -19050,7 +19050,7 @@
   }
 }
 #Vector_513 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_513_transform_0 2s linear 1,
     kf_Vector_513_opacity_0 2s linear 1;
@@ -19085,7 +19085,7 @@
   }
 }
 #Vector_514 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_514_transform_0 2s linear 1,
     kf_Vector_514_opacity_0 2s linear 1;
@@ -19120,7 +19120,7 @@
   }
 }
 #Vector_515 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_515_transform_0 2s linear 1,
     kf_Vector_515_opacity_0 2s linear 1;
@@ -19155,7 +19155,7 @@
   }
 }
 #Vector_516 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_516_transform_0 2s linear 1,
     kf_Vector_516_opacity_0 2s linear 1;
@@ -19190,7 +19190,7 @@
   }
 }
 #Vector_517 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_517_transform_0 2s linear 1,
     kf_Vector_517_opacity_0 2s linear 1;
@@ -19225,7 +19225,7 @@
   }
 }
 #Vector_518 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_518_transform_0 2s linear 1,
     kf_Vector_518_opacity_0 2s linear 1;
@@ -19260,7 +19260,7 @@
   }
 }
 #Vector_519 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_519_transform_0 2s linear 1,
     kf_Vector_519_opacity_0 2s linear 1;
@@ -19295,7 +19295,7 @@
   }
 }
 #Vector_520 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_520_transform_0 2s linear 1,
     kf_Vector_520_opacity_0 2s linear 1;
@@ -19330,7 +19330,7 @@
   }
 }
 #Vector_521 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_521_transform_0 2s linear 1,
     kf_Vector_521_opacity_0 2s linear 1;
@@ -19365,7 +19365,7 @@
   }
 }
 #Vector_522 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_522_transform_0 2s linear 1,
     kf_Vector_522_opacity_0 2s linear 1;
@@ -19400,7 +19400,7 @@
   }
 }
 #Vector_523 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_523_transform_0 2s linear 1,
     kf_Vector_523_opacity_0 2s linear 1;
@@ -19435,7 +19435,7 @@
   }
 }
 #Vector_524 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_524_transform_0 2s linear 1,
     kf_Vector_524_opacity_0 2s linear 1;
@@ -19470,7 +19470,7 @@
   }
 }
 #Vector_525 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_525_transform_0 2s linear 1,
     kf_Vector_525_opacity_0 2s linear 1;
@@ -19505,7 +19505,7 @@
   }
 }
 #Vector_526 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_526_transform_0 2s linear 1,
     kf_Vector_526_opacity_0 2s linear 1;
@@ -19540,7 +19540,7 @@
   }
 }
 #Vector_527 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_527_transform_0 2s linear 1,
     kf_Vector_527_opacity_0 2s linear 1;
@@ -19575,7 +19575,7 @@
   }
 }
 #Vector_528 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_528_transform_0 2s linear 1,
     kf_Vector_528_opacity_0 2s linear 1;
@@ -19610,7 +19610,7 @@
   }
 }
 #Vector_529 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_529_transform_0 2s linear 1,
     kf_Vector_529_opacity_0 2s linear 1;
@@ -19645,7 +19645,7 @@
   }
 }
 #Vector_530 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_530_transform_0 2s linear 1,
     kf_Vector_530_opacity_0 2s linear 1;
@@ -19680,7 +19680,7 @@
   }
 }
 #Vector_531 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_531_transform_0 2s linear 1,
     kf_Vector_531_opacity_0 2s linear 1;
@@ -19715,7 +19715,7 @@
   }
 }
 #Vector_532 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_532_transform_0 2s linear 1,
     kf_Vector_532_opacity_0 2s linear 1;
@@ -19750,7 +19750,7 @@
   }
 }
 #Vector_533 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_533_transform_0 2s linear 1,
     kf_Vector_533_opacity_0 2s linear 1;
@@ -19785,7 +19785,7 @@
   }
 }
 #Vector_534 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_534_transform_0 2s linear 1,
     kf_Vector_534_opacity_0 2s linear 1;
@@ -19820,7 +19820,7 @@
   }
 }
 #Vector_535 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_535_transform_0 2s linear 1,
     kf_Vector_535_opacity_0 2s linear 1;
@@ -19855,7 +19855,7 @@
   }
 }
 #Vector_536 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_536_transform_0 2s linear 1,
     kf_Vector_536_opacity_0 2s linear 1;
@@ -19890,7 +19890,7 @@
   }
 }
 #Vector_537 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_537_transform_0 2s linear 1,
     kf_Vector_537_opacity_0 2s linear 1;
@@ -19925,7 +19925,7 @@
   }
 }
 #Vector_538 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_538_transform_0 2s linear 1,
     kf_Vector_538_opacity_0 2s linear 1;
@@ -19960,7 +19960,7 @@
   }
 }
 #Vector_539 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_539_transform_0 2s linear 1,
     kf_Vector_539_opacity_0 2s linear 1;
@@ -19995,7 +19995,7 @@
   }
 }
 #Vector_540 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_540_transform_0 2s linear 1,
     kf_Vector_540_opacity_0 2s linear 1;
@@ -20030,7 +20030,7 @@
   }
 }
 #Vector_541 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_541_transform_0 2s linear 1,
     kf_Vector_541_opacity_0 2s linear 1;
@@ -20065,7 +20065,7 @@
   }
 }
 #Vector_542 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_542_transform_0 2s linear 1,
     kf_Vector_542_opacity_0 2s linear 1;
@@ -20100,7 +20100,7 @@
   }
 }
 #Vector_543 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_543_transform_0 2s linear 1,
     kf_Vector_543_opacity_0 2s linear 1;
@@ -20135,7 +20135,7 @@
   }
 }
 #Vector_544 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_544_transform_0 2s linear 1,
     kf_Vector_544_opacity_0 2s linear 1;
@@ -20170,7 +20170,7 @@
   }
 }
 #Vector_545 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_545_transform_0 2s linear 1,
     kf_Vector_545_opacity_0 2s linear 1;
@@ -20205,7 +20205,7 @@
   }
 }
 #Vector_546 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_546_transform_0 2s linear 1,
     kf_Vector_546_opacity_0 2s linear 1;
@@ -20240,7 +20240,7 @@
   }
 }
 #Vector_547 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_547_transform_0 2s linear 1,
     kf_Vector_547_opacity_0 2s linear 1;
@@ -20275,7 +20275,7 @@
   }
 }
 #Vector_548 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_548_transform_0 2s linear 1,
     kf_Vector_548_opacity_0 2s linear 1;
@@ -20310,7 +20310,7 @@
   }
 }
 #Vector_549 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_549_transform_0 2s linear 1,
     kf_Vector_549_opacity_0 2s linear 1;
@@ -20345,7 +20345,7 @@
   }
 }
 #Vector_550 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_550_transform_0 2s linear 1,
     kf_Vector_550_opacity_0 2s linear 1;
@@ -20380,7 +20380,7 @@
   }
 }
 #Vector_551 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_551_transform_0 2s linear 1,
     kf_Vector_551_opacity_0 2s linear 1;
@@ -20415,7 +20415,7 @@
   }
 }
 #Vector_552 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_552_transform_0 2s linear 1,
     kf_Vector_552_opacity_0 2s linear 1;
@@ -20450,7 +20450,7 @@
   }
 }
 #Vector_553 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_553_transform_0 2s linear 1,
     kf_Vector_553_opacity_0 2s linear 1;
@@ -20485,7 +20485,7 @@
   }
 }
 #Vector_554 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_554_transform_0 2s linear 1,
     kf_Vector_554_opacity_0 2s linear 1;
@@ -20520,7 +20520,7 @@
   }
 }
 #Vector_555 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_555_transform_0 2s linear 1,
     kf_Vector_555_opacity_0 2s linear 1;
@@ -20555,7 +20555,7 @@
   }
 }
 #Vector_556 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_556_transform_0 2s linear 1,
     kf_Vector_556_opacity_0 2s linear 1;
@@ -20590,7 +20590,7 @@
   }
 }
 #Vector_557 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_557_transform_0 2s linear 1,
     kf_Vector_557_opacity_0 2s linear 1;
@@ -20625,7 +20625,7 @@
   }
 }
 #Vector_558 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_558_transform_0 2s linear 1,
     kf_Vector_558_opacity_0 2s linear 1;
@@ -20660,7 +20660,7 @@
   }
 }
 #Vector_559 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_559_transform_0 2s linear 1,
     kf_Vector_559_opacity_0 2s linear 1;
@@ -20695,7 +20695,7 @@
   }
 }
 #Vector_560 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_560_transform_0 2s linear 1,
     kf_Vector_560_opacity_0 2s linear 1;
@@ -20730,7 +20730,7 @@
   }
 }
 #Vector_561 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_561_transform_0 2s linear 1,
     kf_Vector_561_opacity_0 2s linear 1;
@@ -20765,7 +20765,7 @@
   }
 }
 #Vector_562 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_562_transform_0 2s linear 1,
     kf_Vector_562_opacity_0 2s linear 1;
@@ -20800,7 +20800,7 @@
   }
 }
 #Vector_563 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_563_transform_0 2s linear 1,
     kf_Vector_563_opacity_0 2s linear 1;
@@ -20835,7 +20835,7 @@
   }
 }
 #Vector_564 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_564_transform_0 2s linear 1,
     kf_Vector_564_opacity_0 2s linear 1;
@@ -20870,7 +20870,7 @@
   }
 }
 #Vector_565 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_565_transform_0 2s linear 1,
     kf_Vector_565_opacity_0 2s linear 1;
@@ -20905,7 +20905,7 @@
   }
 }
 #Vector_566 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_566_transform_0 2s linear 1,
     kf_Vector_566_opacity_0 2s linear 1;
@@ -20940,7 +20940,7 @@
   }
 }
 #Vector_567 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_567_transform_0 2s linear 1,
     kf_Vector_567_opacity_0 2s linear 1;
@@ -20975,7 +20975,7 @@
   }
 }
 #Vector_568 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_568_transform_0 2s linear 1,
     kf_Vector_568_opacity_0 2s linear 1;
@@ -21010,7 +21010,7 @@
   }
 }
 #Vector_569 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_569_transform_0 2s linear 1,
     kf_Vector_569_opacity_0 2s linear 1;
@@ -21045,7 +21045,7 @@
   }
 }
 #Vector_570 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_570_transform_0 2s linear 1,
     kf_Vector_570_opacity_0 2s linear 1;
@@ -21080,7 +21080,7 @@
   }
 }
 #Vector_571 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_571_transform_0 2s linear 1,
     kf_Vector_571_opacity_0 2s linear 1;
@@ -21115,7 +21115,7 @@
   }
 }
 #Vector_572 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_572_transform_0 2s linear 1,
     kf_Vector_572_opacity_0 2s linear 1;
@@ -21150,7 +21150,7 @@
   }
 }
 #Vector_573 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_573_transform_0 2s linear 1,
     kf_Vector_573_opacity_0 2s linear 1;
@@ -21185,7 +21185,7 @@
   }
 }
 #Vector_574 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_574_transform_0 2s linear 1,
     kf_Vector_574_opacity_0 2s linear 1;
@@ -21220,7 +21220,7 @@
   }
 }
 #Vector_575 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_575_transform_0 2s linear 1,
     kf_Vector_575_opacity_0 2s linear 1;
@@ -21255,7 +21255,7 @@
   }
 }
 #Vector_576 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_576_transform_0 2s linear 1,
     kf_Vector_576_opacity_0 2s linear 1;
@@ -21290,7 +21290,7 @@
   }
 }
 #Vector_577 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_577_transform_0 2s linear 1,
     kf_Vector_577_opacity_0 2s linear 1;
@@ -21325,7 +21325,7 @@
   }
 }
 #Vector_578 {
-  transform-origin: 0 0;
+  transform-origin: 0 0; transform-box: fill-box;
   animation:
     kf_Vector_578_transform_0 2s linear 1,
     kf_Vector_578_opacity_0 2s linear 1;
