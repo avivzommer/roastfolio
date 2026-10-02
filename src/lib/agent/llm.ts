@@ -77,12 +77,23 @@ async function runReal(
     providedPassword: args.providedPassword,
   };
 
-  // Build content blocks: text prompt + every screenshot as an image.
+  // Build content blocks: text prompt, then one text label + one image
+  // per page. The per-page labels let the model anchor visual critique
+  // to the right URL ("on screenshot 3, the SysAid dashboard is
+  // unreadable at ~380px"). Without labels the images arrive unnamed
+  // and the model has to count position — which it does poorly and
+  // falls back to generic "some screenshots are small" phrasing.
   const content: Anthropic.Messages.ContentBlockParam[] = [
     { type: "text", text: buildUserPrompt(reviewerInput) },
   ];
   const allPages = [args.crawl.homepage, ...args.crawl.caseStudies];
-  for (const p of allPages) {
+  for (let i = 0; i < allPages.length; i++) {
+    const p = allPages[i];
+    const role = i === 0 ? "homepage" : `case study ${i}`;
+    content.push({
+      type: "text",
+      text: `--- Screenshot ${i + 1} (${role}): ${p.url} ---`,
+    });
     content.push({
       type: "image",
       source: {
