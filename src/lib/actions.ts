@@ -239,6 +239,9 @@ export async function submitFeedback(
   helpful: boolean,
   comment?: string,
 ) {
+  console.log(
+    `[submitFeedback] called reviewId=${reviewId} helpful=${helpful} hasComment=${!!comment}`,
+  );
   const trimmed = comment?.trim() || null;
   await prisma.feedback.create({
     data: {
@@ -248,29 +251,37 @@ export async function submitFeedback(
       comment: trimmed,
     },
   });
+  console.log(`[submitFeedback] db row written`);
 
-  // Fire-and-forget notification. Wrapped in a self-invoked async so the
-  // caller returns as soon as the DB write is done, regardless of Resend
-  // latency or availability. Errors are swallowed inside email.ts.
-  void (async () => {
-    try {
-      const review = await prisma.review.findUnique({
-        where: { id: reviewId },
-        select: { portfolioUrl: true },
-      });
-      if (!review) return;
-      const { sendFeedbackNotification } = await import("./email");
-      await sendFeedbackNotification({
-        reviewId,
-        helpful,
-        comment: trimmed,
-        portfolioUrl: review.portfolioUrl,
-        siteBaseUrl: process.env.PUBLIC_BASE_URL ?? "https://roastfolio.up.railway.app",
-      });
-    } catch (err) {
-      console.error("[submitFeedback] notification failed:", err);
+  // Previously used a `void (async () => {...})()` fire-and-forget pattern,
+  // but promises that aren't awaited inside a Next.js server action can be
+  // torn down with the response before they resolve — the Resend fetch
+  // never completed on prod. Awaiting (even for ~500ms) is more reliable;
+  // we still catch and log so a Resend failure doesn't bubble up to the
+  // user, whose DB row was already saved.
+  try {
+    const review = await prisma.review.findUnique({
+      where: { id: reviewId },
+      select: { portfolioUrl: true },
+    });
+    if (!review) {
+      console.warn(`[submitFeedback] no review row for ${reviewId}; skipping email`);
+      return;
     }
-  })();
+    const { sendFeedbackNotification } = await import("./email");
+    console.log(`[submitFeedback] calling sendFeedbackNotification…`);
+    await sendFeedbackNotification({
+      reviewId,
+      helpful,
+      comment: trimmed,
+      portfolioUrl: review.portfolioUrl,
+      siteBaseUrl:
+        process.env.PUBLIC_BASE_URL ?? "https://roastfolio.up.railway.app",
+    });
+    console.log(`[submitFeedback] email send returned OK`);
+  } catch (err) {
+    console.error("[submitFeedback] notification failed:", err);
+  }
 }
 
 /**

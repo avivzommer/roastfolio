@@ -50,6 +50,10 @@ export async function sendFeedbackNotification(
   const to = process.env.FEEDBACK_NOTIFY_EMAIL;
   const from = process.env.EMAIL_FROM;
 
+  console.log(
+    `[email] env check: hasKey=${!!apiKey} to=${to ? to.length + "ch" : "MISSING"} from=${from ? from.length + "ch" : "MISSING"}`,
+  );
+
   if (!apiKey || !to || !from) {
     console.warn(
       "[email] Skipping feedback notification — RESEND_API_KEY, FEEDBACK_NOTIFY_EMAIL, or EMAIL_FROM is not set.",
@@ -87,14 +91,16 @@ export async function sendFeedbackNotification(
   `;
 
   try {
+    console.log(`[email] about to call Resend from=${from} to=${to} subject="${subject}"`);
     const resend = new Resend(apiKey);
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from,
       to,
       subject,
       text: textBody,
       html: htmlBody,
     });
+    console.log(`[email] Resend returned:`, JSON.stringify(result));
   } catch (err) {
     // Log but never throw — user's feedback submission must still succeed.
     console.error("[email] Failed to send feedback notification:", err);
