@@ -152,17 +152,45 @@ export function overviewRows(scores: OverviewScores): OverviewRow[] {
 }
 
 /**
- * Splits the growth lever into a statement (first sentence) and a body (the rest).
- * The first sentence is short and bold; the rest is supporting context.
+ * Splits the growth lever into a statement (short, rendered big) and a body
+ * (longer, rendered small). The LLM may return either:
+ *   a) a short diagnosis followed by a supporting sentence (two sentences),
+ *   b) a single long sentence that uses a colon as the pivot
+ *      ("The UI craft that matters is hidden: screens are too small..."),
+ *   c) a single long sentence with no pivot at all.
+ *
+ * Strategy: split on the first sentence terminator; if that leaves the
+ * statement over ~15 words, re-split at the first colon or em-dash instead.
+ * As a last resort, keep the whole thing in `statement` and let the
+ * component scale the font down.
  */
 export function splitGrowthLever(text: string): {
   statement: string;
   body: string;
 } {
   if (!text) return { statement: "", body: "" };
-  const m = text.match(/^([^.!?]*[.!?])\s+(.*)$/s);
-  if (!m) return { statement: text, body: "" };
-  return { statement: m[1].trim(), body: m[2].trim() };
+
+  // First try: split on a terminator (., !, ?) followed by whitespace.
+  const terminatorSplit = text.match(/^([^.!?]*[.!?])\s+(.*)$/s);
+  if (terminatorSplit) {
+    const [, head, tail] = terminatorSplit;
+    const headWords = head.trim().split(/\s+/).filter(Boolean).length;
+    if (headWords <= 15) {
+      return { statement: head.trim(), body: tail.trim() };
+    }
+    // Head is still too long to render as a display line — fall through
+    // and let the pivot splitter below have a go.
+  }
+
+  // Second try: colon or em-dash pivot in a single long sentence.
+  const pivotSplit = text.match(/^([^:—]{10,80})[:—]\s+(.+)$/s);
+  if (pivotSplit) {
+    return { statement: pivotSplit[1].trim(), body: pivotSplit[2].trim() };
+  }
+
+  // Fallback: single sentence, no pivot. Let the component render it at
+  // a smaller font (see word-count tier logic in GrowthLeverCallout).
+  return { statement: text.trim(), body: "" };
 }
 
 /** Average of overview scores → the headline rating tier shown on Score Breakdown. */
