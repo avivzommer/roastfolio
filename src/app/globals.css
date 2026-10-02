@@ -329,3 +329,38 @@
 
 /* Hidden until needed (rolling animations off for now). */
 .reveal { opacity: 1; }
+
+/* Review page doc grid: on desktop (lg = 1024px+) we paint a 260px sidebar
+   stripe on the left via a background gradient so the sidebar column fills
+   the whole card height regardless of the sticky aside's measured size.
+   On mobile the sidebar is hidden entirely, so the stripe must not render —
+   otherwise it leaks as a dark peach column on the right of the card. */
+@media (min-width: 1024px) {
+  .review-doc-grid {
+    background: linear-gradient(
+      to right,
+      var(--sidebar-bg) 0,
+      var(--sidebar-bg) 260px,
+      var(--doc-bg) 260px,
+      var(--doc-bg) 100%
+    ) !important;
+  }
+}
+
+/* BrowserShot's decorative flame — defaults to a smaller, mostly-inside
+   placement so it never pushes the mobile document past the viewport.
+   Desktop restores the larger, overhanging look. */
+.rf-browser-fire {
+  width: 130px;
+  height: 130px;
+  right: -14px;
+  bottom: -20px;
+}
+@media (min-width: 640px) {
+  .rf-browser-fire {
+    width: 200px;
+    height: 200px;
+    right: -36px;
+    bottom: -30px;
+  }
+}

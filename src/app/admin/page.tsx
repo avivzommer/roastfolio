@@ -2,16 +2,14 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { isAdmin } from "@/lib/auth";
-import { logoutAdmin } from "@/lib/actions";
 import { getMonthlyBudget } from "@/lib/limits";
+import { AdminHeader } from "@/components/admin/header";
 import {
-  LogOut,
   ArrowRight,
   ListChecks,
   Mail,
   MessageSquare,
   AlertTriangle,
-  ArrowLeft,
 } from "lucide-react";
 
 function startOfMonthUtc(d = new Date()): Date {
@@ -103,50 +101,13 @@ export default async function AdminOverviewPage() {
 
   return (
     <>
-      <header
-        className="sticky top-0 z-40 flex h-[72px] items-center gap-4 px-6"
-        style={{
-          background: "color-mix(in srgb, var(--s-low) 86%, transparent)",
-          backdropFilter: "saturate(150%) blur(16px)",
-          WebkitBackdropFilter: "saturate(150%) blur(16px)",
-        }}
-      >
-        <Link href="/admin" className="flex items-center gap-3.5">
-          <div
-            className="flex h-11 w-11 items-center justify-center rounded-full text-base font-bold tracking-wide"
-            style={{
-              background: "var(--m3-primary)",
-              color: "var(--m3-on-primary)",
-            }}
-          >
-            PR
-          </div>
-          <div>
-            <div
-              className="text-[18px] font-bold leading-tight tracking-tight"
-              style={{ color: "var(--on-surface)" }}
-            >
-              Admin · Overview
-            </div>
-            <div className="text-xs" style={{ color: "var(--on-surface-variant)" }}>
-              Roastfolio health at a glance
-            </div>
-          </div>
-        </Link>
-        <div className="flex-1" />
-        <Link href="/" className="m3-btn">
-          <ArrowLeft className="size-4" />
-          Home
-        </Link>
-        <form action={logoutAdmin}>
-          <button type="submit" className="m3-btn">
-            <LogOut className="size-4" />
-            Sign out
-          </button>
-        </form>
-      </header>
+      <AdminHeader
+        section="overview"
+        title="Admin · Overview"
+        subtitle="Roastfolio health at a glance"
+      />
 
-      <main className="mx-auto w-full max-w-6xl px-6 py-12">
+      <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
         {/* Top-line health strip */}
         <section
           className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"

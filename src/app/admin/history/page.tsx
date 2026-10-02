@@ -2,7 +2,6 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { isAdmin } from "@/lib/auth";
-import { logoutAdmin } from "@/lib/actions";
 import {
   getMonthlyBudget,
   ipRateLimitPerHour,
@@ -10,7 +9,7 @@ import {
 import type { ReviewReport } from "@/lib/types";
 import { SENIORITY_LABEL, VERDICT_LABEL } from "@/lib/types";
 import { RatingChip } from "@/components/review/rating-chip";
-import { LogOut, ArrowLeft, Mail, MessageSquare, AlertTriangle } from "lucide-react";
+import { AdminHeader } from "@/components/admin/header";
 
 function formatDate(d: Date) {
   return d.toISOString().slice(0, 10);
@@ -65,60 +64,13 @@ export default async function AdminHistoryPage() {
 
   return (
     <>
-      {/* Top bar */}
-      <header
-        className="sticky top-0 z-40 flex h-[72px] items-center gap-4 px-6"
-        style={{
-          background: "color-mix(in srgb, var(--s-low) 86%, transparent)",
-          backdropFilter: "saturate(150%) blur(16px)",
-          WebkitBackdropFilter: "saturate(150%) blur(16px)",
-        }}
-      >
-        <Link href="/admin" className="flex items-center gap-3.5">
-          <div
-            className="flex h-11 w-11 items-center justify-center rounded-full text-base font-bold tracking-wide"
-            style={{ background: "var(--m3-primary)", color: "var(--m3-on-primary)" }}
-          >
-            PR
-          </div>
-          <div>
-            <div
-              className="text-[18px] font-bold leading-tight tracking-tight"
-              style={{ color: "var(--on-surface)" }}
-            >
-              Admin · Review history
-            </div>
-            <div className="text-xs" style={{ color: "var(--on-surface-variant)" }}>
-              Every review the system has run
-            </div>
-          </div>
-        </Link>
-        <div className="flex-1" />
-        <Link href="/admin/waitlist" className="m3-btn">
-          <Mail className="size-4" />
-          Waitlist
-        </Link>
-        <Link href="/admin/feedback" className="m3-btn">
-          <MessageSquare className="size-4" />
-          Feedback
-        </Link>
-        <Link href="/admin/errors" className="m3-btn">
-          <AlertTriangle className="size-4" />
-          Errors
-        </Link>
-        <Link href="/" className="m3-btn">
-          <ArrowLeft className="size-4" />
-          Home
-        </Link>
-        <form action={logoutAdmin}>
-          <button type="submit" className="m3-btn">
-            <LogOut className="size-4" />
-            Sign out
-          </button>
-        </form>
-      </header>
+      <AdminHeader
+        section="history"
+        title="Admin · Review history"
+        subtitle="Every review the system has run"
+      />
 
-      <main className="mx-auto w-full max-w-6xl px-6 py-12">
+      <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
         {/* Safety nets — budget + recent IP activity */}
         <section
           className="mb-8 grid gap-4 sm:grid-cols-2"
@@ -262,14 +214,14 @@ export default async function AdminHistoryPage() {
 
         {/* Reviews table */}
         <div
-          className="overflow-hidden"
+          className="overflow-x-auto"
           style={{
             background: "var(--s-lowest)",
             borderRadius: "var(--r-xl)",
             boxShadow: "var(--e1)",
           }}
         >
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[720px] text-sm">
             <thead>
               <tr
                 className="border-b"

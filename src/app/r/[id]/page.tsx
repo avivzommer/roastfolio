@@ -106,18 +106,17 @@ export default async function ReviewPage({
         style={{ maxWidth: 1240 }}
       >
         <div
-          className="lg:grid lg:grid-cols-[260px_minmax(0,1fr)]"
+          className="review-doc-grid lg:grid lg:grid-cols-[260px_minmax(0,1fr)]"
           style={{
-            // Paint the sidebar column via gradient so it fills the whole card
-            // height regardless of the sticky aside's fixed height.
-            background:
-              "linear-gradient(to right, var(--sidebar-bg) 0, var(--sidebar-bg) 260px, var(--doc-bg) 260px, var(--doc-bg) 100%)",
             border: "1px solid var(--rule)",
             borderRadius: 20,
             boxShadow: "0 24px 60px -32px rgba(74, 46, 20, 0.28)",
             // `clip` (not `hidden`) trims the border-radius without creating a
             // scroll container — so the sticky sidebar can track the viewport.
             overflow: "clip",
+            // On mobile this is a plain doc card. The lg: sidebar-stripe
+            // gradient is applied in CSS below so it only runs ≥1024px.
+            background: "var(--doc-bg)",
           }}
         >
           <div>
@@ -384,22 +383,21 @@ function BrowserShot({ src, url }: { src: string; url: string }) {
         </div>
       </div>
 
-      {/* Flames escaping the bottom-right corner of the browser card. */}
+      {/* Flames escaping the bottom-right corner of the browser card.
+          On mobile we scale it down and tuck it inside the card so it
+          doesn't push the document past the viewport width. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/fire.svg"
         alt=""
+        className="rf-browser-fire"
         style={{
           position: "absolute",
-          right: -36,
-          bottom: -30,
-          width: 200,
-          height: 200,
-          maxWidth: "none",
-          maxHeight: "none",
           pointerEvents: "none",
           zIndex: 3,
           transform: "rotate(6deg)",
+          maxWidth: "none",
+          maxHeight: "none",
         }}
       />
     </div>
@@ -419,7 +417,7 @@ function ReviewHeader({
   const date = readableDate(createdAt);
   return (
     <header
-      className="mx-auto flex w-full items-center gap-4 px-6 sm:px-10"
+      className="mx-auto flex w-full items-center gap-3 px-4 sm:gap-4 sm:px-10"
       style={{ maxWidth: 1240, height: 88 }}
     >
       <Link href="/" className="inline-flex items-center gap-2.5">
@@ -437,6 +435,7 @@ function ReviewHeader({
         </span>
         <span
           aria-label="Beta"
+          className="hidden sm:inline-block"
           style={{
             fontSize: 10.5,
             fontWeight: 600,
@@ -468,6 +467,7 @@ function ReviewHeader({
           href={portfolioUrl}
           target="_blank"
           rel="noreferrer"
+          aria-label="Visit site"
           className="inline-flex items-center gap-2 whitespace-nowrap"
           style={{
             fontSize: 14,
@@ -481,11 +481,12 @@ function ReviewHeader({
           }}
         >
           <ExternalLink className="size-4" />
-          Visit site
+          <span className="hidden sm:inline">Visit site</span>
         </a>
         <a
           href={`/r/${reviewId}/download`}
           download
+          aria-label="Export"
           className="inline-flex items-center gap-2 whitespace-nowrap"
           style={{
             fontSize: 14,
@@ -494,12 +495,12 @@ function ReviewHeader({
             background: "var(--ink)",
             border: "1.5px solid var(--ink)",
             borderRadius: 10,
-            padding: "9px 16px",
+            padding: "9px 14px",
             textDecoration: "none",
           }}
         >
           <Download className="size-4" />
-          Export
+          <span className="hidden sm:inline">Export</span>
         </a>
       </div>
     </header>
