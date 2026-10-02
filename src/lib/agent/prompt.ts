@@ -453,6 +453,8 @@ export interface ReviewerInput {
     text: string;
   }>;
   crawlErrors: string[];
+  /** True when the designer supplied a password to unlock gated content. */
+  providedPassword: boolean;
 }
 
 /** Builds the user-message prompt the model sees alongside the crawled screenshots. */
@@ -497,6 +499,16 @@ ${cs.text || "(no readable text extracted)"}
     parts.push(`
 ## Crawl notes
 ${input.crawlErrors.map((e) => `- ${e}`).join("\n")}`);
+  }
+
+  if (input.providedPassword) {
+    parts.push(`
+## Access note
+The designer supplied a password to unlock gated case studies for this review. Treat whatever you can now see as content they have deliberately shared with reviewers — password gating is a conscious choice (NDA, in-progress work, mentor-only material) and the designer is already aware of the trade-off.
+
+Do NOT frame "the portfolio has password-protected case studies" as a UX problem, main growth lever, red flag, or action item. Do not propose "open the gate", "unlock a case study", "add a request-access link", or any variation. This review is for the designer, not for a cold hiring manager, and the designer has not asked for advice on their access model.
+
+Judge the (now-visible) work on its own merits — craft, thinking, impact — exactly as you would an un-gated portfolio.`);
   }
 
   parts.push(`

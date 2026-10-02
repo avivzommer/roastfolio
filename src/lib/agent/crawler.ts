@@ -89,7 +89,13 @@ function looksLikePasswordGate(
   statusCode: number | undefined,
 ): boolean {
   if (statusCode === 401) return true;
-  if (!markdown) return false;
+  if (!markdown) return true;
+  // Suspiciously tiny response from a real case-study URL: it's a gate,
+  // an error, or a splash. We have a password available either way, so
+  // retrying with the unlock sequence is cheap and almost always worth
+  // it. (avivzommer.com's per-case gates returned ~40 chars with no
+  // phrase match, which the old length < 300 && hasPhrase check missed.)
+  if (markdown.length < 150) return true;
   const short = markdown.length < 300;
   const hasPhrase =
     /enter\s*password|password\s*required|password\s*protected|site\s*is\s*password|this\s*case\s*study\s*is\s*password/i.test(
@@ -369,18 +375,38 @@ export async function crawlPortfolio(
   for (let i = 0; i < Math.min(caseStudyUrls.length, MAX_CASE_STUDIES); i++) {
     const csUrl = caseStudyUrls[i];
     const label = `cs-${i + 1}`;
-    const useUnlock =
-      unlockActions && (siteWasGated || gatedUrls.has(normalizeUrl(csUrl)));
+    // Pages known-gated up front (homepage flagged them, or whole site is
+    // gated) go straight through with the unlock actions. Everything else
+    // gets a cheap first pass; if that pass comes back looking like a gate
+    // AND we have a password, we retry with the unlock sequence.
+    const knownGated =
+      !!unlockActions && (siteWasGated || gatedUrls.has(normalizeUrl(csUrl)));
     console.log(
-      `[crawl] case-study ${i + 1}/${Math.min(caseStudyUrls.length, MAX_CASE_STUDIES)}: ${csUrl}${useUnlock ? " (unlocking)" : ""}`,
+      `[crawl] case-study ${i + 1}/${Math.min(caseStudyUrls.length, MAX_CASE_STUDIES)}: ${csUrl}${knownGated ? " (unlocking)" : ""}`,
     );
     try {
-      const cs = await scrapePage(
+      let cs = await scrapePage(
         csUrl,
         label,
         options,
-        useUnlock ? unlockActions : undefined,
+        knownGated ? unlockActions : undefined,
       );
+      // Fallback: homepage didn't advertise this URL as gated, but the
+      // response looks like a password gate (empty page, 401, or an
+      // "enter password" phrase). This is how avivzommer.com's per-case
+      // gates presented — the homepage listing had no "Password required"
+      // label, so detectGatedUrls() came back empty and we scraped the
+      // gate page itself. Retry once with the unlock sequence.
+      if (
+        !knownGated &&
+        unlockActions &&
+        looksLikePasswordGate(cs.rawMarkdown, cs.statusCode)
+      ) {
+        console.log(
+          `[crawl:${label}] response looks like a password gate (len=${cs.rawMarkdown.length}, status=${cs.statusCode}) — retrying with password`,
+        );
+        cs = await scrapePage(csUrl, label, options, unlockActions);
+      }
       caseStudies.push(cs.page);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);

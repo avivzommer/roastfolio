@@ -51,6 +51,7 @@ export async function runAgent(reviewId: string): Promise<void> {
 
     phase = "crawl";
     console.log(`[agent] ${reviewId} phase=crawl starting`);
+    const providedPassword = !!row.casePassword;
     const crawl = await crawlPortfolio(row.portfolioUrl, {
       ...screenshotPaths(reviewId),
       casePassword: row.casePassword ?? null,
@@ -111,6 +112,7 @@ export async function runAgent(reviewId: string): Promise<void> {
       targetSeniority: row.targetSeniority as Seniority,
       heatLevel,
       crawl,
+      providedPassword,
     });
 
     // Inject screenshot paths the LLM doesn't know about.

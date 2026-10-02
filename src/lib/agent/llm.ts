@@ -31,6 +31,8 @@ export interface GenerateReviewArgs {
   targetSeniority: Seniority;
   heatLevel: HeatLevel;
   crawl: CrawledPortfolio;
+  /** True when the designer supplied a password to unlock gated content. */
+  providedPassword: boolean;
 }
 
 export interface GenerateReviewResult {
@@ -72,6 +74,7 @@ async function runReal(
       text: p.text,
     })),
     crawlErrors: args.crawl.errors,
+    providedPassword: args.providedPassword,
   };
 
   // Build content blocks: text prompt + every screenshot as an image.
