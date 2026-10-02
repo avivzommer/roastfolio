@@ -26,19 +26,14 @@ export function HomepageBlock({
   const recs = homepage.recommendations ?? [];
 
   return (
-    <section
-      id="homepage"
-      className="reveal"
-      style={{ scrollMarginTop: 96 }}
+    <div
+      className="overflow-hidden"
+      style={{
+        background: "var(--s-lowest)",
+        borderRadius: "var(--r-xl)",
+        boxShadow: "var(--e1)",
+      }}
     >
-      <div
-        className="overflow-hidden"
-        style={{
-          background: "var(--s-lowest)",
-          borderRadius: "var(--r-xl)",
-          boxShadow: "var(--e1)",
-        }}
-      >
         {homepage.screenshotPath && (
           <ShotPreview
             src={homepage.screenshotPath}
@@ -176,7 +171,6 @@ export function HomepageBlock({
             </ol>
           </div>
         )}
-      </div>
-    </section>
+    </div>
   );
 }

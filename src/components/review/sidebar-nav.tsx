@@ -9,6 +9,11 @@ export interface NavItem {
   name: string;
   icon?: ReactNode;
   score?: number;
+  /** When true, clicking this item fires an open event — picked up by the
+   *  matching CollapsibleSection, which expands itself before the sidebar
+   *  then scrolls. Items in the "Breakdown" group use this; "Summary" items
+   *  (always-expanded hero / strengths / lever / actions) do not. */
+  collapsible?: boolean;
 }
 
 export interface NavGroup {
@@ -43,10 +48,27 @@ export function SidebarNav({ groups }: { groups: NavGroup[] }) {
     };
   }, [ids.join(",")]);
 
-  const go = (e: React.MouseEvent, id: string) => {
+  const go = (e: React.MouseEvent, id: string, collapsible: boolean) => {
     e.preventDefault();
+    // Fire the open event FIRST so the target section expands before we
+    // measure its position. Without this, scrolling lands on a still-
+    // collapsed card and the user has to click the header to see content.
+    if (collapsible) {
+      window.dispatchEvent(
+        new CustomEvent("rf-section-open", { detail: { id } }),
+      );
+    }
     const el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.offsetTop - 84, behavior: "smooth" });
+    if (!el) return;
+    // Give the expand transition a tick to start — otherwise offsetTop
+    // reflects the pre-expand height and we end up scrolled past the card.
+    const doScroll = () =>
+      window.scrollTo({ top: el.offsetTop - 84, behavior: "smooth" });
+    if (collapsible) {
+      requestAnimationFrame(() => requestAnimationFrame(doScroll));
+    } else {
+      doScroll();
+    }
   };
 
   return (
@@ -66,7 +88,7 @@ export function SidebarNav({ groups }: { groups: NavGroup[] }) {
             <a
               key={it.id}
               href={`#${it.id}`}
-              onClick={(e) => go(e, it.id)}
+              onClick={(e) => go(e, it.id, !!it.collapsible)}
               className={cn(
                 "relative my-0.5 flex h-[52px] w-full items-center gap-3 overflow-hidden rounded-full px-4 text-sm font-semibold transition-colors",
                 "hover:bg-[var(--s-high)]/60",
@@ -87,6 +109,31 @@ export function SidebarNav({ groups }: { groups: NavGroup[] }) {
               <span className="min-w-0 flex-1 truncate">{it.name}</span>
               {typeof it.score === "number" && (
                 <RatingChip score={it.score} size="sm" />
+              )}
+              {it.collapsible && (
+                /* Chevron hints that clicking opens a collapsible panel —
+                   the same affordance the main-page card header shows. */
+                <span
+                  className="flex size-[22px] flex-none items-center justify-center"
+                  style={{ color: "var(--on-surface-variant)" }}
+                  aria-hidden="true"
+                >
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 2L8 6L4 10"
+                      stroke="currentColor"
+                      strokeWidth="1.75"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
               )}
             </a>
           ))}

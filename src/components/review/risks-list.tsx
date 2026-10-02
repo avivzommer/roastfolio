@@ -35,53 +35,38 @@ export function RisksList({
       : flags.filter((r) => severityLabel(r.severity) === filter);
 
   return (
-    <section id="risks" className="reveal" style={{ scrollMarginTop: 96 }}>
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <span className="m3-eyebrow">Review risks</span>
-          <h2
-            className="mt-2 text-[30px] font-bold leading-[1.1] tracking-tight"
-            style={{ color: "var(--on-surface)" }}
+    <>
+      <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
+        {intro && (
+          <p
+            className="min-w-0 flex-1 text-[14px] leading-[1.55]"
+            style={{ color: "var(--on-surface-variant)" }}
           >
-            What a reviewer might stop on
-          </h2>
-          {intro && (
-            <p
-              className="mt-2 text-[15px]"
-              style={{ color: "var(--on-surface-variant)" }}
+            {intro}
+          </p>
+        )}
+        <div
+          className="inline-flex flex-none gap-1.5 rounded-full p-1.5"
+          style={{ background: "var(--s-container)" }}
+        >
+          {filters.map((f) => (
+            <button
+              key={f}
+              type="button"
+              onClick={() => setFilter(f)}
+              className="relative inline-flex cursor-pointer items-center gap-2 border-0 px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap transition-all"
+              style={{
+                background: filter === f ? "var(--m3-primary)" : "transparent",
+                color: filter === f ? "var(--m3-on-primary)" : "var(--on-surface-variant)",
+                borderRadius: "var(--r-full)",
+              }}
             >
-              {intro}
-            </p>
-          )}
-        </div>
-        {/* Narrow viewports can't fit all four filter pills side-by-side, so
-            the pill rail scrolls horizontally when its content exceeds the
-            available width. -mx-6 lets it bleed to the card edge on mobile
-            so the first/last pill isn't awkwardly indented. */}
-        <div className="-mx-6 w-[calc(100%+3rem)] overflow-x-auto sm:mx-0 sm:w-auto">
-          <div
-            className="mx-6 inline-flex gap-1.5 rounded-full p-1.5 sm:mx-0"
-            style={{ background: "var(--s-container)" }}
-          >
-            {filters.map((f) => (
-              <button
-                key={f}
-                type="button"
-                onClick={() => setFilter(f)}
-                className="relative inline-flex cursor-pointer items-center gap-2 border-0 px-4 py-1.5 text-xs font-semibold whitespace-nowrap transition-all"
-                style={{
-                  background: filter === f ? "var(--m3-primary)" : "transparent",
-                  color: filter === f ? "var(--m3-on-primary)" : "var(--on-surface-variant)",
-                  borderRadius: "var(--r-full)",
-                }}
-              >
-                {f}
-                <span className="text-[11px] opacity-80">
-                  {f === "All" ? flags.length : counts[f] || 0}
-                </span>
-              </button>
-            ))}
-          </div>
+              {f}
+              <span className="text-[11px] opacity-80">
+                {f === "All" ? flags.length : counts[f] || 0}
+              </span>
+            </button>
+          ))}
         </div>
       </div>
       <div className="flex flex-col gap-3.5">
@@ -89,7 +74,7 @@ export function RisksList({
           <RiskCard key={i} flag={r} />
         ))}
       </div>
-    </section>
+    </>
   );
 }
 

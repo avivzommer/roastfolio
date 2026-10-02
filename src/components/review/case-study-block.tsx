@@ -13,19 +13,14 @@ export function CaseStudyBlock({ study }: { study: CaseStudyEvaluation }) {
   const criteria = caseStudyCriteria(study);
 
   return (
-    <section
-      id={study.id || `cs-${Math.random().toString(36).slice(2, 8)}`}
-      className="reveal"
-      style={{ scrollMarginTop: 96 }}
+    <div
+      className="overflow-hidden"
+      style={{
+        background: "var(--s-lowest)",
+        borderRadius: "var(--r-xl)",
+        boxShadow: "var(--e1)",
+      }}
     >
-      <div
-        className="overflow-hidden"
-        style={{
-          background: "var(--s-lowest)",
-          borderRadius: "var(--r-xl)",
-          boxShadow: "var(--e1)",
-        }}
-      >
         {study.screenshotPath && (
           <ShotPreview
             src={study.screenshotPath}
@@ -177,8 +172,7 @@ export function CaseStudyBlock({ study }: { study: CaseStudyEvaluation }) {
             </ol>
           </div>
         )}
-      </div>
-    </section>
+    </div>
   );
 }
 

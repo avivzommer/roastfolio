@@ -109,10 +109,26 @@ function ActionRow({
           >
             {item.title}
           </div>
+          {/* Mobile: effort chip sits under the title on its own line so the
+              title isn't crushed into a 1-word-per-line column. On sm+ the
+              chip returns to the top-right (via the sm:hidden pair below). */}
+          {item.estimatedEffort && (
+            <span
+              className="mt-3 inline-flex h-8 items-center gap-1.5 px-3.5 text-xs font-semibold sm:hidden"
+              style={{
+                background: "var(--s-container)",
+                color: "var(--on-surface-variant)",
+                borderRadius: "var(--r-full)",
+              }}
+            >
+              <Clock className="size-3" />
+              {item.estimatedEffort}
+            </span>
+          )}
         </div>
         {item.estimatedEffort && (
           <span
-            className="inline-flex h-8 flex-none items-center gap-1.5 px-3.5 text-xs font-semibold"
+            className="hidden h-8 flex-none items-center gap-1.5 px-3.5 text-xs font-semibold sm:inline-flex"
             style={{
               background: "var(--s-container)",
               color: "var(--on-surface-variant)",

@@ -22,6 +22,7 @@ import { RisksList } from "@/components/review/risks-list";
 import { ClosingCard } from "@/components/review/closing-card";
 import { FeedbackSection } from "@/components/review/feedback-section";
 import { FeedbackFab } from "@/components/review/feedback-fab";
+import { CollapsibleSection } from "@/components/review/collapsible-section";
 import { Target, Check, Zap, List } from "lucide-react";
 
 export default async function ReviewPage({
@@ -65,6 +66,8 @@ export default async function ReviewPage({
   );
 
   // Sidebar nav — Summary group + Breakdown group.
+  // Breakdown items render as CollapsibleSections in the main column and
+  // show a right-chevron in the sidebar — click opens them (not just scroll).
   const navGroups: NavGroup[] = [
     {
       label: "Summary",
@@ -78,15 +81,16 @@ export default async function ReviewPage({
     {
       label: "Breakdown",
       items: [
-        { id: "scores", name: "Score breakdown", score: overall },
-        { id: "homepage", name: "Homepage", score: homepageScore },
+        { id: "scores", name: "Score breakdown", score: overall, collapsible: true },
+        { id: "homepage", name: "Homepage", score: homepageScore, collapsible: true },
         ...caseStudies.map((cs, i) => ({
           id: cs.id || `cs-${i}`,
           name: cs.name,
           score: cs.overallScore,
+          collapsible: true,
         })),
         ...(report.redFlags.length > 0
-          ? [{ id: "risks", name: "Review risks" }]
+          ? [{ id: "risks", name: "Review risks", collapsible: true }]
           : []),
         { id: "feedback", name: "Give feedback" },
       ],
@@ -148,34 +152,61 @@ export default async function ReviewPage({
               {!isUnable && (
                 <>
                   <Spacer />
-                  <ScoreBreakdown scores={report.scores} />
+                  <CollapsibleSection
+                    id="scores"
+                    eyebrow="Score breakdown"
+                    title="Six evaluation categories"
+                    score={overall}
+                  >
+                    <ScoreBreakdown scores={report.scores} />
+                  </CollapsibleSection>
                 </>
               )}
 
               {report.homepage && (
                 <>
                   <Spacer />
-                  <HomepageBlock
-                    homepage={report.homepage}
-                    portfolioUrl={report.portfolioUrl}
-                  />
+                  <CollapsibleSection
+                    id="homepage"
+                    eyebrow="Homepage"
+                    title="Homepage analysis"
+                    score={homepageScore}
+                  >
+                    <HomepageBlock
+                      homepage={report.homepage}
+                      portfolioUrl={report.portfolioUrl}
+                    />
+                  </CollapsibleSection>
                 </>
               )}
 
-              {caseStudies.map((cs) => (
-                <div key={cs.id}>
+              {caseStudies.map((cs, i) => (
+                <div key={cs.id || `cs-${i}`}>
                   <Spacer />
-                  <CaseStudyBlock study={cs} />
+                  <CollapsibleSection
+                    id={cs.id || `cs-${i}`}
+                    eyebrow="Case study"
+                    title={cs.name}
+                    score={cs.overallScore}
+                  >
+                    <CaseStudyBlock study={cs} />
+                  </CollapsibleSection>
                 </div>
               ))}
 
               {report.redFlags.length > 0 && (
                 <>
                   <Spacer />
-                  <RisksList
-                    flags={report.redFlags}
-                    intro="What a reviewer might notice or stop on. Useful context — not a judgment of you as a designer."
-                  />
+                  <CollapsibleSection
+                    id="risks"
+                    eyebrow="Review risks"
+                    title={`${report.redFlags.length} thing${report.redFlags.length === 1 ? "" : "s"} a reviewer might stop on`}
+                  >
+                    <RisksList
+                      flags={report.redFlags}
+                      intro="What a reviewer might notice or stop on. Useful context — not a judgment of you as a designer."
+                    />
+                  </CollapsibleSection>
                 </>
               )}
 
