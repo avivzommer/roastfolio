@@ -82,13 +82,31 @@ const sourceSerif = Source_Serif_4({
   display: "swap",
 });
 
+const SITE_URL = process.env.PUBLIC_BASE_URL ?? "https://ux-roastfolio.com";
+const SITE_TITLE = "Roastfolio — Know if your portfolio is ready for hiring";
+const SITE_DESCRIPTION =
+  "See your portfolio the way a hiring manager would. Get an honest read on what's working, what's holding you back, and the concrete moves that get you more interviews.";
+
 export const metadata: Metadata = {
+  // Link previews need absolute image URLs; the opengraph-image / twitter-image
+  // files next to this layout are resolved against this base.
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Roastfolio — Know if your portfolio is ready for hiring",
+    default: SITE_TITLE,
     template: "%s · Roastfolio",
   },
-  description:
-    "See your portfolio the way a hiring manager would. Get an honest read on what's working, what's holding you back, and the concrete moves that get you more interviews.",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Roastfolio",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
