@@ -2,16 +2,16 @@ import { notFound } from "next/navigation";
 import { isAdmin } from "@/lib/auth";
 import { loadReview, caseStudyId } from "@/lib/review-data";
 import { Hero } from "@/components/review/hero";
-import { WorkingGrid } from "@/components/review/working-grid";
 import { GrowthLeverCallout } from "@/components/review/growth-lever";
-import { ActionStack } from "@/components/review/action-stack";
+import { SummaryActions } from "@/components/review/summary-actions";
 import { ScoreBreakdown } from "@/components/review/score-breakdown";
 import { RisksList } from "@/components/review/risks-list";
-import { ClosingCard } from "@/components/review/closing-card";
 import { FeedbackSection } from "@/components/review/feedback-section";
 import { FeedbackFab } from "@/components/review/feedback-fab";
+import { SectionHeader } from "@/components/review/section-header";
 import {
   Spacer,
+  BrowserShot,
   InternalContextAdmin,
   confidenceSentence,
 } from "@/components/review/review-chrome";
@@ -21,13 +21,17 @@ import {
 } from "@/components/review/review-pager";
 
 /**
- * Summary page — the entry point of a review. Carries the hero signal,
- * strengths, growth lever, next-best actions, score breakdown, review
- * risks, closing calibration, and the feedback form.
+ * Summary page — the entry point of a review. Three sections only:
  *
- * The homepage deep-dive lives at `/r/[id]/homepage`; each case study at
- * `/r/[id]/case/[csId]`. Chrome (topbar, tabs, footer) is shared via
- * `/r/[id]/layout.tsx`.
+ *   1. The read — BrowserShot + currentSignal + 2-sentence summary.
+ *   2. The move — growth lever (diagnosis) + Priority 1 action card
+ *      + Priority 2 / 3 compact chips.
+ *   3. The context — Score breakdown + Review risks + confidence line.
+ *
+ * Feedback sits below as a utility card, not called out as a section.
+ * Homepage deep-dive lives at `/r/[id]/homepage`; each case study at
+ * `/r/[id]/case/[csId]`. Chrome (topbar, tabs, footer) lives in the
+ * shared `/r/[id]/layout.tsx`.
  */
 export default async function ReviewSummaryPage({
   params,
@@ -68,8 +72,20 @@ export default async function ReviewSummaryPage({
     cases: pagerCases,
   });
 
+  const confidence = confidenceSentence(report);
+
   return (
     <>
+      {/* Section 1 — The read.
+          BrowserShot is the first visual anchor; Hero carries the signal
+          and the viewing-experience summary. No rating chip here —
+          verdict lives in Section 3. */}
+      {report.homepage?.screenshotPath && (
+        <BrowserShot
+          src={report.homepage.screenshotPath}
+          url={report.portfolioUrl}
+        />
+      )}
       <Hero
         eyebrow="Current signal"
         headline={report.currentSignal || "Portfolio review"}
@@ -77,61 +93,64 @@ export default async function ReviewSummaryPage({
       />
 
       <Spacer />
-      <WorkingGrid items={report.topStrengths} />
 
-      <Spacer />
+      {/* Section 2 — The move.
+          Growth lever (diagnosis) is immediately followed by the Priority 1
+          action card. P2 and P3 collapse to compact chips below — expandable
+          inline when the designer wants more. */}
+      <SectionHeader
+        eyebrow="The move"
+        title="The one thing to work on"
+      />
       <GrowthLeverCallout text={report.mainGrowthLever} />
+      <div className="mt-4">
+        <SummaryActions items={report.priorityActionPlan ?? []} />
+      </div>
 
       <Spacer />
-      <ActionStack items={report.priorityActionPlan ?? []} />
 
+      {/* Section 3 — The context.
+          Score breakdown, review risks (if any), and the confidence line
+          grouped together as the back-up data a designer scans after the
+          move. Confidence sits as a one-line footer at the bottom. */}
       {!isUnable && (
-        <>
-          <Spacer />
-          <section id="scores" style={{ scrollMarginTop: 96 }}>
-            <div className="mb-3">
-              <span className="m3-eyebrow">Score breakdown</span>
-              <h2
-                className="mt-1.5 text-[20px] font-semibold leading-tight tracking-tight"
-                style={{ color: "var(--on-surface)" }}
+        <section id="context" style={{ scrollMarginTop: 96 }}>
+          <SectionHeader
+            eyebrow="The context"
+            title="Scores, risks, and confidence"
+          />
+          <ScoreBreakdown scores={report.scores} />
+          {report.redFlags.length > 0 && (
+            <div className="mt-8">
+              <h3
+                className="mb-4 text-[11px] font-bold tracking-wider uppercase"
+                style={{ color: "var(--on-surface-variant)" }}
               >
-                Six evaluation categories
-              </h2>
+                Review risks
+              </h3>
+              <RisksList
+                flags={report.redFlags}
+                intro="What a reviewer might notice or stop on. Useful context — not a judgment of you as a designer."
+              />
             </div>
-            <ScoreBreakdown scores={report.scores} />
-          </section>
-        </>
-      )}
-
-      {report.redFlags.length > 0 && (
-        <>
-          <Spacer />
-          <section id="risks" style={{ scrollMarginTop: 96 }}>
-            <div className="mb-5">
-              <span className="m3-eyebrow">Review risks</span>
-              <h2
-                className="mt-1.5 text-[20px] font-semibold leading-tight tracking-tight"
-                style={{ color: "var(--on-surface)" }}
-              >
-                What a reviewer might stop on
-              </h2>
-            </div>
-            <RisksList
-              flags={report.redFlags}
-              intro="What a reviewer might notice or stop on. Useful context — not a judgment of you as a designer."
-            />
-          </section>
-        </>
+          )}
+          {confidence && (
+            <p
+              className="mt-8 border-t pt-5 text-[13.5px] leading-[1.55]"
+              style={{
+                color: "var(--on-surface-variant)",
+                borderColor: "var(--rule)",
+              }}
+            >
+              {confidence}
+            </p>
+          )}
+        </section>
       )}
 
       {adminView && !isUnable && <InternalContextAdmin report={report} />}
 
-      <Spacer />
-      <ClosingCard
-        closing={report.closingNote}
-        confidence={confidenceSentence(report)}
-      />
-
+      {/* Feedback — utility box, not a numbered section. */}
       <Spacer />
       <FeedbackSection reviewId={id} />
 
