@@ -5,5 +5,7 @@ export const HOMEPAGE_ISSUE_KEYS_ORDER = [
   "smallScreenshots",
   "genericText",
   "weakCaseStudyTitles",
+  "noCurationSignal",
+  "roleCoherence",
 ] as const;
 export type HomepageIssueKey = (typeof HOMEPAGE_ISSUE_KEYS_ORDER)[number];

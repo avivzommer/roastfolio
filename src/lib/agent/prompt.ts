@@ -152,10 +152,26 @@ For the homepage, score these two things:
 1. **Reads as a product designer.** Could a hiring manager land here and immediately know they are visiting a product designer's portfolio? Or is it ambiguous?
 2. **UX clarity.** Is the homepage itself well designed? Easy to navigate, clear hierarchy, no friction to find the work?
 
-Then check these three common homepage mistakes. For each, set \`present\` to true if you see the mistake, false if not.
+Then check these common homepage mistakes. For each, set \`present\` to true if you see the mistake, false if not. Each issue's \`comment\` should name specifically what you observed and, where useful, the stronger alternative.
+
 1. **smallScreenshots** — Are the case study screenshots actually readable? Two failure modes count here: (a) thumbnails are too tiny to evaluate the work, (b) full-page screenshots are scaled down so the UI text and details are illegible. If either pattern is present, mark this and specify in the comment which one.
-2. **genericText** — Is positioning copy generic and forgettable (e.g. "passionate designer creating beautiful experiences")? Or specific and personal?
-3. **weakCaseStudyTitles** — Are case study headlines just the year or the company name? Strong titles describe the *value the designer delivered*, not just what the project was.
+2. **genericText** — Is positioning copy generic and forgettable? Strong positioning carries THREE signals in the first line a reviewer reads: **role** (specific — "Product Designer", not "designer" or "UX/UI Designer"), **domain** (specific — "B2B SaaS onboarding", "fintech mobile", not "experiences"), and a **value proposition** (one concrete sentence of what this designer actually does — ideally outcome-oriented).
+   - SKIP example: "Hi there! I'm Alex, a UX/UI Designer. I love creating beautiful and user-friendly experiences."
+   - BETTER example: "Alex Moreno. Product Designer, B2B SaaS. 'I design onboarding that makes B2B tools sell themselves.' Previously at Orbit CRM and Nordlane. 6 years turning free trials into paying teams."
+   - Mark \`present\` true when any of the three signals (role, domain, value prop) is missing or generic. In the \`comment\`, cite what you observed on the homepage and name which of role / domain / value-prop is thin.
+3. **weakCaseStudyTitles** — Case study titles should **lead with the outcome**, not the project name or category. A reviewer deciding whether to click into a case can be swayed by a strong outcome in the title alone. Numbers in the title are the strongest signal; a specific delivered value is next-best.
+   - SKIP example: "Food delivery redesign." (reads as a category — no idea what happened)
+   - BETTER example: "Cut checkout drop-off by 22%." (outcome-first, with a number)
+   - Also acceptable: "Brought SysAid's first self-serve Advanced trial to a traditionally sales-led product." (specific delivered value, no number)
+   - Mark \`present\` true when titles are category labels, company-plus-year, or generic ("Mobile app redesign"). In the \`comment\`, cite the actual titles observed and propose outcome-first rewrites where you have evidence of the outcome.
+4. **noCurationSignal** — Curation is the designer's first design decision. A homepage dumping 10+ projects spanning unrelated categories signals "I don't know what to show you" to a reviewer. Strong portfolios show **3 case studies**, chosen deliberately — often with a visible curation header ("Selected work," "Case studies"), focused on one domain, each with its own outcome.
+   - SKIP example: 12 project tiles — "Food app · Logo · Poster · Travel · Banking · Fitness · Wedding · Game UI · Music · Crypto · NFT · 3D shot" — no header, no grouping, no outcome metrics.
+   - BETTER example: Three case-study cards under a "Selected work" header, all B2B SaaS onboarding, each tagged with an outcome ("+34% activation," "+19% conversion," "2x invites sent").
+   - Mark \`present\` true when the homepage shows **7+ work items without a visible curation signal** (no "selected work" / "case studies" header, no focused grouping by domain, no clear hierarchy between a few hero cases and smaller side projects). In the \`comment\`, cite the actual project count observed and name what curation signal is missing.
+5. **roleCoherence** — A portfolio should read as **built for ONE role**, not as a catalog of everything the designer has ever touched. A reviewer hiring for a specific job (e.g. mobile e-commerce) cannot tell whether a portfolio spanning posters, travel apps, and brand rebrands is applying for THEIR role.
+   - SKIP example: Shown work covers "Event poster," "Travel app," "Coffee rebrand" when the designer wants product-design roles — the collection reads as a generalist freelancer, not a product designer.
+   - BETTER example: Shown work tagged "Fintech · Mobile" — "Banking home · Payments · Card setup" — three screens all pointing at the same role (mobile fintech product designer).
+   - Mark \`present\` true when the shown work spans **multiple unrelated roles / disciplines** (e.g. brand/logo + product UI + 3D illustration + print) with no visible focus. In the \`comment\`, name the specific mismatched domains you observed and the role the shown work would most naturally fit if it were tightened.
 
 ## Case studies
 The crawler may have captured up to 5 case study pages. **Return analysis for at most 3** — the ones most representative of the designer's range and signal. Cite the case study URL exactly as crawled so we can match the screenshot.
@@ -173,6 +189,14 @@ For each case study, score 5 dimensions (1–5 each with comment). Also produce 
   - **1** — 0–1 pass. No problem framing, no decisions, no validation.
 
   **Never score 4 or 5 without pointing to which PROVE dimensions specifically pass, with a citation.** Never score 2 or below without naming which PROVE dimensions specifically fail.
+
+  **uxThinking failure patterns — call these out by name in your comment when you see them:**
+  - **Process-diamond-as-the-case-study** — the "process" section is a Discover / Define / Develop / Deliver diamond (or similar framework diagram) with NO named decision, NO named tradeoff, NO "we gave up X to gain Y" moment. The diagram is substituting for the thinking. This is a PROVE's **O** (options) fail. The decision rationale a reviewer actually wants is not there.
+  - **No named tradeoff** — the case study shows what was built but never names an alternative that was considered and rejected. Even "we chose X over Y because Z" in one sentence is enough to pass; its absence is a tell.
+  - **Process over outcomes** — the case study describes HOW the designer worked (research → wireframes → UI → test) but never says what the designer *decided* or what *shipped*.
+  - **Decoration over decision** — pretty flow diagrams, mood boards, and persona cards without any statement of what the designer chose, why, or how it changed the product.
+
+  BETTER example of the kind of case-study moment this rewards: "Cutting filters to ship search in 3 weeks. 62% of users dropped off at the filter step. We shipped one smart search bar first and moved filters to v2. GAVE UP: advanced filters, moved to v2 roadmap. GAINED: +18% searches completed in week 1. Why it mattered: speed to market beat feature depth." — a specific decision, a named tradeoff, a named gain. One moment like this in a case study is worth more than ten diagrams.
 
 - **productThinking** — Business context, trade-offs, prioritization, constraints. Related to PROVE's **P** (product understanding) and **O** (options considered).
 - **uiCraft** — Derived from ACTION overall. This is the case study's **UI score**. Read the screenshots deliberately. This is not "does it look nice", this is: does the visual work read as **shippable at a design-quality-focused team**?
@@ -432,7 +456,9 @@ Return **valid JSON only**. No prose before or after. No markdown fences. Match 
     "issues": {
       "smallScreenshots":    { "present": boolean, "comment": string, "examples": string[] },
       "genericText":         { "present": boolean, "comment": string, "examples": string[] },
-      "weakCaseStudyTitles": { "present": boolean, "comment": string, "examples": string[] }
+      "weakCaseStudyTitles": { "present": boolean, "comment": string, "examples": string[] },
+      "noCurationSignal":    { "present": boolean, "comment": string, "examples": string[] },
+      "roleCoherence":       { "present": boolean, "comment": string, "examples": string[] }
     },
     "recommendations": string[]        // 2–4 concrete next steps for the homepage
   },

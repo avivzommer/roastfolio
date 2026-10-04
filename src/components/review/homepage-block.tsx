@@ -73,7 +73,10 @@ export function HomepageBlock({
         {issuesPresent.length > 0 && (
           <div className="flex flex-col gap-3.5 px-6 pt-2 pb-1">
             {issuesPresent.map((k) => {
-              const issue = homepage.issues[k];
+              // issuesPresent already filtered on `?.present`, so issue is
+              // present at this point; the ! satisfies TS now that newer
+              // issue keys are optional for backward-compat with old reports.
+              const issue = homepage.issues[k]!;
               return (
                 <div
                   key={k}

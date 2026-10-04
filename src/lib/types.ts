@@ -108,11 +108,14 @@ export interface HomepageEvaluation {
   reflectsProductDesigner: ScoredItem;
   /** Is the homepage itself well-designed and easy to use? */
   uxClarity: ScoredItem;
-  /** Common designer-homepage mistakes. */
+  /** Common designer-homepage mistakes. The two newest keys are optional
+   *  so historical reports stored before these were added still parse. */
   issues: {
     smallScreenshots: IssueCheck;
     genericText: IssueCheck;
     weakCaseStudyTitles: IssueCheck;
+    noCurationSignal?: IssueCheck;
+    roleCoherence?: IssueCheck;
   };
   /** Short concrete next steps for the homepage specifically. */
   recommendations: string[];
@@ -332,17 +335,23 @@ export const HOMEPAGE_METRIC_EXPLANATION = {
 
 export const HOMEPAGE_ISSUE_LABEL = {
   smallScreenshots: "Screenshots aren't readable",
-  genericText: "Generic, vague text",
-  weakCaseStudyTitles: "Weak case study titles",
+  genericText: "Positioning is generic",
+  weakCaseStudyTitles: "Titles don't lead with outcomes",
+  noCurationSignal: "No curation signal",
+  roleCoherence: "Portfolio doesn't read as built for one role",
 } as const;
 
 export const HOMEPAGE_ISSUE_EXPLANATION = {
   smallScreenshots:
     "Your work needs to be visible. This covers two patterns: tiny thumbnails on the homepage, and full-page screenshots scaled down so the UI text is unreadable.",
   genericText:
-    "Lines like 'passionate designer creating beautiful experiences' could be anyone. Specific, personal positioning helps reviewers remember you.",
+    "Strong positioning carries three signals in the first line: role (specific), domain (specific), and a value proposition. 'UX/UI Designer creating beautiful experiences' hits none of them.",
   weakCaseStudyTitles:
-    "Titles like '2024' or 'Acme Inc.' describe the project. Strong titles describe the value you delivered as a designer.",
+    "Titles should lead with the outcome, not the category. 'Cut checkout drop-off by 22%' outperforms 'Food delivery redesign' because it tells a reviewer what you shipped before they click.",
+  noCurationSignal:
+    "Curation is a design decision. A homepage of 12 unrelated projects reads as 'I don't know what to show you.' Three deliberately chosen case studies read as 'I know what matters.'",
+  roleCoherence:
+    "A reviewer hiring for one role (e.g. mobile fintech) can't tell whether a portfolio mixing posters, travel apps, and brand work is applying for their job. Shown work that all points at ONE role is a stronger signal than range.",
 } as const;
 
 export const CASE_STUDY_METRIC_LABEL = {
